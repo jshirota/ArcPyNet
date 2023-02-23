@@ -2,6 +2,9 @@
 
 namespace ArcPy;
 
+/// <summary>
+/// Provides arcpy expression evaluation.
+/// </summary>
 public static class Engine
 {
     /// <summary>
@@ -14,8 +17,16 @@ public static class Engine
     /// </summary>
     public static string ArcPyFolder { get; set; } = @"C:\Program Files\ArcGIS\Pro\Resources\ArcPy";
 
+    /// <summary>
+    /// Defaults to the current working directory.
+    /// </summary>
     public static string Workspace { get; set; } = Environment.CurrentDirectory;
 
+    /// <summary>
+    /// Evaluates a Python expression and assigns the result to a new variable.
+    /// </summary>
+    /// <param name="expression">A Python expression.</param>
+    /// <returns>The new variable (may be None).</returns>
     public static Variable Run(string expression)
     {
         Runtime.PythonDLL = Directory.GetFiles(PythonHome, "python*.dll").Last();
