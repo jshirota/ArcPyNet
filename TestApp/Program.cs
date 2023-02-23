@@ -5,4 +5,6 @@ var shade = (dem > 70) * dem.Hillshade(z_factor: 0.00001);
 
 var temp = Path.GetFileNameWithoutExtension(Path.GetTempFileName());
 
-shade.Save($@"C:\Users\jiro.shirota\Documents\Temp\{temp}");
+shade.Save($"{temp}");
+
+ArcPyNet.Conversion.RasterToASCII(shade, $"{temp}.txt");

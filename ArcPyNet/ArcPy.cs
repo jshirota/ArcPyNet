@@ -14,6 +14,8 @@ public static class ArcPy
     /// </summary>
     public static string ArcPyFolder { get; set; } = @"C:\Program Files\ArcGIS\Pro\Resources\ArcPy";
 
+    public static string Workspace { get; set; } = Environment.CurrentDirectory;
+
     public static Variable Run(string code)
     {
         Runtime.PythonDLL = Directory.GetFiles(PythonHome, "python*.dll").Last();
@@ -26,6 +28,7 @@ public static class ArcPy
         {
             PythonEngine.RunSimpleString($"""
                     import arcpy
+                    arcpy.env.workspace = r"{Workspace}"
                     {temp} = {code}
                     """);
         }

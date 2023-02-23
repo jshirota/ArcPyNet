@@ -9,8 +9,8 @@ public class Variable
         this.name = name;
     }
 
-    public static implicit operator string(Variable variable) => variable.name;
     public static implicit operator Variable(string name) => new(name);
+    public static implicit operator string(Variable variable) => variable.name;
 
     public override string ToString()
     {
