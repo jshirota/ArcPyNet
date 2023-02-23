@@ -6,13 +6,7 @@ public static class SpatialAnalyst
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        var temp = ArcPy.GetTempName();
-
-        ArcPy.Run($"""
-            {temp} = arcpy.sa.{method}({ArcPy.Format(args)})
-            """);
-
-        return temp;
+        return ArcPy.Run($"arcpy.sa.{method}", args);
     }
 
     public static Variable ACos(params object?[] args) => Run(args);

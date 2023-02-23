@@ -6,13 +6,7 @@ public static class DataManagement
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        var temp = ArcPy.GetTempName();
-
-        ArcPy.Run($"""
-            {temp} = arcpy.{method}_management({ArcPy.Format(args)})
-            """);
-
-        return temp;
+        return ArcPy.Run($"arcpy.{method}_management", args);
     }
 
     public static Variable Add3DFormats(params object?[] args) => Run(args);

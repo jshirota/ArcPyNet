@@ -5,6 +5,10 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArcPyNet", "ArcPyNet\ArcPyNet.csproj", "{A719FB09-3D91-4C0F-B706-99152EC015E2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Glidergun", "Glidergun\Glidergun.csproj", "{ED4071AE-825C-4087-92F0-F43F0C2E23A9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{520FA769-A476-48DF-AA55-DDC1F2D8D13C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A719FB09-3D91-4C0F-B706-99152EC015E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A719FB09-3D91-4C0F-B706-99152EC015E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A719FB09-3D91-4C0F-B706-99152EC015E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ED4071AE-825C-4087-92F0-F43F0C2E23A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED4071AE-825C-4087-92F0-F43F0C2E23A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ED4071AE-825C-4087-92F0-F43F0C2E23A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ED4071AE-825C-4087-92F0-F43F0C2E23A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{520FA769-A476-48DF-AA55-DDC1F2D8D13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{520FA769-A476-48DF-AA55-DDC1F2D8D13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{520FA769-A476-48DF-AA55-DDC1F2D8D13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{520FA769-A476-48DF-AA55-DDC1F2D8D13C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

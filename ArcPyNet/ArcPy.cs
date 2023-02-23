@@ -14,32 +14,38 @@ public static class ArcPy
     /// </summary>
     public static string ArcPyFolder { get; set; } = @"C:\Program Files\ArcGIS\Pro\Resources\ArcPy";
 
-    internal static void Run(string code)
+    public static Variable Run(string code)
     {
-        if (!PythonEngine.IsInitialized)
-        {
-            Runtime.PythonDLL = Directory.GetFiles(PythonHome, "python*.dll").Last();
-            PythonEngine.PythonHome = PythonHome;
-            PythonEngine.Initialize();
+        Runtime.PythonDLL = Directory.GetFiles(PythonHome, "python*.dll").Last();
+        PythonEngine.PythonHome = PythonHome;
+        PythonEngine.Initialize();
 
-            using (Py.GIL())
-                PythonEngine.RunSimpleString($"""
+        var temp = GetTempName();
+
+        using (Py.GIL())
+        {
+            PythonEngine.RunSimpleString($"""
                     import arcpy
+                    {temp} = {code}
                     """);
         }
 
-        using (Py.GIL())
-            PythonEngine.RunSimpleString(code);
-
         PythonEngine.Shutdown();
+
+        return temp;
     }
 
-    internal static string GetTempName()
+    public static Variable Run(string method, object?[] args)
+    {
+        return Run($"{method}({Format(args)})");
+    }
+
+    private static string GetTempName()
     {
         return "_" + Guid.NewGuid().ToString().Substring(0, 7);
     }
 
-    internal static string Format(object?[] args)
+    private static string Format(object?[] args)
     {
         return string.Join(", ", args.Select(x => x switch
         {

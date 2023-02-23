@@ -6,13 +6,7 @@ public static class SpatialStatistics
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        var temp = ArcPy.GetTempName();
-
-        ArcPy.Run($"""
-            {temp} = arcpy.stats.{method}({ArcPy.Format(args)})
-            """);
-
-        return temp;
+        return ArcPy.Run($"arcpy.stats.{method}", args);
     }
 
     public static Variable AverageNearestNeighbor(params object?[] args) => Run(args);

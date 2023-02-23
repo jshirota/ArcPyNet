@@ -6,13 +6,7 @@ public static class GeostatisticalAnalyst
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        var temp = ArcPy.GetTempName();
-
-        ArcPy.Run($"""
-            {temp} = arcpy.{method}_ga({ArcPy.Format(args)})
-            """);
-
-        return temp;
+        return ArcPy.Run($"arcpy.{method}_ga", args);
     }
 
     public static Variable ArealInterpolationLayerToPolygons(params object?[] args) => Run(args);
