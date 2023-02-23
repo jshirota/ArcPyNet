@@ -1,12 +1,12 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace ArcPyNet;
+namespace ArcPy;
 
 public static class SpatialStatistics
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return ArcPy.Run($"arcpy.stats.{method}", args);
+        return Engine.Run($"arcpy.stats.{method}", args);
     }
 
     public static Variable AverageNearestNeighbor(params object?[] args) => Run(args);

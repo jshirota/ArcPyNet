@@ -7,4 +7,4 @@ var temp = Path.GetFileNameWithoutExtension(Path.GetTempFileName());
 
 shade.Save($"{temp}");
 
-ArcPyNet.Conversion.RasterToASCII(shade, $"{temp}.txt");
+ArcPy.Conversion.RasterToASCII(shade, $"{temp}.txt");

@@ -1,8 +1,8 @@
 ﻿using Python.Runtime;
 
-namespace ArcPyNet;
+namespace ArcPy;
 
-public static class ArcPy
+public static class Engine
 {
     /// <summary>
     /// Defaults to C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3.
@@ -16,7 +16,7 @@ public static class ArcPy
 
     public static string Workspace { get; set; } = Environment.CurrentDirectory;
 
-    public static Variable Run(string code)
+    public static Variable Run(string expression)
     {
         Runtime.PythonDLL = Directory.GetFiles(PythonHome, "python*.dll").Last();
         PythonEngine.PythonHome = PythonHome;
@@ -29,7 +29,7 @@ public static class ArcPy
             PythonEngine.RunSimpleString($"""
                     import arcpy
                     arcpy.env.workspace = r"{Workspace}"
-                    {temp} = {code}
+                    {temp} = {expression}
                     """);
         }
 
@@ -38,7 +38,7 @@ public static class ArcPy
         return temp;
     }
 
-    public static Variable Run(string method, object?[] args)
+    internal static Variable Run(string method, object?[] args)
     {
         return Run($"{method}({Format(args)})");
     }

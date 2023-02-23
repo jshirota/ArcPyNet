@@ -1,5 +1,5 @@
-﻿using ArcPyNet;
-using static ArcPyNet.SpatialAnalyst;
+﻿using ArcPy;
+using static ArcPy.SpatialAnalyst;
 
 namespace Glidergun;
 
@@ -26,7 +26,7 @@ public class Grid
             {this.name}.save(r"{fileName}")
             """;
 
-        ArcPy.Run(code);
+        Engine.Run(code);
     }
 
     public byte[] GetThumbnail()

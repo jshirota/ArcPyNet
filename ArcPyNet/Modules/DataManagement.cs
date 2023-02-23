@@ -1,12 +1,12 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace ArcPyNet;
+namespace ArcPy;
 
 public static class DataManagement
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return ArcPy.Run($"arcpy.{method}_management", args);
+        return Engine.Run($"arcpy.{method}_management", args);
     }
 
     public static Variable Add3DFormats(params object?[] args) => Run(args);

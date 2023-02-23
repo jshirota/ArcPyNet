@@ -1,12 +1,12 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace ArcPyNet;
+namespace ArcPy;
 
 public static class SpatialAnalyst
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return ArcPy.Run($"arcpy.sa.{method}", args);
+        return Engine.Run($"arcpy.sa.{method}", args);
     }
 
     public static Variable ACos(params object?[] args) => Run(args);

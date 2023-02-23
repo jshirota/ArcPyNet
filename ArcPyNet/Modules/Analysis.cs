@@ -1,12 +1,12 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace ArcPyNet;
+namespace ArcPy;
 
 public static class Analysis
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return ArcPy.Run($"arcpy.analysis.{method}", args);
+        return Engine.Run($"arcpy.analysis.{method}", args);
     }
 
     public static Variable ApportionPolygon(params object?[] args) => Run(args);

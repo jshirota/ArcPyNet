@@ -1,12 +1,12 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace ArcPyNet;
+namespace ArcPy;
 
 public static class GeostatisticalAnalyst
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return ArcPy.Run($"arcpy.{method}_ga", args);
+        return Engine.Run($"arcpy.{method}_ga", args);
     }
 
     public static Variable ArealInterpolationLayerToPolygons(params object?[] args) => Run(args);

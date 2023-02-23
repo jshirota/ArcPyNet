@@ -1,4 +1,4 @@
-﻿namespace ArcPyNet;
+﻿namespace ArcPy;
 
 public class Variable
 {
