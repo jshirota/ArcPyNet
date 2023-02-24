@@ -2,56 +2,64 @@
 
 namespace ArcPy;
 
-/// <summary>
-/// Provides arcpy expression evaluation.
-/// </summary>
-public static class Engine
+public class Engine : IDisposable
 {
-    /// <summary>
-    /// Defaults to C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3.
-    /// </summary>
-    public static string PythonHome { get; set; } = @"C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3";
+    public static Engine Instance { get; private set; } = default!;
 
-    /// <summary>
-    /// Defaults to C:\Program Files\ArcGIS\Pro\Resources\ArcPy.
-    /// </summary>
-    public static string ArcPyFolder { get; set; } = @"C:\Program Files\ArcGIS\Pro\Resources\ArcPy";
+    private readonly string workspace;
+    private bool disposed;
 
-    /// <summary>
-    /// Defaults to the current working directory.
-    /// </summary>
-    public static string Workspace { get; set; } = Environment.CurrentDirectory;
-
-    /// <summary>
-    /// Evaluates a Python expression and assigns the result to a new variable.
-    /// </summary>
-    /// <param name="expression">A Python expression.</param>
-    /// <returns>The new variable (may be None).</returns>
-    public static Variable Run(string expression)
+    public static Engine Start(string? workspace = null, string pythonHome = @"C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3")
     {
-        Runtime.PythonDLL = Directory.GetFiles(PythonHome, "python*.dll").Last();
-        PythonEngine.PythonHome = PythonHome;
-        PythonEngine.Initialize();
+        if (Instance is null || Instance.disposed)
+            Instance = new Engine(workspace ?? Environment.CurrentDirectory, pythonHome);
 
+        return Instance;
+    }
+
+    private Engine(string workspace, string pythonHome)
+    {
+        this.workspace = Path.GetFullPath(workspace);
+
+        if (!Directory.Exists(this.workspace))
+            Directory.CreateDirectory(this.workspace);
+
+        Runtime.PythonDLL = Directory.GetFiles(pythonHome, "python*.dll").Last();
+        PythonEngine.PythonHome = pythonHome;
+        PythonEngine.Initialize();
+    }
+
+    public Variable Run(string expression)
+    {
         var temp = GetTempName();
+        var jsonPath = $@"{this.workspace}\{temp}.json";
 
         using (Py.GIL())
         {
-            PythonEngine.RunSimpleString($"""
+            var code = $"""
                     import arcpy
-                    arcpy.env.workspace = r"{Workspace}"
+                    import json
+
+                    arcpy.env.workspace = r"{this.workspace}"
+
                     {temp} = {expression}
-                    """);
+
+                    with open(r"{jsonPath}", "w") as json_file:
+                        json_file.write(json.dumps({temp}, default=str))
+
+                    """;
+
+            PythonEngine.RunSimpleString(code);
         }
 
-        PythonEngine.Shutdown();
+        var json = File.ReadAllText(jsonPath);
 
-        return temp;
+        return new Variable(temp, json);
     }
 
-    internal static Variable Run(string method, object?[] args)
+    internal Variable Run(string method, object?[] args)
     {
-        return Run($"{method}({Format(args)})");
+        return this.Run($"{method}({Format(args)})");
     }
 
     private static string GetTempName()
@@ -64,9 +72,16 @@ public static class Engine
         return string.Join(", ", args.Select(x => x switch
         {
             null => "None",
-            Variable name => name,
+            IVariable variable => variable.Variable,
             string s => $@"r""{s}""",
             _ => x
-        })); ;
+        }));
+    }
+
+    public void Dispose()
+    {
+        PythonEngine.Shutdown();
+
+        this.disposed = true;
     }
 }

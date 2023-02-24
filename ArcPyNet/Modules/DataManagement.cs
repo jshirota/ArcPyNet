@@ -6,7 +6,7 @@ public static class DataManagement
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return Engine.Run($"arcpy.{method}_management", args);
+        return Engine.Instance.Run($"arcpy.{method}_management", args);
     }
 
     public static Variable Add3DFormats(params object?[] args) => Run(args);

@@ -24,4 +24,19 @@ public static class GridExt
 
     public static Grid Hillshade(this Grid grid, double azimuth = 315, double altitude = 45, bool model_shadows = false, double z_factor = 1)
         => SpatialAnalyst.Hillshade(grid, azimuth, altitude, model_shadows ? "SHADOWS" : "NO_SHADOWS", z_factor);
+
+    public static byte[] GetThumbnail(this Grid grid)
+    {
+        var fileName = Path.GetTempFileName().Replace(".tmp", "");
+
+        var temp = DataManagement.Resample(grid, fileName, "0.001");
+        var pngFileName = fileName + ".png";
+
+        DataManagement.CopyRaster(temp,
+            pngFileName, null, null, null, null,
+             "ColormapToRGB",
+             "8_BIT_UNSIGNED");
+
+        return File.ReadAllBytes(pngFileName);
+    }
 }

@@ -6,7 +6,7 @@ public static class Analysis
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return Engine.Run($"arcpy.analysis.{method}", args);
+        return Engine.Instance.Run($"arcpy.analysis.{method}", args);
     }
 
     public static Variable ApportionPolygon(params object?[] args) => Run(args);

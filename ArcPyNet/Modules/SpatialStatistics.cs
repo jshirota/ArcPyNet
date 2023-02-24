@@ -6,7 +6,7 @@ public static class SpatialStatistics
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return Engine.Run($"arcpy.stats.{method}", args);
+        return Engine.Instance.Run($"arcpy.stats.{method}", args);
     }
 
     public static Variable AverageNearestNeighbor(params object?[] args) => Run(args);

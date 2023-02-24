@@ -1,10 +1,11 @@
-﻿using Glidergun;
+﻿using ArcPy;
+using Glidergun;
+
+using var engine = Engine.Start($"{DateTime.Now:yyyy-MM-dd-HH-mm-ss}");
 
 var dem = new Grid("dem.tif");
 var shade = (dem > 70) * dem.Hillshade(z_factor: 0.00001);
 
-var temp = Path.GetFileNameWithoutExtension(Path.GetTempFileName());
+shade.Save("hillshade");
 
-shade.Save($"{temp}");
-
-ArcPy.Conversion.RasterToASCII(shade, $"{temp}.txt");
+Console.WriteLine(shade);

@@ -6,7 +6,7 @@ public static class GeostatisticalAnalyst
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return Engine.Run($"arcpy.{method}_ga", args);
+        return Engine.Instance.Run($"arcpy.{method}_ga", args);
     }
 
     public static Variable ArealInterpolationLayerToPolygons(params object?[] args) => Run(args);

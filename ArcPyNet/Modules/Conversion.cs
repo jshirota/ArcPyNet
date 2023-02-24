@@ -6,7 +6,7 @@ public static class Conversion
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return Engine.Run($"arcpy.conversion.{method}", args);
+        return Engine.Instance.Run($"arcpy.conversion.{method}", args);
     }
 
     public static Variable ASCIIToRaster(params object?[] args) => Run(args);

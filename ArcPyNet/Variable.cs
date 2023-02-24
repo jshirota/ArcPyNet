@@ -1,39 +1,23 @@
 ﻿namespace ArcPy;
 
-/// <summary>
-/// Represents a Python variable.
-/// </summary>
-public class Variable
+public record Variable
 {
-    private readonly string name;
+    public string Name { get; }
+    public string Json { get; }
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="Variable"/> class.
-    /// </summary>
-    /// <param name="name">The name of the variable.</param>
-    public Variable(string name)
+    public Variable(string name, string json)
     {
-        this.name = name;
+        this.Name = name;
+        this.Json = json;
     }
 
-    /// <summary>
-    /// Converts a string to a <see cref="Variable"/>.
-    /// </summary>
-    /// <param name="name"></param>
-    public static implicit operator Variable(string name) => new(name);
-
-    /// <summary>
-    /// Converts a <see cref="Variable"/> to a string.
-    /// </summary>
-    /// <param name="variable"></param>
-    public static implicit operator string(Variable variable) => variable.name;
-
-    /// <summary>
-    /// Returns the name of the variable.
-    /// </summary>
-    /// <returns>The name of the variable.</returns>
     public override string ToString()
     {
-        return this.name;
+        return this.Name;
     }
+}
+
+public interface IVariable
+{
+    public Variable Variable { get; }
 }
