@@ -1,23 +1,25 @@
 ﻿using Python.Runtime;
 
-namespace ArcPy;
+namespace ArcPyNet;
 
-public class Engine : IDisposable
+public class ArcPy : IDisposable
 {
-    public static Engine Instance { get; private set; } = default!;
+    public static ArcPy Instance { get; private set; } = default!;
 
     private readonly string workspace;
     private bool disposed;
 
-    public static Engine Start(string? workspace = null, string pythonHome = @"C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3")
+    public static ArcPy Start(string? workspace = null, string pythonHome = @"C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3")
     {
         if (Instance is null || Instance.disposed)
-            Instance = new Engine(workspace ?? Environment.CurrentDirectory, pythonHome);
+            Instance = new ArcPy(workspace ?? Environment.CurrentDirectory, pythonHome);
+
+        Instance.Run("None");
 
         return Instance;
     }
 
-    private Engine(string workspace, string pythonHome)
+    private ArcPy(string workspace, string pythonHome)
     {
         this.workspace = Path.GetFullPath(workspace);
 
@@ -84,4 +86,11 @@ public class Engine : IDisposable
 
         this.disposed = true;
     }
+
+    public Analysis Analysis = new();
+    public Conversion Conversion = new();
+    public DataManagement DataManagement = new();
+    public GeostatisticalAnalyst GeostatisticalAnalyst = new();
+    public SpatialAnalyst SpatialAnalyst = new();
+    public SpatialStatistics SpatialStatistics = new();
 }

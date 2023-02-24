@@ -1,4 +1,4 @@
-﻿namespace ArcPy;
+﻿namespace ArcPyNet;
 
 public record Variable
 {

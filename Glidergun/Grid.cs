@@ -1,6 +1,5 @@
-﻿using ArcPy;
+﻿using ArcPyNet;
 using System.Text.Json;
-using static ArcPy.SpatialAnalyst;
 
 namespace Glidergun;
 
@@ -35,7 +34,7 @@ public class Grid : Metadata, IVariable
             }
             """;
 
-        var result = Engine.Instance.Run(code);
+        var result = ArcPy.Instance.Run(code);
 
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         var metadata = JsonSerializer.Deserialize<Metadata>(result.Json, options)!;
@@ -45,7 +44,7 @@ public class Grid : Metadata, IVariable
     }
 
     public Grid(string name)
-        : this(Raster(name))
+        : this(ArcPy.Instance.SpatialAnalyst.Raster(name))
     {
     }
 
@@ -57,7 +56,7 @@ public class Grid : Metadata, IVariable
             {this.Variable}.save(r"{fileName}")
             """;
 
-        Engine.Instance.Run(code);
+        ArcPy.Instance.Run(code);
     }
 
     public override bool Equals(object? obj)
@@ -70,74 +69,74 @@ public class Grid : Metadata, IVariable
         return 0;
     }
 
-    public static Grid operator +(Grid grid1, Grid grid2) => Plus(grid1, grid2);
-    public static Grid operator +(Grid grid, int n) => Plus(grid, n);
-    public static Grid operator +(Grid grid, double n) => Plus(grid, n);
-    public static Grid operator +(int n, Grid grid) => Plus(n, grid);
-    public static Grid operator +(double n, Grid grid) => Plus(n, grid);
-    public static Grid operator +(Grid grid) => Plus(0, grid);
-    public static Grid operator -(Grid grid1, Grid grid2) => Minus(grid1, grid2);
-    public static Grid operator -(Grid grid, int n) => Minus(grid, n);
-    public static Grid operator -(Grid grid, double n) => Minus(grid, n);
-    public static Grid operator -(int n, Grid grid) => Minus(n, grid);
-    public static Grid operator -(double n, Grid grid) => Minus(n, grid);
-    public static Grid operator -(Grid grid) => Minus(0, grid);
-    public static Grid operator *(Grid grid1, Grid grid2) => Times(grid1, grid2);
-    public static Grid operator *(Grid grid, int n) => Times(grid, n);
-    public static Grid operator *(Grid grid, double n) => Times(grid, n);
-    public static Grid operator *(int n, Grid grid) => Times(n, grid);
-    public static Grid operator *(double n, Grid grid) => Times(n, grid);
-    public static Grid operator /(Grid grid1, Grid grid2) => Divide(grid1, grid2);
-    public static Grid operator /(Grid grid, int n) => Divide(grid, n);
-    public static Grid operator /(Grid grid, double n) => Divide(grid, n);
-    public static Grid operator /(int n, Grid grid) => Divide(n, grid);
-    public static Grid operator /(double n, Grid grid) => Divide(n, grid);
-    public static Grid operator %(Grid grid1, Grid grid2) => Mod(grid1, grid2);
-    public static Grid operator %(Grid grid, int n) => Mod(grid, n);
-    public static Grid operator %(Grid grid, double n) => Mod(grid, n);
-    public static Grid operator %(int n, Grid grid) => Mod(n, grid);
-    public static Grid operator %(double n, Grid grid) => Mod(n, grid);
-    public static Grid operator ==(Grid grid1, Grid grid2) => EqualTo(grid1, grid2);
-    public static Grid operator ==(Grid grid, int n) => EqualTo(grid, n);
-    public static Grid operator ==(Grid grid, double n) => EqualTo(grid, n);
-    public static Grid operator ==(int n, Grid grid) => EqualTo(n, grid);
-    public static Grid operator ==(double n, Grid grid) => EqualTo(n, grid);
-    public static Grid operator !=(Grid grid1, Grid grid2) => NotEqual(grid1, grid2);
-    public static Grid operator !=(Grid grid, int n) => NotEqual(grid, n);
-    public static Grid operator !=(Grid grid, double n) => NotEqual(grid, n);
-    public static Grid operator !=(int n, Grid grid) => NotEqual(n, grid);
-    public static Grid operator !=(double n, Grid grid) => NotEqual(n, grid);
-    public static Grid operator >(Grid grid1, Grid grid2) => GreaterThan(grid1, grid2);
-    public static Grid operator >(Grid grid, int n) => GreaterThan(grid, n);
-    public static Grid operator >(Grid grid, double n) => GreaterThan(grid, n);
-    public static Grid operator >(int n, Grid grid) => GreaterThan(n, grid);
-    public static Grid operator >(double n, Grid grid) => GreaterThan(n, grid);
-    public static Grid operator <(Grid grid1, Grid grid2) => LessThan(grid1, grid2);
-    public static Grid operator <(Grid grid, int n) => LessThan(grid, n);
-    public static Grid operator <(Grid grid, double n) => LessThan(grid, n);
-    public static Grid operator <(int n, Grid grid) => LessThan(n, grid);
-    public static Grid operator <(double n, Grid grid) => LessThan(n, grid);
-    public static Grid operator >=(Grid grid1, Grid grid2) => GreaterThanEqual(grid1, grid2);
-    public static Grid operator >=(Grid grid, int n) => GreaterThanEqual(grid, n);
-    public static Grid operator >=(Grid grid, double n) => GreaterThanEqual(grid, n);
-    public static Grid operator >=(int n, Grid grid) => GreaterThanEqual(n, grid);
-    public static Grid operator >=(double n, Grid grid) => GreaterThanEqual(n, grid);
-    public static Grid operator <=(Grid grid1, Grid grid2) => LessThanEqual(grid1, grid2);
-    public static Grid operator <=(Grid grid, int n) => LessThanEqual(grid, n);
-    public static Grid operator <=(Grid grid, double n) => LessThanEqual(grid, n);
-    public static Grid operator <=(int n, Grid grid) => LessThanEqual(n, grid);
-    public static Grid operator <=(double n, Grid grid) => LessThanEqual(n, grid);
-    public static Grid operator &(Grid grid1, Grid grid2) => BooleanAnd(grid1, grid2);
-    public static Grid operator &(Grid grid, int n) => BooleanAnd(grid, n);
-    public static Grid operator &(Grid grid, double n) => BooleanAnd(grid, n);
-    public static Grid operator &(int n, Grid grid) => BooleanAnd(n, grid);
-    public static Grid operator &(double n, Grid grid) => BooleanAnd(n, grid);
-    public static Grid operator |(Grid grid1, Grid grid2) => BooleanOr(grid1, grid2);
-    public static Grid operator |(Grid grid, int n) => BooleanOr(grid, n);
-    public static Grid operator |(Grid grid, double n) => BooleanOr(grid, n);
-    public static Grid operator |(int n, Grid grid) => BooleanOr(n, grid);
-    public static Grid operator |(double n, Grid grid) => BooleanOr(n, grid);
-    public static Grid operator !(Grid grid) => BooleanNot(grid);
+    public static Grid operator +(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.Plus(grid1, grid2);
+    public static Grid operator +(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.Plus(grid, n);
+    public static Grid operator +(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.Plus(grid, n);
+    public static Grid operator +(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.Plus(n, grid);
+    public static Grid operator +(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.Plus(n, grid);
+    public static Grid operator +(Grid grid) => ArcPy.Instance.SpatialAnalyst.Plus(0, grid);
+    public static Grid operator -(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.Minus(grid1, grid2);
+    public static Grid operator -(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.Minus(grid, n);
+    public static Grid operator -(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.Minus(grid, n);
+    public static Grid operator -(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.Minus(n, grid);
+    public static Grid operator -(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.Minus(n, grid);
+    public static Grid operator -(Grid grid) => ArcPy.Instance.SpatialAnalyst.Minus(0, grid);
+    public static Grid operator *(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.Times(grid1, grid2);
+    public static Grid operator *(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.Times(grid, n);
+    public static Grid operator *(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.Times(grid, n);
+    public static Grid operator *(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.Times(n, grid);
+    public static Grid operator *(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.Times(n, grid);
+    public static Grid operator /(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.Divide(grid1, grid2);
+    public static Grid operator /(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.Divide(grid, n);
+    public static Grid operator /(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.Divide(grid, n);
+    public static Grid operator /(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.Divide(n, grid);
+    public static Grid operator /(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.Divide(n, grid);
+    public static Grid operator %(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.Mod(grid1, grid2);
+    public static Grid operator %(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.Mod(grid, n);
+    public static Grid operator %(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.Mod(grid, n);
+    public static Grid operator %(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.Mod(n, grid);
+    public static Grid operator %(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.Mod(n, grid);
+    public static Grid operator ==(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.EqualTo(grid1, grid2);
+    public static Grid operator ==(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.EqualTo(grid, n);
+    public static Grid operator ==(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.EqualTo(grid, n);
+    public static Grid operator ==(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.EqualTo(n, grid);
+    public static Grid operator ==(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.EqualTo(n, grid);
+    public static Grid operator !=(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.NotEqual(grid1, grid2);
+    public static Grid operator !=(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.NotEqual(grid, n);
+    public static Grid operator !=(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.NotEqual(grid, n);
+    public static Grid operator !=(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.NotEqual(n, grid);
+    public static Grid operator !=(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.NotEqual(n, grid);
+    public static Grid operator >(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.GreaterThan(grid1, grid2);
+    public static Grid operator >(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.GreaterThan(grid, n);
+    public static Grid operator >(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.GreaterThan(grid, n);
+    public static Grid operator >(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.GreaterThan(n, grid);
+    public static Grid operator >(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.GreaterThan(n, grid);
+    public static Grid operator <(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.LessThan(grid1, grid2);
+    public static Grid operator <(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.LessThan(grid, n);
+    public static Grid operator <(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.LessThan(grid, n);
+    public static Grid operator <(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.LessThan(n, grid);
+    public static Grid operator <(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.LessThan(n, grid);
+    public static Grid operator >=(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.GreaterThanEqual(grid1, grid2);
+    public static Grid operator >=(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.GreaterThanEqual(grid, n);
+    public static Grid operator >=(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.GreaterThanEqual(grid, n);
+    public static Grid operator >=(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.GreaterThanEqual(n, grid);
+    public static Grid operator >=(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.GreaterThanEqual(n, grid);
+    public static Grid operator <=(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.LessThanEqual(grid1, grid2);
+    public static Grid operator <=(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.LessThanEqual(grid, n);
+    public static Grid operator <=(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.LessThanEqual(grid, n);
+    public static Grid operator <=(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.LessThanEqual(n, grid);
+    public static Grid operator <=(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.LessThanEqual(n, grid);
+    public static Grid operator &(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.BooleanAnd(grid1, grid2);
+    public static Grid operator &(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.BooleanAnd(grid, n);
+    public static Grid operator &(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.BooleanAnd(grid, n);
+    public static Grid operator &(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.BooleanAnd(n, grid);
+    public static Grid operator &(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.BooleanAnd(n, grid);
+    public static Grid operator |(Grid grid1, Grid grid2) => ArcPy.Instance.SpatialAnalyst.BooleanOr(grid1, grid2);
+    public static Grid operator |(Grid grid, int n) => ArcPy.Instance.SpatialAnalyst.BooleanOr(grid, n);
+    public static Grid operator |(Grid grid, double n) => ArcPy.Instance.SpatialAnalyst.BooleanOr(grid, n);
+    public static Grid operator |(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.BooleanOr(n, grid);
+    public static Grid operator |(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.BooleanOr(n, grid);
+    public static Grid operator !(Grid grid) => ArcPy.Instance.SpatialAnalyst.BooleanNot(grid);
 }
 
 public class Metadata
