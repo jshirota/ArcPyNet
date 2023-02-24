@@ -30,7 +30,8 @@ public class Grid : Metadata, IVariable
                 "xmin": {{variable}}.extent.XMin,
                 "ymin": {{variable}}.extent.YMin,
                 "xmax": {{variable}}.extent.XMax,
-                "ymax": {{variable}}.extent.YMax
+                "ymax": {{variable}}.extent.YMax,
+                "hasColormap": hasattr(arcpy.sa.Raster, "getColormap") and {{variable}}.getColormap("") is not None
             }
             """;
 
@@ -49,6 +50,26 @@ public class Grid : Metadata, IVariable
     }
 
     public static implicit operator Grid(Variable name) => new(name);
+
+
+    private string thumbnail = default!;
+    public string Thumbnail => thumbnail ??= $"<img src='data:image/png;base64, {Convert.ToBase64String(this.GetThumbnail())}' />";
+
+    private byte[] GetThumbnail()
+    {
+        var fileName = Path.GetTempFileName().Replace(".tmp", "");
+
+        var outputCellSize = this.MeanCellWidth * this.Width / 600;
+        var temp = ArcPy.Instance.DataManagement.Resample(this, fileName, outputCellSize);
+        var pngFileName = fileName + ".png";
+
+        if (this.HasColormap)
+            ArcPy.Instance.DataManagement.CopyRaster(temp, pngFileName, null, null, null, null, "ColormapToRGB", "8_BIT_UNSIGNED", null);
+        else
+            ArcPy.Instance.DataManagement.CopyRaster(temp, pngFileName, null, null, null, null, null, "8_BIT_UNSIGNED", "ScalePixelValue");
+
+        return File.ReadAllBytes(pngFileName);
+    }
 
     public void Save(string fileName)
     {
@@ -137,6 +158,59 @@ public class Grid : Metadata, IVariable
     public static Grid operator |(int n, Grid grid) => ArcPy.Instance.SpatialAnalyst.BooleanOr(n, grid);
     public static Grid operator |(double n, Grid grid) => ArcPy.Instance.SpatialAnalyst.BooleanOr(n, grid);
     public static Grid operator !(Grid grid) => ArcPy.Instance.SpatialAnalyst.BooleanNot(grid);
+
+    #region DotNet Interactive
+
+    static Grid()
+    {
+        var assembly = AppDomain.CurrentDomain.GetAssemblies()
+            .SingleOrDefault(x => x.GetName().Name == "Microsoft.DotNet.Interactive.Formatting");
+
+        if (assembly is null)
+            return;
+
+        var method = assembly.GetType("Microsoft.DotNet.Interactive.Formatting.Formatter").GetMethods()
+            .Where(x => x.Name == "Register")
+            .SingleOrDefault(x => x.GetParameters()
+                .Select(y => y.ParameterType)
+                .SequenceEqual(new[] { typeof(Type), typeof(Action<object, TextWriter>), typeof(string) }));
+
+        if (method is null)
+            return;
+
+        if (ArcPy.Instance is null)
+            ArcPy.Start();
+
+        void Register(Type type)
+        {
+            Action<object, TextWriter> action = (obj, writer) =>
+            {
+                var grids = obj switch
+                {
+                    Grid r => new[] { r },
+                    IEnumerable<Grid> r => r.ToArray(),
+                    ValueTuple<Grid, Grid> t => new[] { t.Item1, t.Item2 },
+                    ValueTuple<Grid, Grid, Grid> t => new[] { t.Item1, t.Item2, t.Item3 },
+                    ValueTuple<Grid, Grid, Grid, Grid> t => new[] { t.Item1, t.Item2, t.Item3, t.Item4 },
+                    ValueTuple<Grid, Grid, Grid, Grid, Grid> t => new[] { t.Item1, t.Item2, t.Item3, t.Item4, t.Item5 },
+                    _ => Array.Empty<Grid>()
+                };
+
+                writer.Write($"<table><tr>{string.Join("", grids.Select(r => $"<td align=left><p>{r}</p>{r.Thumbnail}</td>"))}</tr></table>");
+            };
+
+            method.Invoke(null, new object[] { type, action, "text/html" });
+        }
+
+        Register(typeof(Grid));
+        Register(typeof(IEnumerable<Grid>));
+        Register(typeof(ValueTuple<Grid, Grid>));
+        Register(typeof(ValueTuple<Grid, Grid, Grid>));
+        Register(typeof(ValueTuple<Grid, Grid, Grid, Grid>));
+        Register(typeof(ValueTuple<Grid, Grid, Grid, Grid, Grid>));
+    }
+
+    #endregion
 }
 
 public class Metadata
@@ -156,7 +230,11 @@ public class Metadata
     public double MeanCellHeight { get; set; }
     public int? Wkid { get; set; }
     public string? Wkt { get; set; }
-    public Extent Extent { get; set; } = default!;
+    public double Xmin { get; set; }
+    public double Ymin { get; set; }
+    public double Xmax { get; set; }
+    public double Ymax { get; set; }
+    public bool HasColormap { get; set; }
 
     public override string ToString()
     {
@@ -172,21 +250,4 @@ public class Metadata
             Wkid
         }}";
     }
-}
-
-public class Extent
-{
-    public double Xmin { get; set; }
-    public double Ymin { get; set; }
-    public double Xmax { get; set; }
-    public double Ymax { get; set; }
-
-    public Extent(double xmin, double ymin, double xmax, double ymax)
-        => (Xmin, Ymin, Xmax, Ymax) = (xmin, ymin, xmax, ymax);
-
-    public void Deconstruct(out double xmin, out double ymin, out double xmax, out double ymax)
-        => (xmin, ymin, xmax, ymax) = (Xmin, Ymin, Xmax, Ymax);
-
-    public override string ToString()
-        => $"{Xmin} {Ymin} {Xmax} {Ymax}";
 }
