@@ -24,4 +24,17 @@ public static class GridExt
 
     public static Grid Hillshade(this Grid grid, double azimuth = 315, double altitude = 45, bool model_shadows = false, double z_factor = 1)
         => ArcPy.Instance.SpatialAnalyst.Hillshade(grid, azimuth, altitude, model_shadows ? "SHADOWS" : "NO_SHADOWS", z_factor);
+
+    public static Grid Color(this Grid grid, ColorRamp colorRamp)
+    {
+        var temp1 = ArcPy.GetTempName();
+        var temp2 = ArcPy.GetTempName();
+
+        var result = ArcPy.Instance.Run(
+            $"arcpy.MakeRasterLayer_management(arcpy.sa.Colormap({grid.Variable}, '{colorRamp.GetDescription()}'), r'{temp1}')",
+            $"arcpy.CopyRaster_management(r'{temp1}', r'{temp2}')",
+            $"arcpy.sa.Raster(r'{temp2}')");
+
+        return result;
+    }
 }

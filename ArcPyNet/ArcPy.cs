@@ -6,7 +6,7 @@ public class ArcPy : IDisposable
 {
     public static ArcPy Instance { get; private set; } = default!;
 
-    private readonly string workspace;
+    public string Workspace { get; }
     private bool disposed;
 
     public static ArcPy Start(string? workspace = null, string pythonHome = @"C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3")
@@ -25,34 +25,41 @@ public class ArcPy : IDisposable
 
     private ArcPy(string workspace, string pythonHome)
     {
-        this.workspace = Path.GetFullPath(workspace);
+        this.Workspace = Path.GetFullPath(workspace);
 
-        if (!Directory.Exists(this.workspace))
-            Directory.CreateDirectory(this.workspace);
+        if (!Directory.Exists(this.Workspace))
+            Directory.CreateDirectory(this.Workspace);
 
         Runtime.PythonDLL = Directory.GetFiles(pythonHome, "python*.dll").Last();
         PythonEngine.PythonHome = pythonHome;
         PythonEngine.Initialize();
     }
 
-    public Variable Run(string expression)
+    public Variable Run(params string[] lines)
     {
         var temp = GetTempName();
-        var jsonPath = $@"{this.workspace}\{temp}.json";
+        var jsonPath = $@"{this.Workspace}\{temp}.json";
+
+        lines = lines.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+
+        var preprocess = string.Join("\r\n", lines.Take(lines.Length - 1));
+
+        string code;
 
         using (Py.GIL())
         {
-            var code = $"""
+            code = $"""
                     import arcpy
                     import json
 
-                    arcpy.env.workspace = r"{this.workspace}"
+                    arcpy.env.workspace = r"{this.Workspace}"
 
-                    {temp} = {expression}
+                    {preprocess}
+
+                    {temp} = {lines.Last()}
 
                     with open(r"{jsonPath}", "w") as json_file:
                         json_file.write(json.dumps({temp}, default=str))
-
                     """;
 
             PythonEngine.RunSimpleString(code);
@@ -63,12 +70,12 @@ public class ArcPy : IDisposable
         return new Variable(temp, json);
     }
 
-    internal Variable Run(string method, object?[] args)
+    public Variable Run(string method, object?[] args)
     {
         return this.Run($"{method}({Format(args)})");
     }
 
-    private static string GetTempName()
+    public static string GetTempName()
     {
         return "_" + Guid.NewGuid().ToString().Substring(0, 7);
     }
