@@ -2,14 +2,12 @@
 
 public record Variable
 {
-    public string Name { get; }
-    public string Json { get; }
+    public string Name { get; private set; } = default!;
 
-    public Variable(string name, string json)
-    {
-        this.Name = name;
-        this.Json = json;
-    }
+    private string? json;
+    public string Json => json ??= File.ReadAllText($@"{ArcPy.Instance.Workspace}\{this.Name}.json");
+
+    public static implicit operator Variable(string name) => new() { Name = name };
 
     public override string ToString()
     {

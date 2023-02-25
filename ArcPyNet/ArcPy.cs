@@ -35,12 +35,12 @@ public class ArcPy : IDisposable
         PythonEngine.Initialize();
     }
 
-    public Variable Run(params string[] lines)
+    public Variable Run(params string[] expressions)
     {
         var temp = GetTempName();
         var jsonPath = $@"{this.Workspace}\{temp}.json";
 
-        lines = lines.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
+        var lines = expressions.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
         var preprocess = string.Join("\r\n", lines.Take(lines.Length - 1));
 
@@ -65,9 +65,7 @@ public class ArcPy : IDisposable
             PythonEngine.RunSimpleString(code);
         }
 
-        var json = File.ReadAllText(jsonPath);
-
-        return new Variable(temp, json);
+        return temp;
     }
 
     public Variable Run(string method, object?[] args)
