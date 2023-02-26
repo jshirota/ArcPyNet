@@ -40,10 +40,7 @@ public class ArcPy : IDisposable
         var temp = GetTempName();
         var jsonPath = $@"{this.Workspace}\{temp}.json";
 
-        var lines = expressions
-            .SelectMany(x => x.Split('\n'))
-            .Where(x => !string.IsNullOrWhiteSpace(x))
-            .ToArray();
+        var lines = expressions.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
 
         var preprocess = string.Join("\r\n", lines.Take(lines.Length - 1));
 
