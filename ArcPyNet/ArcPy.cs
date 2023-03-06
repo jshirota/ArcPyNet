@@ -98,9 +98,11 @@ public class ArcPy : IDisposable
     }
 
     public Analysis Analysis = new();
+    public Cartography Cartography = new();
     public Conversion Conversion = new();
     public DataManagement DataManagement = new();
     public GeostatisticalAnalyst GeostatisticalAnalyst = new();
+    public LinearReferencing LinearReferencing = new();
     public SpatialAnalyst SpatialAnalyst = new();
     public SpatialStatistics SpatialStatistics = new();
 }
