@@ -30,10 +30,12 @@ public static class GridExt
         var temp1 = ArcPy.GetTempName();
         var temp2 = ArcPy.GetTempName();
 
-        var result = ArcPy.Instance.Run(
-            $"arcpy.MakeRasterLayer_management(arcpy.sa.Colormap({grid.Variable}, '{colorRamp.GetDescription()}'), '{temp1}')",
-            $"arcpy.CopyRaster_management('{temp1}', '{temp2}')",
-            $"arcpy.sa.Raster(r'{temp2}')");
+        var result = ArcPy.Instance.Run($"""
+            arcpy.MakeRasterLayer_management(arcpy.sa.Colormap({grid.Variable}, '{colorRamp.GetDescription()}'), '{temp1}')
+            arcpy.CopyRaster_management('{temp1}', '{temp2}')
+            """, $"""
+            arcpy.sa.Raster(r'{temp2}')
+            """);
 
         return result;
     }

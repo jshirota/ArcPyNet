@@ -35,14 +35,10 @@ public class ArcPy : IDisposable
         PythonEngine.Initialize();
     }
 
-    public Variable Run(params string[] expressions)
+    public Variable Run(string preprocess, string expression)
     {
         var temp = GetTempName();
         var jsonPath = $@"{this.Workspace}\{temp}.json";
-
-        var lines = expressions.Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();
-
-        var preprocess = string.Join("\r\n", lines.Take(lines.Length - 1));
 
         string code;
 
@@ -56,7 +52,7 @@ public class ArcPy : IDisposable
 
                     {preprocess}
 
-                    {temp} = {lines.Last()}
+                    {temp} = {expression}
 
                     with open(r"{jsonPath}", "w") as json_file:
                         json_file.write(json.dumps({temp}, default=str))
@@ -68,7 +64,12 @@ public class ArcPy : IDisposable
         return temp;
     }
 
-    public Variable Run(string method, object?[] args)
+    public Variable Run(string expression)
+    {
+        return this.Run("", expression);
+    }
+
+    internal Variable Run(string method, object?[] args)
     {
         return this.Run($"{method}({Format(args)})");
     }
