@@ -5,25 +5,25 @@ namespace Glidergun;
 public static class GridExt
 {
     public static Grid Abs(this Grid grid)
-        => ArcPy.Instance.SpatialAnalyst.Abs(grid);
+        => ArcPy.Instance.sa.Abs(grid);
 
     public static Grid ACos(this Grid grid)
-        => ArcPy.Instance.SpatialAnalyst.ACos(grid);
+        => ArcPy.Instance.sa.ACos(grid);
 
     public static Grid Con(this Grid grid, double trueValue, double falseValue)
-        => ArcPy.Instance.SpatialAnalyst.Con(grid, trueValue, falseValue);
+        => ArcPy.Instance.sa.Con(grid, trueValue, falseValue);
 
     public static Grid Con(this Grid grid, double trueValue, Grid falseGrid)
-        => ArcPy.Instance.SpatialAnalyst.Con(grid, trueValue, falseGrid);
+        => ArcPy.Instance.sa.Con(grid, trueValue, falseGrid);
 
     public static Grid Con(this Grid grid, Grid trueGrid, double falseValue)
-        => ArcPy.Instance.SpatialAnalyst.Con(grid, trueGrid, falseValue);
+        => ArcPy.Instance.sa.Con(grid, trueGrid, falseValue);
 
     public static Grid Con(this Grid grid, Grid trueGrid, Grid falseGrid)
-        => ArcPy.Instance.SpatialAnalyst.Con(grid, trueGrid, falseGrid);
+        => ArcPy.Instance.sa.Con(grid, trueGrid, falseGrid);
 
     public static Grid Hillshade(this Grid grid, double azimuth = 315, double altitude = 45, bool model_shadows = false, double z_factor = 1)
-        => ArcPy.Instance.SpatialAnalyst.Hillshade(grid, azimuth, altitude, model_shadows ? "SHADOWS" : "NO_SHADOWS", z_factor);
+        => ArcPy.Instance.sa.Hillshade(grid, azimuth, altitude, model_shadows ? "SHADOWS" : "NO_SHADOWS", z_factor);
 
     public static Grid Color(this Grid grid, ColorRamp colorRamp)
     {

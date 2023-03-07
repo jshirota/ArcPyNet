@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class SpatialStatistics
+public class _SpatialStatistics
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

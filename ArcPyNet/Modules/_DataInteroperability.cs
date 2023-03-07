@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class DataInteroperability
+public class _DataInteroperability
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

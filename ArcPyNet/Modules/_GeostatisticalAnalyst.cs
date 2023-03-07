@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class GeostatisticalAnalyst
+public class _GeostatisticalAnalyst
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

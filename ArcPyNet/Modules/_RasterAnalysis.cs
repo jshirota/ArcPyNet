@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class RasterAnalysis
+public class _RasterAnalysis
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

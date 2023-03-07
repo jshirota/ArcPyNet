@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class WorkflowManager
+public class _WorkflowManager
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

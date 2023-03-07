@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class DataManagement
+public class _DataManagement
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

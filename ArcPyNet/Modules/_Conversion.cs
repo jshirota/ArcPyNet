@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class Conversion
+public class _Conversion
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

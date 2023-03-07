@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class GeoAI
+public class _GeoAI
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

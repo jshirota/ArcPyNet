@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class Cartography
+public class _Cartography
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

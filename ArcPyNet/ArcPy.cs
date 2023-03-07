@@ -97,17 +97,18 @@ public class ArcPy : IDisposable
         this.disposed = true;
     }
 
-    public Analysis Analysis = new();
-    public Cartography Cartography = new();
-    public Conversion Conversion = new();
-    public DataInteroperability DataInteroperability = new();
-    public DataManagement DataManagement = new();
-    public GeoAI GeoAI = new();
-    public GeostatisticalAnalyst GeostatisticalAnalyst = new();
-    public Intelligence Intelligence = new();
-    public LinearReferencing LinearReferencing = new();
-    public RasterAnalysis RasterAnalysis = new();
-    public SpatialAnalyst SpatialAnalyst = new();
-    public SpatialStatistics SpatialStatistics = new();
-    public WorkflowManager WorkflowManager = new();
+    public _3DAnalyst ddd = new();
+    public _Analysis analysis = new();
+    public _Cartography cartography = new();
+    public _Conversion conversion = new();
+    public _DataInteroperability interop = new();
+    public _DataManagement management = new();
+    public _GeoAI geoai = new();
+    public _GeostatisticalAnalyst ga = new();
+    public _Intelligence intelligence = new();
+    public _LinearReferencing lr = new();
+    public _RasterAnalysis ra = new();
+    public _SpatialAnalyst sa = new();
+    public _SpatialStatistics stats = new();
+    public _WorkflowManager wmx = new();
 }

@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class LinearReferencing
+public class _LinearReferencing
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class Analysis
+public class _Analysis
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {

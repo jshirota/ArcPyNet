@@ -2,7 +2,7 @@
 
 namespace ArcPyNet;
 
-public class Intelligence
+public class _Intelligence
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
