@@ -100,9 +100,14 @@ public class ArcPy : IDisposable
     public Analysis Analysis = new();
     public Cartography Cartography = new();
     public Conversion Conversion = new();
+    public DataInteroperability DataInteroperability = new();
     public DataManagement DataManagement = new();
+    public GeoAI GeoAI = new();
     public GeostatisticalAnalyst GeostatisticalAnalyst = new();
+    public Intelligence Intelligence = new();
     public LinearReferencing LinearReferencing = new();
+    public RasterAnalysis RasterAnalysis = new();
     public SpatialAnalyst SpatialAnalyst = new();
     public SpatialStatistics SpatialStatistics = new();
+    public WorkflowManager WorkflowManager = new();
 }

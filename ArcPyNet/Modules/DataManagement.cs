@@ -6,7 +6,7 @@ public class DataManagement
 {
     private static Variable Run(object?[] args, [CallerMemberName] string method = "")
     {
-        return ArcPy.Instance.Run($"arcpy.{method}_management", args);
+        return ArcPy.Instance.Run($"arcpy.management.{method}", args);
     }
 
     public Variable Add3DFormats(params object?[] args) => Run(args);
@@ -15,9 +15,10 @@ public class DataManagement
     public Variable AddCodedValueToDomain(params object?[] args) => Run(args);
     public Variable AddColormap(params object?[] args) => Run(args);
     public Variable AddContingentValue(params object?[] args) => Run(args);
+    public Variable AddDataToTrajectoryDataset(params object?[] args) => Run(args);
     public Variable AddFeatureClassToTopology(params object?[] args) => Run(args);
-    public Variable AddFieldConflictFilter(params object?[] args) => Run(args);
     public Variable AddField(params object?[] args) => Run(args);
+    public Variable AddFieldConflictFilter(params object?[] args) => Run(args);
     public Variable AddFields(params object?[] args) => Run(args);
     public Variable AddFilesToLasDataset(params object?[] args) => Run(args);
     public Variable AddGPSMetadataFields(params object?[] args) => Run(args);
@@ -25,7 +26,9 @@ public class DataManagement
     public Variable AddGlobalIDs(params object?[] args) => Run(args);
     public Variable AddIncrementingIDField(params object?[] args) => Run(args);
     public Variable AddIndex(params object?[] args) => Run(args);
+    public Variable AddItemsToCatalogDataset(params object?[] args) => Run(args);
     public Variable AddJoin(params object?[] args) => Run(args);
+    public Variable AddPortalItemsToCatalogDataset(params object?[] args) => Run(args);
     public Variable AddRastersToMosaicDataset(params object?[] args) => Run(args);
     public Variable AddRelate(params object?[] args) => Run(args);
     public Variable AddRuleToRelationshipClass(params object?[] args) => Run(args);
@@ -37,19 +40,19 @@ public class DataManagement
     public Variable Adjust3DZ(params object?[] args) => Run(args);
     public Variable AlterAttributeRule(params object?[] args) => Run(args);
     public Variable AlterDomain(params object?[] args) => Run(args);
-    public Variable AlterFieldGroup(params object?[] args) => Run(args);
     public Variable AlterField(params object?[] args) => Run(args);
+    public Variable AlterFieldGroup(params object?[] args) => Run(args);
     public Variable AlterMosaicDatasetSchema(params object?[] args) => Run(args);
     public Variable AlterVersion(params object?[] args) => Run(args);
+    public Variable Analyze(params object?[] args) => Run(args);
     public Variable AnalyzeControlPoints(params object?[] args) => Run(args);
     public Variable AnalyzeDatasets(params object?[] args) => Run(args);
     public Variable AnalyzeMosaicDataset(params object?[] args) => Run(args);
     public Variable AnalyzeToolboxForVersion(params object?[] args) => Run(args);
     public Variable AnalyzeToolsForPro(params object?[] args) => Run(args);
-    public Variable Analyze(params object?[] args) => Run(args);
+    public Variable Append(params object?[] args) => Run(args);
     public Variable AppendAnnotation(params object?[] args) => Run(args);
     public Variable AppendControlPoints(params object?[] args) => Run(args);
-    public Variable Append(params object?[] args) => Run(args);
     public Variable ApplyBlockAdjustment(params object?[] args) => Run(args);
     public Variable ApplySymbologyFromLayer(params object?[] args) => Run(args);
     public Variable AssignDefaultToField(params object?[] args) => Run(args);
@@ -88,9 +91,10 @@ public class DataManagement
     public Variable Clip(params object?[] args) => Run(args);
     public Variable ColorBalanceMosaicDataset(params object?[] args) => Run(args);
     public Variable Compact(params object?[] args) => Run(args);
+    public Variable CompareReplicaSchema(params object?[] args) => Run(args);
     public Variable CompositeBands(params object?[] args) => Run(args);
-    public Variable CompressFileGeodatabaseData(params object?[] args) => Run(args);
     public Variable Compress(params object?[] args) => Run(args);
+    public Variable CompressFileGeodatabaseData(params object?[] args) => Run(args);
     public Variable ComputeBlockAdjustment(params object?[] args) => Run(args);
     public Variable ComputeCameraModel(params object?[] args) => Run(args);
     public Variable ComputeControlPoints(params object?[] args) => Run(args);
@@ -109,18 +113,19 @@ public class DataManagement
     public Variable ConvertRasterFunctionTemplate(params object?[] args) => Run(args);
     public Variable ConvertTimeField(params object?[] args) => Run(args);
     public Variable ConvertTimeZone(params object?[] args) => Run(args);
+    public Variable Copy(params object?[] args) => Run(args);
     public Variable CopyFeatures(params object?[] args) => Run(args);
     public Variable CopyRaster(params object?[] args) => Run(args);
     public Variable CopyRows(params object?[] args) => Run(args);
-    public Variable Copy(params object?[] args) => Run(args);
     public Variable Create3DObjectSceneLayerPackage(params object?[] args) => Run(args);
     public Variable CreateBuildingSceneLayerPackage(params object?[] args) => Run(args);
+    public Variable CreateCatalogDataset(params object?[] args) => Run(args);
     public Variable CreateCloudStorageConnectionFile(params object?[] args) => Run(args);
     public Variable CreateColorComposite(params object?[] args) => Run(args);
     public Variable CreateConnectionString(params object?[] args) => Run(args);
     public Variable CreateCustomGeoTransformation(params object?[] args) => Run(args);
-    public Variable CreateDatabaseConnectionString(params object?[] args) => Run(args);
     public Variable CreateDatabaseConnection(params object?[] args) => Run(args);
+    public Variable CreateDatabaseConnectionString(params object?[] args) => Run(args);
     public Variable CreateDatabaseSequence(params object?[] args) => Run(args);
     public Variable CreateDatabaseUser(params object?[] args) => Run(args);
     public Variable CreateDatabaseView(params object?[] args) => Run(args);
@@ -149,8 +154,8 @@ public class DataManagement
     public Variable CreateRasterType(params object?[] args) => Run(args);
     public Variable CreateReferencedMosaicDataset(params object?[] args) => Run(args);
     public Variable CreateRelationshipClass(params object?[] args) => Run(args);
-    public Variable CreateReplicaFromServer(params object?[] args) => Run(args);
     public Variable CreateReplica(params object?[] args) => Run(args);
+    public Variable CreateReplicaFromServer(params object?[] args) => Run(args);
     public Variable CreateRole(params object?[] args) => Run(args);
     public Variable CreateSQLiteDatabase(params object?[] args) => Run(args);
     public Variable CreateSceneLayerPackage(params object?[] args) => Run(args);
@@ -158,6 +163,7 @@ public class DataManagement
     public Variable CreateSpatialType(params object?[] args) => Run(args);
     public Variable CreateTable(params object?[] args) => Run(args);
     public Variable CreateTopology(params object?[] args) => Run(args);
+    public Variable CreateTrajectoryDataset(params object?[] args) => Run(args);
     public Variable CreateUnRegisteredFeatureclass(params object?[] args) => Run(args);
     public Variable CreateUnRegisteredTable(params object?[] args) => Run(args);
     public Variable CreateVectorTileIndex(params object?[] args) => Run(args);
@@ -168,21 +174,21 @@ public class DataManagement
     public Variable DefineMosaicDatasetNoData(params object?[] args) => Run(args);
     public Variable DefineOverviews(params object?[] args) => Run(args);
     public Variable DefineProjection(params object?[] args) => Run(args);
+    public Variable Delete(params object?[] args) => Run(args);
     public Variable DeleteAttributeRule(params object?[] args) => Run(args);
     public Variable DeleteCodedValueFromDomain(params object?[] args) => Run(args);
     public Variable DeleteColormap(params object?[] args) => Run(args);
     public Variable DeleteDatabaseSequence(params object?[] args) => Run(args);
     public Variable DeleteDomain(params object?[] args) => Run(args);
     public Variable DeleteFeatures(params object?[] args) => Run(args);
-    public Variable DeleteFieldGroup(params object?[] args) => Run(args);
     public Variable DeleteField(params object?[] args) => Run(args);
+    public Variable DeleteFieldGroup(params object?[] args) => Run(args);
     public Variable DeleteIdentical(params object?[] args) => Run(args);
     public Variable DeleteMosaicDataset(params object?[] args) => Run(args);
     public Variable DeleteRasterAttributeTable(params object?[] args) => Run(args);
     public Variable DeleteRows(params object?[] args) => Run(args);
     public Variable DeleteSchemaGeodatabase(params object?[] args) => Run(args);
     public Variable DeleteVersion(params object?[] args) => Run(args);
-    public Variable Delete(params object?[] args) => Run(args);
     public Variable DetectFeatureChanges(params object?[] args) => Run(args);
     public Variable DiagnoseVersionMetadata(params object?[] args) => Run(args);
     public Variable DiagnoseVersionTables(params object?[] args) => Run(args);
@@ -199,8 +205,8 @@ public class DataManagement
     public Variable DowngradeAttachments(params object?[] args) => Run(args);
     public Variable DownloadRasters(params object?[] args) => Run(args);
     public Variable EditRasterFunction(params object?[] args) => Run(args);
-    public Variable EliminatePolygonPart(params object?[] args) => Run(args);
     public Variable Eliminate(params object?[] args) => Run(args);
+    public Variable EliminatePolygonPart(params object?[] args) => Run(args);
     public Variable EnableArchiving(params object?[] args) => Run(args);
     public Variable EnableAttachments(params object?[] args) => Run(args);
     public Variable EnableAttributeRules(params object?[] args) => Run(args);
@@ -221,6 +227,7 @@ public class DataManagement
     public Variable ExportMosaicDatasetItems(params object?[] args) => Run(args);
     public Variable ExportMosaicDatasetPaths(params object?[] args) => Run(args);
     public Variable ExportRasterWorldFile(params object?[] args) => Run(args);
+    public Variable ExportReplicaSchema(params object?[] args) => Run(args);
     public Variable ExportReportToPDF(params object?[] args) => Run(args);
     public Variable ExportTileCache(params object?[] args) => Run(args);
     public Variable ExportTopologyErrors(params object?[] args) => Run(args);
@@ -261,6 +268,7 @@ public class DataManagement
     public Variable ImportGeodatabaseConfigurationKeywords(params object?[] args) => Run(args);
     public Variable ImportMessage(params object?[] args) => Run(args);
     public Variable ImportMosaicDatasetGeometry(params object?[] args) => Run(args);
+    public Variable ImportReplicaSchema(params object?[] args) => Run(args);
     public Variable ImportTileCache(params object?[] args) => Run(args);
     public Variable ImportXMLWorkspaceDocument(params object?[] args) => Run(args);
     public Variable Integrate(params object?[] args) => Run(args);
@@ -280,6 +288,7 @@ public class DataManagement
     public Variable MakeSceneLayer(params object?[] args) => Run(args);
     public Variable MakeTableView(params object?[] args) => Run(args);
     public Variable MakeTinLayer(params object?[] args) => Run(args);
+    public Variable MakeTrajectoryLayer(params object?[] args) => Run(args);
     public Variable MakeWCSLayer(params object?[] args) => Run(args);
     public Variable MakeXYEventLayer(params object?[] args) => Run(args);
     public Variable ManageFeatureBinCache(params object?[] args) => Run(args);
@@ -287,16 +296,16 @@ public class DataManagement
     public Variable MatchControlPoints(params object?[] args) => Run(args);
     public Variable MatchLayerSymbologyToAStyle(params object?[] args) => Run(args);
     public Variable MatchPhotosToRowsByTime(params object?[] args) => Run(args);
-    public Variable MergeMosaicDatasetItems(params object?[] args) => Run(args);
     public Variable Merge(params object?[] args) => Run(args);
+    public Variable MergeMosaicDatasetItems(params object?[] args) => Run(args);
     public Variable MigrateObjectIDTo64Bit(params object?[] args) => Run(args);
     public Variable MigrateRelationshipClass(params object?[] args) => Run(args);
     public Variable MigrateStorage(params object?[] args) => Run(args);
     public Variable MinimumBoundingGeometry(params object?[] args) => Run(args);
     public Variable Mirror(params object?[] args) => Run(args);
+    public Variable Mosaic(params object?[] args) => Run(args);
     public Variable MosaicDatasetToMobileMosaicDataset(params object?[] args) => Run(args);
     public Variable MosaicToNewRaster(params object?[] args) => Run(args);
-    public Variable Mosaic(params object?[] args) => Run(args);
     public Variable MultipartToSinglepart(params object?[] args) => Run(args);
     public Variable PackageLayer(params object?[] args) => Run(args);
     public Variable PackageLocator(params object?[] args) => Run(args);
@@ -306,8 +315,8 @@ public class DataManagement
     public Variable PivotTable(params object?[] args) => Run(args);
     public Variable PointsToLine(params object?[] args) => Run(args);
     public Variable PolygonToLine(params object?[] args) => Run(args);
-    public Variable ProjectRaster(params object?[] args) => Run(args);
     public Variable Project(params object?[] args) => Run(args);
+    public Variable ProjectRaster(params object?[] args) => Run(args);
     public Variable RasterCompare(params object?[] args) => Run(args);
     public Variable RasterToDTED(params object?[] args) => Run(args);
     public Variable ReExportUnacknowledgedMessages(params object?[] args) => Run(args);
@@ -316,7 +325,6 @@ public class DataManagement
     public Variable ReclassifyField(params object?[] args) => Run(args);
     public Variable ReconcileVersion(params object?[] args) => Run(args);
     public Variable ReconcileVersions(params object?[] args) => Run(args);
-    public Variable ReconstructSurface(params object?[] args) => Run(args);
     public Variable RecoverFileGDB(params object?[] args) => Run(args);
     public Variable RefreshExcel(params object?[] args) => Run(args);
     public Variable RegisterAsVersioned(params object?[] args) => Run(args);
@@ -341,6 +349,7 @@ public class DataManagement
     public Variable ReorderAttributeRule(params object?[] args) => Run(args);
     public Variable RepairGeometry(params object?[] args) => Run(args);
     public Variable RepairMosaicDatasetPaths(params object?[] args) => Run(args);
+    public Variable RepairTrajectoryDatasetPaths(params object?[] args) => Run(args);
     public Variable RepairVersionMetadata(params object?[] args) => Run(args);
     public Variable RepairVersionTables(params object?[] args) => Run(args);
     public Variable Resample(params object?[] args) => Run(args);
@@ -361,10 +370,10 @@ public class DataManagement
     public Variable SetValueForRangeDomain(params object?[] args) => Run(args);
     public Variable SharePackage(params object?[] args) => Run(args);
     public Variable Shift(params object?[] args) => Run(args);
-    public Variable SortCodedValueDomain(params object?[] args) => Run(args);
     public Variable Sort(params object?[] args) => Run(args);
-    public Variable SplitLineAtPoint(params object?[] args) => Run(args);
+    public Variable SortCodedValueDomain(params object?[] args) => Run(args);
     public Variable SplitLine(params object?[] args) => Run(args);
+    public Variable SplitLineAtPoint(params object?[] args) => Run(args);
     public Variable SplitMosaicDatasetItems(params object?[] args) => Run(args);
     public Variable SplitRaster(params object?[] args) => Run(args);
     public Variable StandardizeField(params object?[] args) => Run(args);
@@ -396,8 +405,8 @@ public class DataManagement
     public Variable ValidateJoin(params object?[] args) => Run(args);
     public Variable ValidateSceneLayerPackage(params object?[] args) => Run(args);
     public Variable ValidateTopology(params object?[] args) => Run(args);
-    public Variable WarpFromFile(params object?[] args) => Run(args);
     public Variable Warp(params object?[] args) => Run(args);
+    public Variable WarpFromFile(params object?[] args) => Run(args);
     public Variable WorkspaceToRasterDataset(params object?[] args) => Run(args);
     public Variable XYTableToPoint(params object?[] args) => Run(args);
     public Variable XYToLine(params object?[] args) => Run(args);
