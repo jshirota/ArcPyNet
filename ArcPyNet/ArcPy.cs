@@ -13,20 +13,19 @@ public class ArcPy : IDisposable
 
     public static ArcPy Start(string? workspace = null, string? pythonHome = defaultPythonHome)
     {
-        Console.Write("Starting ArcPy...");
-
         if (Instance is null || Instance.disposed)
-            Instance = new ArcPy(workspace ?? Path.GetDirectoryName(Path.GetTempFileName()), pythonHome);
+            Instance = new ArcPy(workspace, pythonHome);
 
         Instance.Run("None");
-
-        Console.WriteLine("  Started.");
 
         return Instance;
     }
 
-    private ArcPy(string workspace, string? pythonHome)
+    private ArcPy(string? workspace, string? pythonHome)
     {
+        if (string.IsNullOrEmpty(workspace))
+            workspace = Path.GetDirectoryName(Path.GetTempFileName());
+
         this.Workspace = Path.GetFullPath(workspace);
 
         if (!Directory.Exists(this.Workspace))
