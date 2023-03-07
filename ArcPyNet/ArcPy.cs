@@ -4,12 +4,14 @@ namespace ArcPyNet;
 
 public class ArcPy : IDisposable
 {
+    private const string defaultPythonHome = @"C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3";
+
     public static ArcPy Instance { get; private set; } = default!;
 
     public string Workspace { get; }
     private bool disposed;
 
-    public static ArcPy Start(string? workspace = null, string pythonHome = @"C:\Program Files\ArcGIS\Pro\bin\Python\envs\arcgispro-py3")
+    public static ArcPy Start(string? workspace = null, string? pythonHome = defaultPythonHome)
     {
         Console.Write("Starting ArcPy...");
 
@@ -23,15 +25,18 @@ public class ArcPy : IDisposable
         return Instance;
     }
 
-    private ArcPy(string workspace, string pythonHome)
+    private ArcPy(string workspace, string? pythonHome)
     {
         this.Workspace = Path.GetFullPath(workspace);
 
         if (!Directory.Exists(this.Workspace))
             Directory.CreateDirectory(this.Workspace);
 
+        if (string.IsNullOrEmpty(pythonHome))
+            pythonHome = defaultPythonHome;
+
         Runtime.PythonDLL = Directory.GetFiles(pythonHome, "python*.dll").Last();
-        PythonEngine.PythonHome = pythonHome;
+        PythonEngine.PythonHome = pythonHome!;
         PythonEngine.Initialize();
     }
 
