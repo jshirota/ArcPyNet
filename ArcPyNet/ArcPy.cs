@@ -16,15 +16,13 @@ public class ArcPy : IDisposable
         if (Instance is null || Instance.disposed)
             Instance = new ArcPy(workspace, pythonHome);
 
-        Instance.Run("None");
-
         return Instance;
     }
 
     private ArcPy(string? workspace, string? pythonHome)
     {
         if (string.IsNullOrEmpty(workspace))
-            workspace = Path.GetDirectoryName(Path.GetTempFileName());
+            workspace = Path.GetTempFileName().Replace(".tmp", "");
 
         this.Workspace = Path.GetFullPath(workspace);
 
@@ -43,27 +41,36 @@ public class ArcPy : IDisposable
     {
         var temp = GetTempName();
         var jsonPath = $@"{this.Workspace}\{temp}.json";
+        var errorPath = $@"{this.Workspace}\{temp}.error";
 
         string code;
 
         using (Py.GIL())
         {
             code = $"""
+                try:
                     import arcpy
                     import json
-
+                
                     arcpy.env.workspace = r"{this.Workspace}"
 
                     {preprocess}
-
                     {temp} = {expression}
-
+                
                     with open(r"{jsonPath}", "w") as json_file:
                         json_file.write(json.dumps({temp}, default=str))
-                    """;
+                
+                except Exception as exception:
+                
+                    with open(r"{errorPath}", "w") as error_file:
+                        error_file.write(str(exception))
+                """;
 
             PythonEngine.RunSimpleString(code);
         }
+
+        if (File.Exists(errorPath))
+            throw new InvalidOperationException(File.ReadAllText(errorPath));
 
         return temp;
     }
@@ -108,6 +115,7 @@ public class ArcPy : IDisposable
     public _DataInteroperability interop = new();
     public _DataManagement management = new();
     public _GeoAI geoai = new();
+    public _Geocoding geocoding = new();
     public _GeostatisticalAnalyst ga = new();
     public _Intelligence intelligence = new();
     public _LinearReferencing lr = new();
