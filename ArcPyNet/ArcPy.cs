@@ -82,7 +82,7 @@ public class ArcPy : IDisposable
 
     public Code Run(string method, object?[] args)
     {
-        return this.Run($"{method}({Format(args)})");
+        return this.Run($"{method}({string.Join(", ", args.Select(Format))})");
     }
 
     public static string GetTempName()
@@ -90,15 +90,17 @@ public class ArcPy : IDisposable
         return "_" + Guid.NewGuid().ToString().Substring(0, 7);
     }
 
-    private static string Format(object?[] args)
+    public static string Format(object? value)
     {
-        return string.Join(", ", args.Select(x => x switch
+        return value switch
         {
             null => "None",
             IVariable variable => variable.Variable,
+            Enum @enum => $@"r""{@enum.ToEnumString()}""",
+            double or float => $"float({value})",
             string s => $@"r""{s}""",
-            _ => x
-        }));
+            _ => value.ToString()
+        };
     }
 
     public void Dispose()

@@ -13,6 +13,7 @@ public class Grid : Metadata, IVariable
         var code = $$"""
             {
                 "bandCount": {{variable}}.bandCount,
+                "extent": json.loads({{variable}}.extent.JSON),
                 "width": {{variable}}.width,
                 "height": {{variable}}.height,
                 "pixelType": {{variable}}.pixelType,
@@ -26,10 +27,6 @@ public class Grid : Metadata, IVariable
                 "meanCellHeight": {{variable}}.meanCellHeight,
                 "wkid": {{variable}}.spatialReference.factoryCode,
                 "wkt": {{variable}}.spatialReference.exportToString(),
-                "xmin": {{variable}}.extent.XMin,
-                "ymin": {{variable}}.extent.YMin,
-                "xmax": {{variable}}.extent.XMax,
-                "ymax": {{variable}}.extent.YMax,
                 "hasColormap": hasattr(arcpy.sa.Raster, "getColormap") and {{variable}}.getColormap("") is not None
             }
             """;
@@ -214,6 +211,7 @@ public class Metadata
 {
     public string Id { get; set; } = default!;
     public int BandCount { get; set; }
+    public Extent Extent { get; set; } = default!;
     public int Width { get; set; }
     public int Height { get; set; }
     public string PixelType { get; set; } = default!;
@@ -227,10 +225,6 @@ public class Metadata
     public double MeanCellHeight { get; set; }
     public int? Wkid { get; set; }
     public string? Wkt { get; set; }
-    public double Xmin { get; set; }
-    public double Ymin { get; set; }
-    public double Xmax { get; set; }
-    public double Ymax { get; set; }
     public bool HasColormap { get; set; }
 
     public override string ToString()
@@ -247,4 +241,21 @@ public class Metadata
             Wkid
         }}";
     }
+}
+
+public class Extent
+{
+    public double Xmin { get; init; }
+    public double Ymin { get; init; }
+    public double Xmax { get; init; }
+    public double Ymax { get; init; }
+
+    public Extent(double xmin, double ymin, double xmax, double ymax)
+        => (Xmin, Ymin, Xmax, Ymax) = (xmin, ymin, xmax, ymax);
+
+    public void Deconstruct(out double xmin, out double ymin, out double xmax, out double ymax)
+        => (xmin, ymin, xmax, ymax) = (Xmin, Ymin, Xmax, Ymax);
+
+    public override string ToString()
+        => $"{Xmin} {Ymin} {Xmax} {Ymax}";
 }

@@ -258,6 +258,11 @@ public enum RegressionType
     Linear, Logistic
 }
 
+public enum Resampling
+{
+    Nearest, Bilinear, Cubic, Majority
+}
+
 public enum Slices
 {
     AllSlices, CurrentSlice
@@ -296,4 +301,9 @@ public enum UniversalSemivariogram
 public enum ZoneConnectivity
 {
     Within, Cross
+}
+
+public enum ZUnit
+{
+    Inch, Foot, Yard, MileUs, NauticalMile, Millimeter, Centimeter, Meter, Kilometer, Decimeter
 }
