@@ -42,28 +42,26 @@ public class ArcPy : IDisposable
     public Code Run(string preprocess, string expression)
     {
         var temp = GetTempName();
-        var jsonPath = $@"{this.Workspace}\{temp}.json";
         var errorPath = $@"{this.Workspace}\{temp}.error";
 
         string code;
 
         using (Py.GIL())
         {
+            // Indent.
+            preprocess = string.Join("\n", preprocess.Split('\n').Select(x => $"    {x}"));
+
             code = $"""
                 try:
                     import arcpy
                     import json
-                
+
                     arcpy.env.workspace = r"{this.Workspace}"
 
-                    {preprocess}
+                    {preprocess.TrimStart()}
                     {temp} = {expression}
-                
-                    with open(r"{jsonPath}", "w") as json_file:
-                        json_file.write(json.dumps({temp}, default=str))
-                
+
                 except Exception as exception:
-                
                     with open(r"{errorPath}", "w") as error_file:
                         error_file.write(str(exception))
                 """;
@@ -82,7 +80,7 @@ public class ArcPy : IDisposable
         return this.Run("", expression);
     }
 
-    internal Code Run(string method, object?[] args)
+    public Code Run(string method, object?[] args)
     {
         return this.Run($"{method}({Format(args)})");
     }

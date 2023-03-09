@@ -8,9 +8,20 @@ public record Code
 
     private string? json;
 
-    public T GetValue<T>()
+    public T Evaluate<T>()
     {
-        this.json ??= File.ReadAllText($@"{ArcPy.Instance.Workspace}\{this.Text}.json");
+        if (this.json is null)
+        {
+            var temp = ArcPy.GetTempName();
+            var jsonPath = $@"{ArcPy.Instance.Workspace}\{temp}.json";
+
+            ArcPy.Instance.Run($"""
+                with open(r"{jsonPath}", "w") as json_file:
+                    json_file.write(json.dumps({Text}, default=str))
+                """, "None");
+
+            this.json = File.ReadAllText(jsonPath);
+        }
 
         var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
         var value = JsonSerializer.Deserialize<T>(this.json, options)!;

@@ -35,7 +35,7 @@ public class Grid : Metadata, IVariable
             """;
 
         var result = ArcPy.Instance.Run(code);
-        var metadata = result.GetValue<Metadata>();
+        var metadata = result.Evaluate<Metadata>();
 
         foreach (var p in typeof(Metadata).GetProperties())
             p.SetValue(this, p.GetValue(metadata));
