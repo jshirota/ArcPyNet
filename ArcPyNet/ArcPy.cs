@@ -35,9 +35,11 @@ public class ArcPy : IDisposable
         Runtime.PythonDLL = Directory.GetFiles(pythonHome, "python*.dll").Last();
         PythonEngine.PythonHome = pythonHome!;
         PythonEngine.Initialize();
+
+        this.Run("None");
     }
 
-    public Variable Run(string preprocess, string expression)
+    public Code Run(string preprocess, string expression)
     {
         var temp = GetTempName();
         var jsonPath = $@"{this.Workspace}\{temp}.json";
@@ -75,12 +77,12 @@ public class ArcPy : IDisposable
         return temp;
     }
 
-    public Variable Run(string expression)
+    public Code Run(string expression)
     {
         return this.Run("", expression);
     }
 
-    internal Variable Run(string method, object?[] args)
+    internal Code Run(string method, object?[] args)
     {
         return this.Run($"{method}({Format(args)})");
     }

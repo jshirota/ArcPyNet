@@ -4,21 +4,21 @@ namespace ArcPyNet;
 
 public class _GeoAI
 {
-    private static Variable Run(object?[] args, [CallerMemberName] string method = "")
+    private static Code Run(object?[] args, [CallerMemberName] string method = "")
     {
         return ArcPy.Instance.Run($"arcpy.geoai.{method}", args);
     }
 
-    public Variable ClassifyTextUsingDeepLearning(params object?[] args) => Run(args);
-    public Variable ExtractEntitiesUsingDeepLearning(params object?[] args) => Run(args);
-    public Variable ExtractFeaturesUsingAIModels(params object?[] args) => Run(args);
-    public Variable ForecastUsingTimeSeriesModel(params object?[] args) => Run(args);
-    public Variable PredictUsingAutoML(params object?[] args) => Run(args);
-    public Variable TrainEntityRecognitionModel(params object?[] args) => Run(args);
-    public Variable TrainTextClassificationModel(params object?[] args) => Run(args);
-    public Variable TrainTextTransformationModel(params object?[] args) => Run(args);
-    public Variable TrainTimeSeriesForecastingModel(params object?[] args) => Run(args);
-    public Variable TrainUsingAutoDL(params object?[] args) => Run(args);
-    public Variable TrainUsingAutoML(params object?[] args) => Run(args);
-    public Variable TransformTextUsingDeepLearning(params object?[] args) => Run(args);
+    public Code ClassifyTextUsingDeepLearning(params object?[] args) => Run(args);
+    public Code ExtractEntitiesUsingDeepLearning(params object?[] args) => Run(args);
+    public Code ExtractFeaturesUsingAIModels(params object?[] args) => Run(args);
+    public Code ForecastUsingTimeSeriesModel(params object?[] args) => Run(args);
+    public Code PredictUsingAutoML(params object?[] args) => Run(args);
+    public Code TrainEntityRecognitionModel(params object?[] args) => Run(args);
+    public Code TrainTextClassificationModel(params object?[] args) => Run(args);
+    public Code TrainTextTransformationModel(params object?[] args) => Run(args);
+    public Code TrainTimeSeriesForecastingModel(params object?[] args) => Run(args);
+    public Code TrainUsingAutoDL(params object?[] args) => Run(args);
+    public Code TrainUsingAutoML(params object?[] args) => Run(args);
+    public Code TransformTextUsingDeepLearning(params object?[] args) => Run(args);
 }

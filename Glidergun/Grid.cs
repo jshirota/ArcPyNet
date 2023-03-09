@@ -1,13 +1,12 @@
 ﻿using ArcPyNet;
-using System.Text.Json;
 
 namespace Glidergun;
 
 public class Grid : Metadata, IVariable
 {
-    public Variable Variable { get; }
+    public Code Variable { get; }
 
-    public Grid(Variable variable)
+    public Grid(Code variable)
     {
         this.Variable = variable;
 
@@ -36,9 +35,7 @@ public class Grid : Metadata, IVariable
             """;
 
         var result = ArcPy.Instance.Run(code);
-
-        var options = new JsonSerializerOptions { PropertyNameCaseInsensitive = true };
-        var metadata = JsonSerializer.Deserialize<Metadata>(result.Json, options)!;
+        var metadata = result.GetValue<Metadata>();
 
         foreach (var p in typeof(Metadata).GetProperties())
             p.SetValue(this, p.GetValue(metadata));
@@ -49,7 +46,7 @@ public class Grid : Metadata, IVariable
     {
     }
 
-    public static implicit operator Grid(Variable name) => new(name);
+    public static implicit operator Grid(Code name) => new(name);
 
 
     private string thumbnail = default!;
