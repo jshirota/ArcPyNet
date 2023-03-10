@@ -61,6 +61,7 @@ public class ArcPy : IDisposable
                     arcpy.env.workspace = r"{this.Workspace}"
 
                     {preprocess.TrimStart()}
+
                     {temp} = {expression}
 
                 except Exception as exception:

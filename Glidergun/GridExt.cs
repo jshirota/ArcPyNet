@@ -1,4 +1,5 @@
 ﻿using ArcPyNet;
+using System.Text.Json;
 
 namespace Glidergun;
 
@@ -1048,6 +1049,30 @@ public static class GridExt
             .Reverse()
             .Zip(rows, (y, values) => new { y, values })
             .SelectMany(row => xCoordinates.Zip(row.values, (x, z) => (x, row.y, z)));
+    }
+
+    public static double[] ExtractValues(this Grid grid, params double[][] points)
+    {
+        var inPointFeatures = $@"{arcpy.Workspace}\{ArcPy.GetTempName()}.shp";
+        var outPointFeatures = $@"{arcpy.Workspace}\{ArcPy.GetTempName()}.shp";
+        var outJsonPath = $@"{arcpy.Workspace}\{ArcPy.GetTempName()}.json";
+
+        arcpy.Run($"""
+            arcpy.management.CreateFeatureclass(r"{Path.GetDirectoryName(inPointFeatures)}", "{Path.GetFileName(inPointFeatures)}", "POINT")
+            with arcpy.da.InsertCursor(r"{inPointFeatures}", ["SHAPE@XY"]) as cursor:
+            {string.Join("\n", points.Select(p => $"    cursor.insertRow([({p[0]}, {p[1]})])"))}
+            
+            arcpy.sa.ExtractValuesToPoints(r"{inPointFeatures}", {grid}, r"{outPointFeatures}")
+
+            with arcpy.da.SearchCursor(r"{outPointFeatures}", "RASTERVALU") as cursor:
+                values = [row[0] for row in cursor]
+            
+            with open(r"{outJsonPath}", "w") as jsonFile:
+                jsonFile.write(json.dumps(values))
+            """, "None");
+
+        var json = File.ReadAllText(outJsonPath);
+        return JsonSerializer.Deserialize<double[]>(json)!;
     }
 
     public static Grid Composite(params Grid[] grids)
