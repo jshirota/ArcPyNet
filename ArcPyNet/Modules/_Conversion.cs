@@ -9,6 +9,8 @@ public class _Conversion
         return ArcPy.Instance.Run($"arcpy.conversion.{method}", args);
     }
 
+    internal _Conversion() { }
+
     public Code ASCIIToRaster(params object?[] args) => Run(args);
     public Code AddCADFields(params object?[] args) => Run(args);
     public Code AddRasterToGeoPackage(params object?[] args) => Run(args);

@@ -9,6 +9,8 @@ public class _WorkflowManager
         return ArcPy.Instance.Run($"arcpy.wmx.{method}", args);
     }
 
+    internal _WorkflowManager() { }
+
     public Code ClearJobReplicationInfo(params object?[] args) => Run(args);
     public Code Connect(params object?[] args) => Run(args);
     public Code CreateJobDataReplica(params object?[] args) => Run(args);

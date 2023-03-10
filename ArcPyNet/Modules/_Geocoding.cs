@@ -9,6 +9,8 @@ public class _Geocoding
         return ArcPy.Instance.Run($"arcpy.geocoding.{method}", args);
     }
 
+    internal _Geocoding() { }
+
     public Code AssignZonesToStreets(params object?[] args) => Run(args);
     public Code ClipLocator(params object?[] args) => Run(args);
     public Code ConsolidateLocator(params object?[] args) => Run(args);

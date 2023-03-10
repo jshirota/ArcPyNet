@@ -6,47 +6,47 @@ public static class CoreExt
 {
     #region Conditional
 
-    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2, Grid raster3)
-        => spatialAnalyst.Con(raster1, raster2, raster3);
+    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2, Grid grid3)
+        => spatialAnalyst.Con(grid1, grid2, grid3);
 
-    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2, int n)
-        => spatialAnalyst.Con(raster1, raster2, n);
+    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2, int n)
+        => spatialAnalyst.Con(grid1, grid2, n);
 
-    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2, double n)
-        => spatialAnalyst.Con(raster1, raster2, n);
+    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2, double n)
+        => spatialAnalyst.Con(grid1, grid2, n);
 
-    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid raster1, int n, Grid raster2)
-        => spatialAnalyst.Con(raster1, n, raster2);
+    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid grid1, int n, Grid grid2)
+        => spatialAnalyst.Con(grid1, n, grid2);
 
-    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid raster1, double n, Grid raster2)
-        => spatialAnalyst.Con(raster1, n, raster2);
+    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid grid1, double n, Grid grid2)
+        => spatialAnalyst.Con(grid1, n, grid2);
 
-    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid raster, int n1, int n2)
-        => spatialAnalyst.Con(raster, n1, n2);
+    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid grid, int n1, int n2)
+        => spatialAnalyst.Con(grid, n1, n2);
 
-    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid raster, double n1, double n2)
-        => spatialAnalyst.Con(raster, n1, n2);
+    public static Grid Con(this _SpatialAnalyst spatialAnalyst, Grid grid, double n1, double n2)
+        => spatialAnalyst.Con(grid, n1, n2);
 
-    public static Grid Pick(this _SpatialAnalyst spatialAnalyst, Grid raster, params Grid[] rasters)
-        => spatialAnalyst.Pick(raster, rasters);
+    public static Grid Pick(this _SpatialAnalyst spatialAnalyst, Grid grid, params Grid[] grids)
+        => spatialAnalyst.Pick(grid, grids);
 
-    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.SetNull(raster1, raster2);
+    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.SetNull(grid1, grid2);
 
-    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.SetNull(raster, n);
+    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.SetNull(grid, n);
 
-    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.SetNull(raster, n);
+    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.SetNull(grid, n);
 
-    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2, string whereClause)
-        => spatialAnalyst.SetNull(raster1, raster2, whereClause);
+    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2, string whereClause)
+        => spatialAnalyst.SetNull(grid1, grid2, whereClause);
 
-    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid raster, int n, string whereClause)
-        => spatialAnalyst.SetNull(raster, n, whereClause);
+    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid grid, int n, string whereClause)
+        => spatialAnalyst.SetNull(grid, n, whereClause);
 
-    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid raster, double n, string whereClause)
-        => spatialAnalyst.SetNull(raster, n, whereClause);
+    public static Grid SetNull(this _SpatialAnalyst spatialAnalyst, Grid grid, double n, string whereClause)
+        => spatialAnalyst.SetNull(grid, n, whereClause);
 
     #endregion
 
@@ -114,7 +114,7 @@ public static class CoreExt
     public static Grid ExtractByRectangle(this _SpatialAnalyst spatialAnalyst, Grid inGrid, Extent extent, ExtractionArea extractionArea = ExtractionArea.Inside)
         => spatialAnalyst.ExtractByRectangle(inGrid, extent, extractionArea);
 
-    public static void ExtractMultiValuesToPoints(this _SpatialAnalyst spatialAnalyst, FilePath inPointFeatures, (Grid raster, string outputFieldName)[] inGrids, Interpolation bilinearInterpolateValues = Interpolation.None)
+    public static void ExtractMultiValuesToPoints(this _SpatialAnalyst spatialAnalyst, FilePath inPointFeatures, (Grid grid, string outputFieldName)[] inGrids, Interpolation bilinearInterpolateValues = Interpolation.None)
         => spatialAnalyst.ExtractMultiValuesToPoints(inPointFeatures, inGrids, bilinearInterpolateValues);
 
     public static void ExtractValuesToPoints(this _SpatialAnalyst spatialAnalyst, FilePath inPointFeatures, Grid inGrid, FilePath outPointFeatures, InterpolateValues interpolateValues = InterpolateValues.None, AddAttributes addAttributes = AddAttributes.Value_Only)
@@ -267,492 +267,492 @@ public static class CoreExt
 
     #region Math
 
-    public static Grid Abs(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Abs(raster);
+    public static Grid Abs(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Abs(grid);
 
-    public static Grid Divide(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.Divide(raster1, raster2);
+    public static Grid Divide(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.Divide(grid1, grid2);
 
-    public static Grid Divide(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.Divide(raster, n);
+    public static Grid Divide(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.Divide(grid, n);
 
-    public static Grid Divide(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.Divide(n, raster);
+    public static Grid Divide(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.Divide(n, grid);
 
-    public static Grid Divide(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.Divide(raster, n);
+    public static Grid Divide(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.Divide(grid, n);
 
-    public static Grid Divide(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.Divide(n, raster);
+    public static Grid Divide(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.Divide(n, grid);
 
-    public static Grid Exp(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Exp(raster);
+    public static Grid Exp(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Exp(grid);
 
-    public static Grid Exp10(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Exp10(raster);
+    public static Grid Exp10(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Exp10(grid);
 
-    public static Grid Exp2(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Exp2(raster);
+    public static Grid Exp2(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Exp2(grid);
 
-    public static Grid Float(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Float(raster);
+    public static Grid Float(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Float(grid);
 
-    public static Grid Int(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Int(raster);
+    public static Grid Int(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Int(grid);
 
-    public static Grid Ln(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Ln(raster);
+    public static Grid Ln(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Ln(grid);
 
-    public static Grid Log10(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Log10(raster);
+    public static Grid Log10(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Log10(grid);
 
-    public static Grid Log2(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Log2(raster);
+    public static Grid Log2(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Log2(grid);
 
-    public static Grid Minus(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.Minus(raster1, raster2);
+    public static Grid Minus(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.Minus(grid1, grid2);
 
-    public static Grid Minus(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.Minus(raster, n);
+    public static Grid Minus(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.Minus(grid, n);
 
-    public static Grid Minus(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.Minus(n, raster);
+    public static Grid Minus(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.Minus(n, grid);
 
-    public static Grid Minus(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.Minus(raster, n);
+    public static Grid Minus(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.Minus(grid, n);
 
-    public static Grid Minus(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.Minus(n, raster);
+    public static Grid Minus(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.Minus(n, grid);
 
-    public static Grid Mod(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.Mod(raster1, raster2);
+    public static Grid Mod(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.Mod(grid1, grid2);
 
-    public static Grid Mod(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.Mod(raster, n);
+    public static Grid Mod(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.Mod(grid, n);
 
-    public static Grid Mod(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.Mod(n, raster);
+    public static Grid Mod(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.Mod(n, grid);
 
-    public static Grid Mod(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.Mod(raster, n);
+    public static Grid Mod(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.Mod(grid, n);
 
-    public static Grid Mod(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.Mod(n, raster);
+    public static Grid Mod(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.Mod(n, grid);
 
-    public static Grid Negate(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Negate(raster);
+    public static Grid Negate(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Negate(grid);
 
-    public static Grid Plus(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.Plus(raster1, raster2);
+    public static Grid Plus(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.Plus(grid1, grid2);
 
-    public static Grid Plus(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.Plus(raster, n);
+    public static Grid Plus(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.Plus(grid, n);
 
-    public static Grid Plus(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.Plus(n, raster);
+    public static Grid Plus(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.Plus(n, grid);
 
-    public static Grid Plus(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.Plus(raster, n);
+    public static Grid Plus(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.Plus(grid, n);
 
-    public static Grid Plus(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.Plus(n, raster);
+    public static Grid Plus(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.Plus(n, grid);
 
-    public static Grid Power(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.Power(raster1, raster2);
+    public static Grid Power(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.Power(grid1, grid2);
 
-    public static Grid Power(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.Power(raster, n);
+    public static Grid Power(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.Power(grid, n);
 
-    public static Grid Power(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.Power(n, raster);
+    public static Grid Power(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.Power(n, grid);
 
-    public static Grid Power(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.Power(raster, n);
+    public static Grid Power(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.Power(grid, n);
 
-    public static Grid Power(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.Power(n, raster);
+    public static Grid Power(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.Power(n, grid);
 
-    public static Grid RoundDown(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.RoundDown(raster);
+    public static Grid RoundDown(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.RoundDown(grid);
 
-    public static Grid RoundUp(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.RoundUp(raster);
+    public static Grid RoundUp(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.RoundUp(grid);
 
-    public static Grid Square(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Square(raster);
+    public static Grid Square(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Square(grid);
 
-    public static Grid SquareRoot(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.SquareRoot(raster);
+    public static Grid SquareRoot(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.SquareRoot(grid);
 
-    public static Grid Times(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.Times(raster1, raster2);
+    public static Grid Times(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.Times(grid1, grid2);
 
-    public static Grid Times(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.Times(raster, n);
+    public static Grid Times(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.Times(grid, n);
 
-    public static Grid Times(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.Times(n, raster);
+    public static Grid Times(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.Times(n, grid);
 
-    public static Grid Times(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.Times(raster, n);
+    public static Grid Times(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.Times(grid, n);
 
-    public static Grid Times(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.Times(n, raster);
+    public static Grid Times(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.Times(n, grid);
 
     #region Bitwise
 
-    public static Grid BitwiseAnd(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.BitwiseAnd(raster1, raster2);
+    public static Grid BitwiseAnd(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.BitwiseAnd(grid1, grid2);
 
-    public static Grid BitwiseAnd(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.BitwiseAnd(raster, n);
+    public static Grid BitwiseAnd(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.BitwiseAnd(grid, n);
 
-    public static Grid BitwiseAnd(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.BitwiseAnd(n, raster);
+    public static Grid BitwiseAnd(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.BitwiseAnd(n, grid);
 
-    public static Grid BitwiseAnd(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.BitwiseAnd(raster, n);
+    public static Grid BitwiseAnd(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.BitwiseAnd(grid, n);
 
-    public static Grid BitwiseAnd(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.BitwiseAnd(n, raster);
+    public static Grid BitwiseAnd(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.BitwiseAnd(n, grid);
 
-    public static Grid BitwiseLeftShift(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.BitwiseLeftShift(raster1, raster2);
+    public static Grid BitwiseLeftShift(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.BitwiseLeftShift(grid1, grid2);
 
-    public static Grid BitwiseLeftShift(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.BitwiseLeftShift(raster, n);
+    public static Grid BitwiseLeftShift(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.BitwiseLeftShift(grid, n);
 
-    public static Grid BitwiseLeftShift(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.BitwiseLeftShift(n, raster);
+    public static Grid BitwiseLeftShift(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.BitwiseLeftShift(n, grid);
 
-    public static Grid BitwiseLeftShift(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.BitwiseLeftShift(raster, n);
+    public static Grid BitwiseLeftShift(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.BitwiseLeftShift(grid, n);
 
-    public static Grid BitwiseLeftShift(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.BitwiseLeftShift(n, raster);
+    public static Grid BitwiseLeftShift(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.BitwiseLeftShift(n, grid);
 
-    public static Grid BitwiseNot(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.BitwiseNot(raster);
+    public static Grid BitwiseNot(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.BitwiseNot(grid);
 
-    public static Grid BitwiseOr(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.BitwiseOr(raster1, raster2);
+    public static Grid BitwiseOr(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.BitwiseOr(grid1, grid2);
 
-    public static Grid BitwiseOr(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.BitwiseOr(raster, n);
+    public static Grid BitwiseOr(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.BitwiseOr(grid, n);
 
-    public static Grid BitwiseOr(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.BitwiseOr(n, raster);
+    public static Grid BitwiseOr(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.BitwiseOr(n, grid);
 
-    public static Grid BitwiseOr(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.BitwiseOr(raster, n);
+    public static Grid BitwiseOr(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.BitwiseOr(grid, n);
 
-    public static Grid BitwiseOr(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.BitwiseOr(n, raster);
+    public static Grid BitwiseOr(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.BitwiseOr(n, grid);
 
-    public static Grid BitwiseRightShift(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.BitwiseRightShift(raster1, raster2);
+    public static Grid BitwiseRightShift(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.BitwiseRightShift(grid1, grid2);
 
-    public static Grid BitwiseRightShift(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.BitwiseRightShift(raster, n);
+    public static Grid BitwiseRightShift(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.BitwiseRightShift(grid, n);
 
-    public static Grid BitwiseRightShift(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.BitwiseRightShift(n, raster);
+    public static Grid BitwiseRightShift(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.BitwiseRightShift(n, grid);
 
-    public static Grid BitwiseRightShift(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.BitwiseRightShift(raster, n);
+    public static Grid BitwiseRightShift(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.BitwiseRightShift(grid, n);
 
-    public static Grid BitwiseRightShift(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.BitwiseRightShift(n, raster);
+    public static Grid BitwiseRightShift(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.BitwiseRightShift(n, grid);
 
-    public static Grid BitwiseXOr(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.BitwiseXOr(raster1, raster2);
+    public static Grid BitwiseXOr(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.BitwiseXOr(grid1, grid2);
 
-    public static Grid BitwiseXOr(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.BitwiseXOr(raster, n);
+    public static Grid BitwiseXOr(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.BitwiseXOr(grid, n);
 
-    public static Grid BitwiseXOr(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.BitwiseXOr(n, raster);
+    public static Grid BitwiseXOr(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.BitwiseXOr(n, grid);
 
-    public static Grid BitwiseXOr(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.BitwiseXOr(raster, n);
+    public static Grid BitwiseXOr(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.BitwiseXOr(grid, n);
 
-    public static Grid BitwiseXOr(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.BitwiseXOr(n, raster);
+    public static Grid BitwiseXOr(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.BitwiseXOr(n, grid);
 
     #endregion
 
     #region Logical
 
-    public static Grid BooleanAnd(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.BooleanAnd(raster1, raster2);
+    public static Grid BooleanAnd(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.BooleanAnd(grid1, grid2);
 
-    public static Grid BooleanAnd(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.BooleanAnd(raster, n);
+    public static Grid BooleanAnd(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.BooleanAnd(grid, n);
 
-    public static Grid BooleanAnd(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.BooleanAnd(n, raster);
+    public static Grid BooleanAnd(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.BooleanAnd(n, grid);
 
-    public static Grid BooleanAnd(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.BooleanAnd(raster, n);
+    public static Grid BooleanAnd(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.BooleanAnd(grid, n);
 
-    public static Grid BooleanAnd(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.BooleanAnd(n, raster);
+    public static Grid BooleanAnd(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.BooleanAnd(n, grid);
 
-    public static Grid BooleanNot(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.BooleanNot(raster);
+    public static Grid BooleanNot(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.BooleanNot(grid);
 
-    public static Grid BooleanOr(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.BooleanOr(raster1, raster2);
+    public static Grid BooleanOr(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.BooleanOr(grid1, grid2);
 
-    public static Grid BooleanOr(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.BooleanOr(raster, n);
+    public static Grid BooleanOr(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.BooleanOr(grid, n);
 
-    public static Grid BooleanOr(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.BooleanOr(n, raster);
+    public static Grid BooleanOr(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.BooleanOr(n, grid);
 
-    public static Grid BooleanOr(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.BooleanOr(raster, n);
+    public static Grid BooleanOr(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.BooleanOr(grid, n);
 
-    public static Grid BooleanOr(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.BooleanOr(n, raster);
+    public static Grid BooleanOr(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.BooleanOr(n, grid);
 
-    public static Grid BooleanXOr(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.BooleanXOr(raster1, raster2);
+    public static Grid BooleanXOr(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.BooleanXOr(grid1, grid2);
 
-    public static Grid BooleanXOr(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.BooleanXOr(raster, n);
+    public static Grid BooleanXOr(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.BooleanXOr(grid, n);
 
-    public static Grid BooleanXOr(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.BooleanXOr(n, raster);
+    public static Grid BooleanXOr(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.BooleanXOr(n, grid);
 
-    public static Grid BooleanXOr(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.BooleanXOr(raster, n);
+    public static Grid BooleanXOr(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.BooleanXOr(grid, n);
 
-    public static Grid BooleanXOr(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.BooleanXOr(n, raster);
+    public static Grid BooleanXOr(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.BooleanXOr(n, grid);
 
-    public static Grid CombinatorialAnd(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.CombinatorialAnd(raster1, raster2);
+    public static Grid CombinatorialAnd(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.CombinatorialAnd(grid1, grid2);
 
-    public static Grid CombinatorialAnd(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.CombinatorialAnd(raster, n);
+    public static Grid CombinatorialAnd(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.CombinatorialAnd(grid, n);
 
-    public static Grid CombinatorialAnd(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.CombinatorialAnd(n, raster);
+    public static Grid CombinatorialAnd(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.CombinatorialAnd(n, grid);
 
-    public static Grid CombinatorialOr(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.CombinatorialOr(raster1, raster2);
+    public static Grid CombinatorialOr(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.CombinatorialOr(grid1, grid2);
 
-    public static Grid CombinatorialOr(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.CombinatorialOr(raster, n);
+    public static Grid CombinatorialOr(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.CombinatorialOr(grid, n);
 
-    public static Grid CombinatorialOr(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.CombinatorialOr(n, raster);
+    public static Grid CombinatorialOr(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.CombinatorialOr(n, grid);
 
-    public static Grid CombinatorialXOr(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.CombinatorialXOr(raster1, raster2);
+    public static Grid CombinatorialXOr(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.CombinatorialXOr(grid1, grid2);
 
-    public static Grid CombinatorialXOr(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.CombinatorialXOr(raster, n);
+    public static Grid CombinatorialXOr(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.CombinatorialXOr(grid, n);
 
-    public static Grid CombinatorialXOr(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.CombinatorialXOr(n, raster);
+    public static Grid CombinatorialXOr(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.CombinatorialXOr(n, grid);
 
-    public static Grid Diff(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.Diff(raster1, raster2);
+    public static Grid Diff(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.Diff(grid1, grid2);
 
-    public static Grid Diff(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.Diff(raster, n);
+    public static Grid Diff(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.Diff(grid, n);
 
-    public static Grid Diff(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.Diff(n, raster);
+    public static Grid Diff(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.Diff(n, grid);
 
-    public static Grid Diff(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.Diff(raster, n);
+    public static Grid Diff(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.Diff(grid, n);
 
-    public static Grid Diff(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.Diff(n, raster);
+    public static Grid Diff(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.Diff(n, grid);
 
-    public static Grid EqualTo(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.EqualTo(raster1, raster2);
+    public static Grid EqualTo(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.EqualTo(grid1, grid2);
 
-    public static Grid EqualTo(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.EqualTo(raster, n);
+    public static Grid EqualTo(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.EqualTo(grid, n);
 
-    public static Grid EqualTo(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.EqualTo(n, raster);
+    public static Grid EqualTo(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.EqualTo(n, grid);
 
-    public static Grid EqualTo(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.EqualTo(raster, n);
+    public static Grid EqualTo(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.EqualTo(grid, n);
 
-    public static Grid EqualTo(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.EqualTo(n, raster);
+    public static Grid EqualTo(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.EqualTo(n, grid);
 
-    public static Grid GreaterThan(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.GreaterThan(raster1, raster2);
+    public static Grid GreaterThan(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.GreaterThan(grid1, grid2);
 
-    public static Grid GreaterThan(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.GreaterThan(raster, n);
+    public static Grid GreaterThan(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.GreaterThan(grid, n);
 
-    public static Grid GreaterThan(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.GreaterThan(n, raster);
+    public static Grid GreaterThan(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.GreaterThan(n, grid);
 
-    public static Grid GreaterThan(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.GreaterThan(raster, n);
+    public static Grid GreaterThan(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.GreaterThan(grid, n);
 
-    public static Grid GreaterThan(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.GreaterThan(n, raster);
+    public static Grid GreaterThan(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.GreaterThan(n, grid);
 
-    public static Grid GreaterThanEqual(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.GreaterThanEqual(raster1, raster2);
+    public static Grid GreaterThanEqual(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.GreaterThanEqual(grid1, grid2);
 
-    public static Grid GreaterThanEqual(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.GreaterThanEqual(raster, n);
+    public static Grid GreaterThanEqual(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.GreaterThanEqual(grid, n);
 
-    public static Grid GreaterThanEqual(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.GreaterThanEqual(n, raster);
+    public static Grid GreaterThanEqual(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.GreaterThanEqual(n, grid);
 
-    public static Grid GreaterThanEqual(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.GreaterThanEqual(raster, n);
+    public static Grid GreaterThanEqual(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.GreaterThanEqual(grid, n);
 
-    public static Grid GreaterThanEqual(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.GreaterThanEqual(n, raster);
+    public static Grid GreaterThanEqual(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.GreaterThanEqual(n, grid);
 
-    public static Grid InList(this _SpatialAnalyst spatialAnalyst, Grid raster, params Grid[] list)
-        => spatialAnalyst.InList(raster, list);
+    public static Grid InList(this _SpatialAnalyst spatialAnalyst, Grid grid, params Grid[] list)
+        => spatialAnalyst.InList(grid, list);
 
-    public static Grid InList(this _SpatialAnalyst spatialAnalyst, Grid raster, params int[] list)
-        => spatialAnalyst.InList(raster, list);
+    public static Grid InList(this _SpatialAnalyst spatialAnalyst, Grid grid, params int[] list)
+        => spatialAnalyst.InList(grid, list);
 
     public static Grid InList(this _SpatialAnalyst spatialAnalyst, int n, params Grid[] list)
         => spatialAnalyst.InList(n, list);
 
-    public static Grid InList(this _SpatialAnalyst spatialAnalyst, Grid raster, params double[] list)
-        => spatialAnalyst.InList(raster, list);
+    public static Grid InList(this _SpatialAnalyst spatialAnalyst, Grid grid, params double[] list)
+        => spatialAnalyst.InList(grid, list);
 
     public static Grid InList(this _SpatialAnalyst spatialAnalyst, double n, params Grid[] list)
         => spatialAnalyst.InList(n, list);
 
-    public static Grid IsNull(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.IsNull(raster);
+    public static Grid IsNull(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.IsNull(grid);
 
-    public static Grid LessThan(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.LessThan(raster1, raster2);
+    public static Grid LessThan(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.LessThan(grid1, grid2);
 
-    public static Grid LessThan(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.LessThan(raster, n);
+    public static Grid LessThan(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.LessThan(grid, n);
 
-    public static Grid LessThan(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.LessThan(n, raster);
+    public static Grid LessThan(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.LessThan(n, grid);
 
-    public static Grid LessThan(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.LessThan(raster, n);
+    public static Grid LessThan(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.LessThan(grid, n);
 
-    public static Grid LessThan(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.LessThan(n, raster);
+    public static Grid LessThan(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.LessThan(n, grid);
 
-    public static Grid LessThanEqual(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.LessThanEqual(raster1, raster2);
+    public static Grid LessThanEqual(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.LessThanEqual(grid1, grid2);
 
-    public static Grid LessThanEqual(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.LessThanEqual(raster, n);
+    public static Grid LessThanEqual(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.LessThanEqual(grid, n);
 
-    public static Grid LessThanEqual(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.LessThanEqual(n, raster);
+    public static Grid LessThanEqual(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.LessThanEqual(n, grid);
 
-    public static Grid LessThanEqual(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.LessThanEqual(raster, n);
+    public static Grid LessThanEqual(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.LessThanEqual(grid, n);
 
-    public static Grid LessThanEqual(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.LessThanEqual(n, raster);
+    public static Grid LessThanEqual(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.LessThanEqual(n, grid);
 
-    public static Grid NotEqual(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.NotEqual(raster1, raster2);
+    public static Grid NotEqual(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.NotEqual(grid1, grid2);
 
-    public static Grid NotEqual(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.NotEqual(raster, n);
+    public static Grid NotEqual(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.NotEqual(grid, n);
 
-    public static Grid NotEqual(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.NotEqual(n, raster);
+    public static Grid NotEqual(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.NotEqual(n, grid);
 
-    public static Grid NotEqual(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.NotEqual(raster, n);
+    public static Grid NotEqual(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.NotEqual(grid, n);
 
-    public static Grid NotEqual(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.NotEqual(n, raster);
+    public static Grid NotEqual(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.NotEqual(n, grid);
 
-    public static Grid Over(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.Over(raster1, raster2);
+    public static Grid Over(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.Over(grid1, grid2);
 
-    public static Grid Over(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.Over(raster, n);
+    public static Grid Over(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.Over(grid, n);
 
-    public static Grid Over(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.Over(n, raster);
+    public static Grid Over(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.Over(n, grid);
 
-    public static Grid Over(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.Over(raster, n);
+    public static Grid Over(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.Over(grid, n);
 
-    public static Grid Over(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.Over(n, raster);
+    public static Grid Over(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.Over(n, grid);
 
-    public static Grid Test(this _SpatialAnalyst spatialAnalyst, Grid raster, string whereClause)
-        => spatialAnalyst.Test(raster, whereClause);
+    public static Grid Test(this _SpatialAnalyst spatialAnalyst, Grid grid, string whereClause)
+        => spatialAnalyst.Test(grid, whereClause);
 
     #endregion
 
     #region Trigonometric
 
-    public static Grid ACos(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.ACos(raster);
+    public static Grid ACos(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.ACos(grid);
 
-    public static Grid ACosH(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.ACosH(raster);
+    public static Grid ACosH(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.ACosH(grid);
 
-    public static Grid ASin(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.ASin(raster);
+    public static Grid ASin(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.ASin(grid);
 
-    public static Grid ASinH(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.ASinH(raster);
+    public static Grid ASinH(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.ASinH(grid);
 
-    public static Grid ATan(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.ATan(raster);
+    public static Grid ATan(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.ATan(grid);
 
-    public static Grid ATan2(this _SpatialAnalyst spatialAnalyst, Grid raster1, Grid raster2)
-        => spatialAnalyst.ATan2(raster1, raster2);
+    public static Grid ATan2(this _SpatialAnalyst spatialAnalyst, Grid grid1, Grid grid2)
+        => spatialAnalyst.ATan2(grid1, grid2);
 
-    public static Grid ATan2(this _SpatialAnalyst spatialAnalyst, Grid raster, int n)
-        => spatialAnalyst.ATan2(raster, n);
+    public static Grid ATan2(this _SpatialAnalyst spatialAnalyst, Grid grid, int n)
+        => spatialAnalyst.ATan2(grid, n);
 
-    public static Grid ATan2(this _SpatialAnalyst spatialAnalyst, Grid raster, double n)
-        => spatialAnalyst.ATan2(raster, n);
+    public static Grid ATan2(this _SpatialAnalyst spatialAnalyst, Grid grid, double n)
+        => spatialAnalyst.ATan2(grid, n);
 
-    public static Grid ATan2(this _SpatialAnalyst spatialAnalyst, int n, Grid raster)
-        => spatialAnalyst.ATan2(n, raster);
+    public static Grid ATan2(this _SpatialAnalyst spatialAnalyst, int n, Grid grid)
+        => spatialAnalyst.ATan2(n, grid);
 
-    public static Grid ATan2(this _SpatialAnalyst spatialAnalyst, double n, Grid raster)
-        => spatialAnalyst.ATan2(n, raster);
+    public static Grid ATan2(this _SpatialAnalyst spatialAnalyst, double n, Grid grid)
+        => spatialAnalyst.ATan2(n, grid);
 
-    public static Grid ATanH(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.ATanH(raster);
+    public static Grid ATanH(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.ATanH(grid);
 
-    public static Grid Cos(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Cos(raster);
+    public static Grid Cos(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Cos(grid);
 
-    public static Grid CosH(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.CosH(raster);
+    public static Grid CosH(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.CosH(grid);
 
-    public static Grid Sin(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Sin(raster);
+    public static Grid Sin(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Sin(grid);
 
-    public static Grid SinH(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.SinH(raster);
+    public static Grid SinH(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.SinH(grid);
 
-    public static Grid Tan(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.Tan(raster);
+    public static Grid Tan(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.Tan(grid);
 
-    public static Grid TanH(this _SpatialAnalyst spatialAnalyst, Grid raster)
-        => spatialAnalyst.TanH(raster);
+    public static Grid TanH(this _SpatialAnalyst spatialAnalyst, Grid grid)
+        => spatialAnalyst.TanH(grid);
 
     #endregion
 

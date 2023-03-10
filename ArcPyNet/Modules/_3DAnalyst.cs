@@ -9,6 +9,8 @@ public class _3DAnalyst
         return ArcPy.Instance.Run($"arcpy.ddd.{method}", args);
     }
 
+    internal _3DAnalyst() { }
+
     public Code ASCII3DToFeatureClass(params object?[] args) => Run(args);
     public Code AddFeatureClassToTerrain(params object?[] args) => Run(args);
     public Code AddSurfaceInformation(params object?[] args) => Run(args);

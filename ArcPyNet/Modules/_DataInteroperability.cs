@@ -9,6 +9,8 @@ public class _DataInteroperability
         return ArcPy.Instance.Run($"arcpy.interop.{method}", args);
     }
 
+    internal _DataInteroperability() { }
+
     public Code QuickExport(params object?[] args) => Run(args);
     public Code QuickImport(params object?[] args) => Run(args);
 }

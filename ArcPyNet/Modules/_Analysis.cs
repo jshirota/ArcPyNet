@@ -9,6 +9,8 @@ public class _Analysis
         return ArcPy.Instance.Run($"arcpy.analysis.{method}", args);
     }
 
+    internal _Analysis() { }
+
     public Code ApportionPolygon(params object?[] args) => Run(args);
     public Code Buffer(params object?[] args) => Run(args);
     public Code Clip(params object?[] args) => Run(args);

@@ -9,6 +9,8 @@ public class _GeostatisticalAnalyst
         return ArcPy.Instance.Run($"arcpy.ga.{method}", args);
     }
 
+    internal _GeostatisticalAnalyst() { }
+
     public Code ArealInterpolationLayerToPolygons(params object?[] args) => Run(args);
     public Code CompareGeostatisticalLayers(params object?[] args) => Run(args);
     public Code CreateSpatiallyBalancedPoints(params object?[] args) => Run(args);

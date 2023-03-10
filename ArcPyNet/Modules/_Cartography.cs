@@ -9,6 +9,8 @@ public class _Cartography
         return ArcPy.Instance.Run($"arcpy.cartography.{method}", args);
     }
 
+    internal _Cartography() { }
+
     public Code AggregatePoints(params object?[] args) => Run(args);
     public Code AggregatePolygons(params object?[] args) => Run(args);
     public Code AlignMarkerToStrokeOrFill(params object?[] args) => Run(args);

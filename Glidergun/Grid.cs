@@ -1,5 +1,4 @@
 ﻿using ArcPyNet;
-using System;
 
 namespace Glidergun;
 

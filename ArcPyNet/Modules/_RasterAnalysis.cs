@@ -9,6 +9,8 @@ public class _RasterAnalysis
         return ArcPy.Instance.Run($"arcpy.ra.{method}", args);
     }
 
+    internal _RasterAnalysis() { }
+
     public Code CalculateDensity(params object?[] args) => Run(args);
     public Code CalculateDistance(params object?[] args) => Run(args);
     public Code CalculateTravelCost(params object?[] args) => Run(args);

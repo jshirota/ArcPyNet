@@ -9,47 +9,47 @@ public static class GridExt
 
     #region Conditional
 
-    public static Grid Con(this Grid raster1, Grid raster2, Grid raster3)
-        => CoreExt.Con(spatialAnalyst, raster1, raster2, raster3);
+    public static Grid Con(this Grid grid1, Grid grid2, Grid grid3)
+        => CoreExt.Con(spatialAnalyst, grid1, grid2, grid3);
 
-    public static Grid Con(this Grid raster1, Grid raster2, int n)
-        => CoreExt.Con(spatialAnalyst, raster1, raster2, n);
+    public static Grid Con(this Grid grid1, Grid grid2, int n)
+        => CoreExt.Con(spatialAnalyst, grid1, grid2, n);
 
-    public static Grid Con(this Grid raster1, Grid raster2, double n)
-        => CoreExt.Con(spatialAnalyst, raster1, raster2, n);
+    public static Grid Con(this Grid grid1, Grid grid2, double n)
+        => CoreExt.Con(spatialAnalyst, grid1, grid2, n);
 
-    public static Grid Con(this Grid raster1, int n, Grid raster2)
-        => CoreExt.Con(spatialAnalyst, raster1, n, raster2);
+    public static Grid Con(this Grid grid1, int n, Grid grid2)
+        => CoreExt.Con(spatialAnalyst, grid1, n, grid2);
 
-    public static Grid Con(this Grid raster1, double n, Grid raster2)
-        => CoreExt.Con(spatialAnalyst, raster1, n, raster2);
+    public static Grid Con(this Grid grid1, double n, Grid grid2)
+        => CoreExt.Con(spatialAnalyst, grid1, n, grid2);
 
-    public static Grid Con(this Grid raster, int n1, int n2)
-        => CoreExt.Con(spatialAnalyst, raster, n1, n2);
+    public static Grid Con(this Grid grid, int n1, int n2)
+        => CoreExt.Con(spatialAnalyst, grid, n1, n2);
 
-    public static Grid Con(this Grid raster, double n1, double n2)
-        => CoreExt.Con(spatialAnalyst, raster, n1, n2);
+    public static Grid Con(this Grid grid, double n1, double n2)
+        => CoreExt.Con(spatialAnalyst, grid, n1, n2);
 
-    public static Grid Pick(this Grid raster, params Grid[] rasters)
-        => CoreExt.Pick(spatialAnalyst, raster, rasters);
+    public static Grid Pick(this Grid grid, params Grid[] grids)
+        => CoreExt.Pick(spatialAnalyst, grid, grids);
 
-    public static Grid SetNull(this Grid raster1, Grid raster2)
-        => CoreExt.SetNull(spatialAnalyst, raster1, raster2);
+    public static Grid SetNull(this Grid grid1, Grid grid2)
+        => CoreExt.SetNull(spatialAnalyst, grid1, grid2);
 
-    public static Grid SetNull(this Grid raster, int n)
-        => CoreExt.SetNull(spatialAnalyst, raster, n);
+    public static Grid SetNull(this Grid grid, int n)
+        => CoreExt.SetNull(spatialAnalyst, grid, n);
 
-    public static Grid SetNull(this Grid raster, double n)
-        => CoreExt.SetNull(spatialAnalyst, raster, n);
+    public static Grid SetNull(this Grid grid, double n)
+        => CoreExt.SetNull(spatialAnalyst, grid, n);
 
-    public static Grid SetNull(this Grid raster1, Grid raster2, string whereClause)
-        => CoreExt.SetNull(spatialAnalyst, raster1, raster2, whereClause);
+    public static Grid SetNull(this Grid grid1, Grid grid2, string whereClause)
+        => CoreExt.SetNull(spatialAnalyst, grid1, grid2, whereClause);
 
-    public static Grid SetNull(this Grid raster, int n, string whereClause)
-        => CoreExt.SetNull(spatialAnalyst, raster, n, whereClause);
+    public static Grid SetNull(this Grid grid, int n, string whereClause)
+        => CoreExt.SetNull(spatialAnalyst, grid, n, whereClause);
 
-    public static Grid SetNull(this Grid raster, double n, string whereClause)
-        => CoreExt.SetNull(spatialAnalyst, raster, n, whereClause);
+    public static Grid SetNull(this Grid grid, double n, string whereClause)
+        => CoreExt.SetNull(spatialAnalyst, grid, n, whereClause);
 
     #endregion
 
@@ -117,7 +117,7 @@ public static class GridExt
     public static Grid ExtractByRectangle(this Grid inGrid, Extent extent, ExtractionArea extractionArea = ExtractionArea.Inside)
         => CoreExt.ExtractByRectangle(spatialAnalyst, inGrid, extent, extractionArea);
 
-    public static void ExtractMultiValuesToPoints(FilePath inPointFeatures, (Grid raster, string outputFieldName)[] inGrids, Interpolation bilinearInterpolateValues = Interpolation.None)
+    public static void ExtractMultiValuesToPoints(FilePath inPointFeatures, (Grid grid, string outputFieldName)[] inGrids, Interpolation bilinearInterpolateValues = Interpolation.None)
         => CoreExt.ExtractMultiValuesToPoints(spatialAnalyst, inPointFeatures, inGrids, bilinearInterpolateValues);
 
     public static void ExtractValuesToPoints(FilePath inPointFeatures, Grid inGrid, FilePath outPointFeatures, InterpolateValues interpolateValues = InterpolateValues.None, AddAttributes addAttributes = AddAttributes.Value_Only)
@@ -270,492 +270,492 @@ public static class GridExt
 
     #region Math
 
-    public static Grid Abs(this Grid raster)
-        => CoreExt.Abs(spatialAnalyst, raster);
+    public static Grid Abs(this Grid grid)
+        => CoreExt.Abs(spatialAnalyst, grid);
 
-    public static Grid Divide(this Grid raster1, Grid raster2)
-        => CoreExt.Divide(spatialAnalyst, raster1, raster2);
+    public static Grid Divide(this Grid grid1, Grid grid2)
+        => CoreExt.Divide(spatialAnalyst, grid1, grid2);
 
-    public static Grid Divide(this Grid raster, int n)
-        => CoreExt.Divide(spatialAnalyst, raster, n);
+    public static Grid Divide(this Grid grid, int n)
+        => CoreExt.Divide(spatialAnalyst, grid, n);
 
-    public static Grid Divide(int n, Grid raster)
-        => CoreExt.Divide(spatialAnalyst, n, raster);
+    public static Grid Divide(int n, Grid grid)
+        => CoreExt.Divide(spatialAnalyst, n, grid);
 
-    public static Grid Divide(this Grid raster, double n)
-        => CoreExt.Divide(spatialAnalyst, raster, n);
+    public static Grid Divide(this Grid grid, double n)
+        => CoreExt.Divide(spatialAnalyst, grid, n);
 
-    public static Grid Divide(double n, Grid raster)
-        => CoreExt.Divide(spatialAnalyst, n, raster);
+    public static Grid Divide(double n, Grid grid)
+        => CoreExt.Divide(spatialAnalyst, n, grid);
 
-    public static Grid Exp(this Grid raster)
-        => CoreExt.Exp(spatialAnalyst, raster);
+    public static Grid Exp(this Grid grid)
+        => CoreExt.Exp(spatialAnalyst, grid);
 
-    public static Grid Exp10(this Grid raster)
-        => CoreExt.Exp10(spatialAnalyst, raster);
+    public static Grid Exp10(this Grid grid)
+        => CoreExt.Exp10(spatialAnalyst, grid);
 
-    public static Grid Exp2(this Grid raster)
-        => CoreExt.Exp2(spatialAnalyst, raster);
+    public static Grid Exp2(this Grid grid)
+        => CoreExt.Exp2(spatialAnalyst, grid);
 
-    public static Grid Float(this Grid raster)
-        => CoreExt.Float(spatialAnalyst, raster);
+    public static Grid Float(this Grid grid)
+        => CoreExt.Float(spatialAnalyst, grid);
 
-    public static Grid Int(this Grid raster)
-        => CoreExt.Int(spatialAnalyst, raster);
+    public static Grid Int(this Grid grid)
+        => CoreExt.Int(spatialAnalyst, grid);
 
-    public static Grid Ln(this Grid raster)
-        => CoreExt.Ln(spatialAnalyst, raster);
+    public static Grid Ln(this Grid grid)
+        => CoreExt.Ln(spatialAnalyst, grid);
 
-    public static Grid Log10(this Grid raster)
-        => CoreExt.Log10(spatialAnalyst, raster);
+    public static Grid Log10(this Grid grid)
+        => CoreExt.Log10(spatialAnalyst, grid);
 
-    public static Grid Log2(this Grid raster)
-        => CoreExt.Log2(spatialAnalyst, raster);
+    public static Grid Log2(this Grid grid)
+        => CoreExt.Log2(spatialAnalyst, grid);
 
-    public static Grid Minus(this Grid raster1, Grid raster2)
-        => CoreExt.Minus(spatialAnalyst, raster1, raster2);
+    public static Grid Minus(this Grid grid1, Grid grid2)
+        => CoreExt.Minus(spatialAnalyst, grid1, grid2);
 
-    public static Grid Minus(this Grid raster, int n)
-        => CoreExt.Minus(spatialAnalyst, raster, n);
+    public static Grid Minus(this Grid grid, int n)
+        => CoreExt.Minus(spatialAnalyst, grid, n);
 
-    public static Grid Minus(int n, Grid raster)
-        => CoreExt.Minus(spatialAnalyst, n, raster);
+    public static Grid Minus(int n, Grid grid)
+        => CoreExt.Minus(spatialAnalyst, n, grid);
 
-    public static Grid Minus(this Grid raster, double n)
-        => CoreExt.Minus(spatialAnalyst, raster, n);
+    public static Grid Minus(this Grid grid, double n)
+        => CoreExt.Minus(spatialAnalyst, grid, n);
 
-    public static Grid Minus(double n, Grid raster)
-        => CoreExt.Minus(spatialAnalyst, n, raster);
+    public static Grid Minus(double n, Grid grid)
+        => CoreExt.Minus(spatialAnalyst, n, grid);
 
-    public static Grid Mod(this Grid raster1, Grid raster2)
-        => CoreExt.Mod(spatialAnalyst, raster1, raster2);
+    public static Grid Mod(this Grid grid1, Grid grid2)
+        => CoreExt.Mod(spatialAnalyst, grid1, grid2);
 
-    public static Grid Mod(this Grid raster, int n)
-        => CoreExt.Mod(spatialAnalyst, raster, n);
+    public static Grid Mod(this Grid grid, int n)
+        => CoreExt.Mod(spatialAnalyst, grid, n);
 
-    public static Grid Mod(int n, Grid raster)
-        => CoreExt.Mod(spatialAnalyst, n, raster);
+    public static Grid Mod(int n, Grid grid)
+        => CoreExt.Mod(spatialAnalyst, n, grid);
 
-    public static Grid Mod(this Grid raster, double n)
-        => CoreExt.Mod(spatialAnalyst, raster, n);
+    public static Grid Mod(this Grid grid, double n)
+        => CoreExt.Mod(spatialAnalyst, grid, n);
 
-    public static Grid Mod(double n, Grid raster)
-        => CoreExt.Mod(spatialAnalyst, n, raster);
+    public static Grid Mod(double n, Grid grid)
+        => CoreExt.Mod(spatialAnalyst, n, grid);
 
-    public static Grid Negate(this Grid raster)
-        => CoreExt.Negate(spatialAnalyst, raster);
+    public static Grid Negate(this Grid grid)
+        => CoreExt.Negate(spatialAnalyst, grid);
 
-    public static Grid Plus(this Grid raster1, Grid raster2)
-        => CoreExt.Plus(spatialAnalyst, raster1, raster2);
+    public static Grid Plus(this Grid grid1, Grid grid2)
+        => CoreExt.Plus(spatialAnalyst, grid1, grid2);
 
-    public static Grid Plus(this Grid raster, int n)
-        => CoreExt.Plus(spatialAnalyst, raster, n);
+    public static Grid Plus(this Grid grid, int n)
+        => CoreExt.Plus(spatialAnalyst, grid, n);
 
-    public static Grid Plus(int n, Grid raster)
-        => CoreExt.Plus(spatialAnalyst, n, raster);
+    public static Grid Plus(int n, Grid grid)
+        => CoreExt.Plus(spatialAnalyst, n, grid);
 
-    public static Grid Plus(this Grid raster, double n)
-        => CoreExt.Plus(spatialAnalyst, raster, n);
+    public static Grid Plus(this Grid grid, double n)
+        => CoreExt.Plus(spatialAnalyst, grid, n);
 
-    public static Grid Plus(double n, Grid raster)
-        => CoreExt.Plus(spatialAnalyst, n, raster);
+    public static Grid Plus(double n, Grid grid)
+        => CoreExt.Plus(spatialAnalyst, n, grid);
 
-    public static Grid Power(this Grid raster1, Grid raster2)
-        => CoreExt.Power(spatialAnalyst, raster1, raster2);
+    public static Grid Power(this Grid grid1, Grid grid2)
+        => CoreExt.Power(spatialAnalyst, grid1, grid2);
 
-    public static Grid Power(this Grid raster, int n)
-        => CoreExt.Power(spatialAnalyst, raster, n);
+    public static Grid Power(this Grid grid, int n)
+        => CoreExt.Power(spatialAnalyst, grid, n);
 
-    public static Grid Power(int n, Grid raster)
-        => CoreExt.Power(spatialAnalyst, n, raster);
+    public static Grid Power(int n, Grid grid)
+        => CoreExt.Power(spatialAnalyst, n, grid);
 
-    public static Grid Power(this Grid raster, double n)
-        => CoreExt.Power(spatialAnalyst, raster, n);
+    public static Grid Power(this Grid grid, double n)
+        => CoreExt.Power(spatialAnalyst, grid, n);
 
-    public static Grid Power(double n, Grid raster)
-        => CoreExt.Power(spatialAnalyst, n, raster);
+    public static Grid Power(double n, Grid grid)
+        => CoreExt.Power(spatialAnalyst, n, grid);
 
-    public static Grid RoundDown(this Grid raster)
-        => CoreExt.RoundDown(spatialAnalyst, raster);
+    public static Grid RoundDown(this Grid grid)
+        => CoreExt.RoundDown(spatialAnalyst, grid);
 
-    public static Grid RoundUp(this Grid raster)
-        => CoreExt.RoundUp(spatialAnalyst, raster);
+    public static Grid RoundUp(this Grid grid)
+        => CoreExt.RoundUp(spatialAnalyst, grid);
 
-    public static Grid Square(this Grid raster)
-        => CoreExt.Square(spatialAnalyst, raster);
+    public static Grid Square(this Grid grid)
+        => CoreExt.Square(spatialAnalyst, grid);
 
-    public static Grid SquareRoot(this Grid raster)
-        => CoreExt.SquareRoot(spatialAnalyst, raster);
+    public static Grid SquareRoot(this Grid grid)
+        => CoreExt.SquareRoot(spatialAnalyst, grid);
 
-    public static Grid Times(this Grid raster1, Grid raster2)
-        => CoreExt.Times(spatialAnalyst, raster1, raster2);
+    public static Grid Times(this Grid grid1, Grid grid2)
+        => CoreExt.Times(spatialAnalyst, grid1, grid2);
 
-    public static Grid Times(this Grid raster, int n)
-        => CoreExt.Times(spatialAnalyst, raster, n);
+    public static Grid Times(this Grid grid, int n)
+        => CoreExt.Times(spatialAnalyst, grid, n);
 
-    public static Grid Times(int n, Grid raster)
-        => CoreExt.Times(spatialAnalyst, n, raster);
+    public static Grid Times(int n, Grid grid)
+        => CoreExt.Times(spatialAnalyst, n, grid);
 
-    public static Grid Times(this Grid raster, double n)
-        => CoreExt.Times(spatialAnalyst, raster, n);
+    public static Grid Times(this Grid grid, double n)
+        => CoreExt.Times(spatialAnalyst, grid, n);
 
-    public static Grid Times(double n, Grid raster)
-        => CoreExt.Times(spatialAnalyst, n, raster);
+    public static Grid Times(double n, Grid grid)
+        => CoreExt.Times(spatialAnalyst, n, grid);
 
     #region Bitwise
 
-    public static Grid BitwiseAnd(this Grid raster1, Grid raster2)
-        => CoreExt.BitwiseAnd(spatialAnalyst, raster1, raster2);
+    public static Grid BitwiseAnd(this Grid grid1, Grid grid2)
+        => CoreExt.BitwiseAnd(spatialAnalyst, grid1, grid2);
 
-    public static Grid BitwiseAnd(this Grid raster, int n)
-        => CoreExt.BitwiseAnd(spatialAnalyst, raster, n);
+    public static Grid BitwiseAnd(this Grid grid, int n)
+        => CoreExt.BitwiseAnd(spatialAnalyst, grid, n);
 
-    public static Grid BitwiseAnd(int n, Grid raster)
-        => CoreExt.BitwiseAnd(spatialAnalyst, n, raster);
+    public static Grid BitwiseAnd(int n, Grid grid)
+        => CoreExt.BitwiseAnd(spatialAnalyst, n, grid);
 
-    public static Grid BitwiseAnd(this Grid raster, double n)
-        => CoreExt.BitwiseAnd(spatialAnalyst, raster, n);
+    public static Grid BitwiseAnd(this Grid grid, double n)
+        => CoreExt.BitwiseAnd(spatialAnalyst, grid, n);
 
-    public static Grid BitwiseAnd(double n, Grid raster)
-        => CoreExt.BitwiseAnd(spatialAnalyst, n, raster);
+    public static Grid BitwiseAnd(double n, Grid grid)
+        => CoreExt.BitwiseAnd(spatialAnalyst, n, grid);
 
-    public static Grid BitwiseLeftShift(this Grid raster1, Grid raster2)
-        => CoreExt.BitwiseLeftShift(spatialAnalyst, raster1, raster2);
+    public static Grid BitwiseLeftShift(this Grid grid1, Grid grid2)
+        => CoreExt.BitwiseLeftShift(spatialAnalyst, grid1, grid2);
 
-    public static Grid BitwiseLeftShift(this Grid raster, int n)
-        => CoreExt.BitwiseLeftShift(spatialAnalyst, raster, n);
+    public static Grid BitwiseLeftShift(this Grid grid, int n)
+        => CoreExt.BitwiseLeftShift(spatialAnalyst, grid, n);
 
-    public static Grid BitwiseLeftShift(int n, Grid raster)
-        => CoreExt.BitwiseLeftShift(spatialAnalyst, n, raster);
+    public static Grid BitwiseLeftShift(int n, Grid grid)
+        => CoreExt.BitwiseLeftShift(spatialAnalyst, n, grid);
 
-    public static Grid BitwiseLeftShift(this Grid raster, double n)
-        => CoreExt.BitwiseLeftShift(spatialAnalyst, raster, n);
+    public static Grid BitwiseLeftShift(this Grid grid, double n)
+        => CoreExt.BitwiseLeftShift(spatialAnalyst, grid, n);
 
-    public static Grid BitwiseLeftShift(double n, Grid raster)
-        => CoreExt.BitwiseLeftShift(spatialAnalyst, n, raster);
+    public static Grid BitwiseLeftShift(double n, Grid grid)
+        => CoreExt.BitwiseLeftShift(spatialAnalyst, n, grid);
 
-    public static Grid BitwiseNot(this Grid raster)
-        => CoreExt.BitwiseNot(spatialAnalyst, raster);
+    public static Grid BitwiseNot(this Grid grid)
+        => CoreExt.BitwiseNot(spatialAnalyst, grid);
 
-    public static Grid BitwiseOr(this Grid raster1, Grid raster2)
-        => CoreExt.BitwiseOr(spatialAnalyst, raster1, raster2);
+    public static Grid BitwiseOr(this Grid grid1, Grid grid2)
+        => CoreExt.BitwiseOr(spatialAnalyst, grid1, grid2);
 
-    public static Grid BitwiseOr(this Grid raster, int n)
-        => CoreExt.BitwiseOr(spatialAnalyst, raster, n);
+    public static Grid BitwiseOr(this Grid grid, int n)
+        => CoreExt.BitwiseOr(spatialAnalyst, grid, n);
 
-    public static Grid BitwiseOr(int n, Grid raster)
-        => CoreExt.BitwiseOr(spatialAnalyst, n, raster);
+    public static Grid BitwiseOr(int n, Grid grid)
+        => CoreExt.BitwiseOr(spatialAnalyst, n, grid);
 
-    public static Grid BitwiseOr(this Grid raster, double n)
-        => CoreExt.BitwiseOr(spatialAnalyst, raster, n);
+    public static Grid BitwiseOr(this Grid grid, double n)
+        => CoreExt.BitwiseOr(spatialAnalyst, grid, n);
 
-    public static Grid BitwiseOr(double n, Grid raster)
-        => CoreExt.BitwiseOr(spatialAnalyst, n, raster);
+    public static Grid BitwiseOr(double n, Grid grid)
+        => CoreExt.BitwiseOr(spatialAnalyst, n, grid);
 
-    public static Grid BitwiseRightShift(this Grid raster1, Grid raster2)
-        => CoreExt.BitwiseRightShift(spatialAnalyst, raster1, raster2);
+    public static Grid BitwiseRightShift(this Grid grid1, Grid grid2)
+        => CoreExt.BitwiseRightShift(spatialAnalyst, grid1, grid2);
 
-    public static Grid BitwiseRightShift(this Grid raster, int n)
-        => CoreExt.BitwiseRightShift(spatialAnalyst, raster, n);
+    public static Grid BitwiseRightShift(this Grid grid, int n)
+        => CoreExt.BitwiseRightShift(spatialAnalyst, grid, n);
 
-    public static Grid BitwiseRightShift(int n, Grid raster)
-        => CoreExt.BitwiseRightShift(spatialAnalyst, n, raster);
+    public static Grid BitwiseRightShift(int n, Grid grid)
+        => CoreExt.BitwiseRightShift(spatialAnalyst, n, grid);
 
-    public static Grid BitwiseRightShift(this Grid raster, double n)
-        => CoreExt.BitwiseRightShift(spatialAnalyst, raster, n);
+    public static Grid BitwiseRightShift(this Grid grid, double n)
+        => CoreExt.BitwiseRightShift(spatialAnalyst, grid, n);
 
-    public static Grid BitwiseRightShift(double n, Grid raster)
-        => CoreExt.BitwiseRightShift(spatialAnalyst, n, raster);
+    public static Grid BitwiseRightShift(double n, Grid grid)
+        => CoreExt.BitwiseRightShift(spatialAnalyst, n, grid);
 
-    public static Grid BitwiseXOr(this Grid raster1, Grid raster2)
-        => CoreExt.BitwiseXOr(spatialAnalyst, raster1, raster2);
+    public static Grid BitwiseXOr(this Grid grid1, Grid grid2)
+        => CoreExt.BitwiseXOr(spatialAnalyst, grid1, grid2);
 
-    public static Grid BitwiseXOr(this Grid raster, int n)
-        => CoreExt.BitwiseXOr(spatialAnalyst, raster, n);
+    public static Grid BitwiseXOr(this Grid grid, int n)
+        => CoreExt.BitwiseXOr(spatialAnalyst, grid, n);
 
-    public static Grid BitwiseXOr(int n, Grid raster)
-        => CoreExt.BitwiseXOr(spatialAnalyst, n, raster);
+    public static Grid BitwiseXOr(int n, Grid grid)
+        => CoreExt.BitwiseXOr(spatialAnalyst, n, grid);
 
-    public static Grid BitwiseXOr(this Grid raster, double n)
-        => CoreExt.BitwiseXOr(spatialAnalyst, raster, n);
+    public static Grid BitwiseXOr(this Grid grid, double n)
+        => CoreExt.BitwiseXOr(spatialAnalyst, grid, n);
 
-    public static Grid BitwiseXOr(double n, Grid raster)
-        => CoreExt.BitwiseXOr(spatialAnalyst, n, raster);
+    public static Grid BitwiseXOr(double n, Grid grid)
+        => CoreExt.BitwiseXOr(spatialAnalyst, n, grid);
 
     #endregion
 
     #region Logical
 
-    public static Grid BooleanAnd(this Grid raster1, Grid raster2)
-        => CoreExt.BooleanAnd(spatialAnalyst, raster1, raster2);
+    public static Grid BooleanAnd(this Grid grid1, Grid grid2)
+        => CoreExt.BooleanAnd(spatialAnalyst, grid1, grid2);
 
-    public static Grid BooleanAnd(this Grid raster, int n)
-        => CoreExt.BooleanAnd(spatialAnalyst, raster, n);
+    public static Grid BooleanAnd(this Grid grid, int n)
+        => CoreExt.BooleanAnd(spatialAnalyst, grid, n);
 
-    public static Grid BooleanAnd(int n, Grid raster)
-        => CoreExt.BooleanAnd(spatialAnalyst, n, raster);
+    public static Grid BooleanAnd(int n, Grid grid)
+        => CoreExt.BooleanAnd(spatialAnalyst, n, grid);
 
-    public static Grid BooleanAnd(this Grid raster, double n)
-        => CoreExt.BooleanAnd(spatialAnalyst, raster, n);
+    public static Grid BooleanAnd(this Grid grid, double n)
+        => CoreExt.BooleanAnd(spatialAnalyst, grid, n);
 
-    public static Grid BooleanAnd(double n, Grid raster)
-        => CoreExt.BooleanAnd(spatialAnalyst, n, raster);
+    public static Grid BooleanAnd(double n, Grid grid)
+        => CoreExt.BooleanAnd(spatialAnalyst, n, grid);
 
-    public static Grid BooleanNot(this Grid raster)
-        => CoreExt.BooleanNot(spatialAnalyst, raster);
+    public static Grid BooleanNot(this Grid grid)
+        => CoreExt.BooleanNot(spatialAnalyst, grid);
 
-    public static Grid BooleanOr(this Grid raster1, Grid raster2)
-        => CoreExt.BooleanOr(spatialAnalyst, raster1, raster2);
+    public static Grid BooleanOr(this Grid grid1, Grid grid2)
+        => CoreExt.BooleanOr(spatialAnalyst, grid1, grid2);
 
-    public static Grid BooleanOr(this Grid raster, int n)
-        => CoreExt.BooleanOr(spatialAnalyst, raster, n);
+    public static Grid BooleanOr(this Grid grid, int n)
+        => CoreExt.BooleanOr(spatialAnalyst, grid, n);
 
-    public static Grid BooleanOr(int n, Grid raster)
-        => CoreExt.BooleanOr(spatialAnalyst, n, raster);
+    public static Grid BooleanOr(int n, Grid grid)
+        => CoreExt.BooleanOr(spatialAnalyst, n, grid);
 
-    public static Grid BooleanOr(this Grid raster, double n)
-        => CoreExt.BooleanOr(spatialAnalyst, raster, n);
+    public static Grid BooleanOr(this Grid grid, double n)
+        => CoreExt.BooleanOr(spatialAnalyst, grid, n);
 
-    public static Grid BooleanOr(double n, Grid raster)
-        => CoreExt.BooleanOr(spatialAnalyst, n, raster);
+    public static Grid BooleanOr(double n, Grid grid)
+        => CoreExt.BooleanOr(spatialAnalyst, n, grid);
 
-    public static Grid BooleanXOr(this Grid raster1, Grid raster2)
-        => CoreExt.BooleanXOr(spatialAnalyst, raster1, raster2);
+    public static Grid BooleanXOr(this Grid grid1, Grid grid2)
+        => CoreExt.BooleanXOr(spatialAnalyst, grid1, grid2);
 
-    public static Grid BooleanXOr(this Grid raster, int n)
-        => CoreExt.BooleanXOr(spatialAnalyst, raster, n);
+    public static Grid BooleanXOr(this Grid grid, int n)
+        => CoreExt.BooleanXOr(spatialAnalyst, grid, n);
 
-    public static Grid BooleanXOr(int n, Grid raster)
-        => CoreExt.BooleanXOr(spatialAnalyst, n, raster);
+    public static Grid BooleanXOr(int n, Grid grid)
+        => CoreExt.BooleanXOr(spatialAnalyst, n, grid);
 
-    public static Grid BooleanXOr(this Grid raster, double n)
-        => CoreExt.BooleanXOr(spatialAnalyst, raster, n);
+    public static Grid BooleanXOr(this Grid grid, double n)
+        => CoreExt.BooleanXOr(spatialAnalyst, grid, n);
 
-    public static Grid BooleanXOr(double n, Grid raster)
-        => CoreExt.BooleanXOr(spatialAnalyst, n, raster);
+    public static Grid BooleanXOr(double n, Grid grid)
+        => CoreExt.BooleanXOr(spatialAnalyst, n, grid);
 
-    public static Grid CombinatorialAnd(this Grid raster1, Grid raster2)
-        => CoreExt.CombinatorialAnd(spatialAnalyst, raster1, raster2);
+    public static Grid CombinatorialAnd(this Grid grid1, Grid grid2)
+        => CoreExt.CombinatorialAnd(spatialAnalyst, grid1, grid2);
 
-    public static Grid CombinatorialAnd(this Grid raster, int n)
-        => CoreExt.CombinatorialAnd(spatialAnalyst, raster, n);
+    public static Grid CombinatorialAnd(this Grid grid, int n)
+        => CoreExt.CombinatorialAnd(spatialAnalyst, grid, n);
 
-    public static Grid CombinatorialAnd(int n, Grid raster)
-        => CoreExt.CombinatorialAnd(spatialAnalyst, n, raster);
+    public static Grid CombinatorialAnd(int n, Grid grid)
+        => CoreExt.CombinatorialAnd(spatialAnalyst, n, grid);
 
-    public static Grid CombinatorialOr(this Grid raster1, Grid raster2)
-        => CoreExt.CombinatorialOr(spatialAnalyst, raster1, raster2);
+    public static Grid CombinatorialOr(this Grid grid1, Grid grid2)
+        => CoreExt.CombinatorialOr(spatialAnalyst, grid1, grid2);
 
-    public static Grid CombinatorialOr(this Grid raster, int n)
-        => CoreExt.CombinatorialOr(spatialAnalyst, raster, n);
+    public static Grid CombinatorialOr(this Grid grid, int n)
+        => CoreExt.CombinatorialOr(spatialAnalyst, grid, n);
 
-    public static Grid CombinatorialOr(int n, Grid raster)
-        => CoreExt.CombinatorialOr(spatialAnalyst, n, raster);
+    public static Grid CombinatorialOr(int n, Grid grid)
+        => CoreExt.CombinatorialOr(spatialAnalyst, n, grid);
 
-    public static Grid CombinatorialXOr(this Grid raster1, Grid raster2)
-        => CoreExt.CombinatorialXOr(spatialAnalyst, raster1, raster2);
+    public static Grid CombinatorialXOr(this Grid grid1, Grid grid2)
+        => CoreExt.CombinatorialXOr(spatialAnalyst, grid1, grid2);
 
-    public static Grid CombinatorialXOr(this Grid raster, int n)
-        => CoreExt.CombinatorialXOr(spatialAnalyst, raster, n);
+    public static Grid CombinatorialXOr(this Grid grid, int n)
+        => CoreExt.CombinatorialXOr(spatialAnalyst, grid, n);
 
-    public static Grid CombinatorialXOr(int n, Grid raster)
-        => CoreExt.CombinatorialXOr(spatialAnalyst, n, raster);
+    public static Grid CombinatorialXOr(int n, Grid grid)
+        => CoreExt.CombinatorialXOr(spatialAnalyst, n, grid);
 
-    public static Grid Diff(this Grid raster1, Grid raster2)
-        => CoreExt.Diff(spatialAnalyst, raster1, raster2);
+    public static Grid Diff(this Grid grid1, Grid grid2)
+        => CoreExt.Diff(spatialAnalyst, grid1, grid2);
 
-    public static Grid Diff(this Grid raster, int n)
-        => CoreExt.Diff(spatialAnalyst, raster, n);
+    public static Grid Diff(this Grid grid, int n)
+        => CoreExt.Diff(spatialAnalyst, grid, n);
 
-    public static Grid Diff(int n, Grid raster)
-        => CoreExt.Diff(spatialAnalyst, n, raster);
+    public static Grid Diff(int n, Grid grid)
+        => CoreExt.Diff(spatialAnalyst, n, grid);
 
-    public static Grid Diff(this Grid raster, double n)
-        => CoreExt.Diff(spatialAnalyst, raster, n);
+    public static Grid Diff(this Grid grid, double n)
+        => CoreExt.Diff(spatialAnalyst, grid, n);
 
-    public static Grid Diff(double n, Grid raster)
-        => CoreExt.Diff(spatialAnalyst, n, raster);
+    public static Grid Diff(double n, Grid grid)
+        => CoreExt.Diff(spatialAnalyst, n, grid);
 
-    public static Grid EqualTo(this Grid raster1, Grid raster2)
-        => CoreExt.EqualTo(spatialAnalyst, raster1, raster2);
+    public static Grid EqualTo(this Grid grid1, Grid grid2)
+        => CoreExt.EqualTo(spatialAnalyst, grid1, grid2);
 
-    public static Grid EqualTo(this Grid raster, int n)
-        => CoreExt.EqualTo(spatialAnalyst, raster, n);
+    public static Grid EqualTo(this Grid grid, int n)
+        => CoreExt.EqualTo(spatialAnalyst, grid, n);
 
-    public static Grid EqualTo(int n, Grid raster)
-        => CoreExt.EqualTo(spatialAnalyst, n, raster);
+    public static Grid EqualTo(int n, Grid grid)
+        => CoreExt.EqualTo(spatialAnalyst, n, grid);
 
-    public static Grid EqualTo(this Grid raster, double n)
-        => CoreExt.EqualTo(spatialAnalyst, raster, n);
+    public static Grid EqualTo(this Grid grid, double n)
+        => CoreExt.EqualTo(spatialAnalyst, grid, n);
 
-    public static Grid EqualTo(double n, Grid raster)
-        => CoreExt.EqualTo(spatialAnalyst, n, raster);
+    public static Grid EqualTo(double n, Grid grid)
+        => CoreExt.EqualTo(spatialAnalyst, n, grid);
 
-    public static Grid GreaterThan(this Grid raster1, Grid raster2)
-        => CoreExt.GreaterThan(spatialAnalyst, raster1, raster2);
+    public static Grid GreaterThan(this Grid grid1, Grid grid2)
+        => CoreExt.GreaterThan(spatialAnalyst, grid1, grid2);
 
-    public static Grid GreaterThan(this Grid raster, int n)
-        => CoreExt.GreaterThan(spatialAnalyst, raster, n);
+    public static Grid GreaterThan(this Grid grid, int n)
+        => CoreExt.GreaterThan(spatialAnalyst, grid, n);
 
-    public static Grid GreaterThan(int n, Grid raster)
-        => CoreExt.GreaterThan(spatialAnalyst, n, raster);
+    public static Grid GreaterThan(int n, Grid grid)
+        => CoreExt.GreaterThan(spatialAnalyst, n, grid);
 
-    public static Grid GreaterThan(this Grid raster, double n)
-        => CoreExt.GreaterThan(spatialAnalyst, raster, n);
+    public static Grid GreaterThan(this Grid grid, double n)
+        => CoreExt.GreaterThan(spatialAnalyst, grid, n);
 
-    public static Grid GreaterThan(double n, Grid raster)
-        => CoreExt.GreaterThan(spatialAnalyst, n, raster);
+    public static Grid GreaterThan(double n, Grid grid)
+        => CoreExt.GreaterThan(spatialAnalyst, n, grid);
 
-    public static Grid GreaterThanEqual(this Grid raster1, Grid raster2)
-        => CoreExt.GreaterThanEqual(spatialAnalyst, raster1, raster2);
+    public static Grid GreaterThanEqual(this Grid grid1, Grid grid2)
+        => CoreExt.GreaterThanEqual(spatialAnalyst, grid1, grid2);
 
-    public static Grid GreaterThanEqual(this Grid raster, int n)
-        => CoreExt.GreaterThanEqual(spatialAnalyst, raster, n);
+    public static Grid GreaterThanEqual(this Grid grid, int n)
+        => CoreExt.GreaterThanEqual(spatialAnalyst, grid, n);
 
-    public static Grid GreaterThanEqual(int n, Grid raster)
-        => CoreExt.GreaterThanEqual(spatialAnalyst, n, raster);
+    public static Grid GreaterThanEqual(int n, Grid grid)
+        => CoreExt.GreaterThanEqual(spatialAnalyst, n, grid);
 
-    public static Grid GreaterThanEqual(this Grid raster, double n)
-        => CoreExt.GreaterThanEqual(spatialAnalyst, raster, n);
+    public static Grid GreaterThanEqual(this Grid grid, double n)
+        => CoreExt.GreaterThanEqual(spatialAnalyst, grid, n);
 
-    public static Grid GreaterThanEqual(double n, Grid raster)
-        => CoreExt.GreaterThanEqual(spatialAnalyst, n, raster);
+    public static Grid GreaterThanEqual(double n, Grid grid)
+        => CoreExt.GreaterThanEqual(spatialAnalyst, n, grid);
 
-    public static Grid InList(this Grid raster, params Grid[] list)
-        => CoreExt.InList(spatialAnalyst, raster, list);
+    public static Grid InList(this Grid grid, params Grid[] list)
+        => CoreExt.InList(spatialAnalyst, grid, list);
 
-    public static Grid InList(this Grid raster, params int[] list)
-        => CoreExt.InList(spatialAnalyst, raster, list);
+    public static Grid InList(this Grid grid, params int[] list)
+        => CoreExt.InList(spatialAnalyst, grid, list);
 
     public static Grid InList(int n, params Grid[] list)
         => CoreExt.InList(spatialAnalyst, n, list);
 
-    public static Grid InList(this Grid raster, params double[] list)
-        => CoreExt.InList(spatialAnalyst, raster, list);
+    public static Grid InList(this Grid grid, params double[] list)
+        => CoreExt.InList(spatialAnalyst, grid, list);
 
     public static Grid InList(double n, params Grid[] list)
         => CoreExt.InList(spatialAnalyst, n, list);
 
-    public static Grid IsNull(this Grid raster)
-        => CoreExt.IsNull(spatialAnalyst, raster);
+    public static Grid IsNull(this Grid grid)
+        => CoreExt.IsNull(spatialAnalyst, grid);
 
-    public static Grid LessThan(this Grid raster1, Grid raster2)
-        => CoreExt.LessThan(spatialAnalyst, raster1, raster2);
+    public static Grid LessThan(this Grid grid1, Grid grid2)
+        => CoreExt.LessThan(spatialAnalyst, grid1, grid2);
 
-    public static Grid LessThan(this Grid raster, int n)
-        => CoreExt.LessThan(spatialAnalyst, raster, n);
+    public static Grid LessThan(this Grid grid, int n)
+        => CoreExt.LessThan(spatialAnalyst, grid, n);
 
-    public static Grid LessThan(int n, Grid raster)
-        => CoreExt.LessThan(spatialAnalyst, n, raster);
+    public static Grid LessThan(int n, Grid grid)
+        => CoreExt.LessThan(spatialAnalyst, n, grid);
 
-    public static Grid LessThan(this Grid raster, double n)
-        => CoreExt.LessThan(spatialAnalyst, raster, n);
+    public static Grid LessThan(this Grid grid, double n)
+        => CoreExt.LessThan(spatialAnalyst, grid, n);
 
-    public static Grid LessThan(double n, Grid raster)
-        => CoreExt.LessThan(spatialAnalyst, n, raster);
+    public static Grid LessThan(double n, Grid grid)
+        => CoreExt.LessThan(spatialAnalyst, n, grid);
 
-    public static Grid LessThanEqual(this Grid raster1, Grid raster2)
-        => CoreExt.LessThanEqual(spatialAnalyst, raster1, raster2);
+    public static Grid LessThanEqual(this Grid grid1, Grid grid2)
+        => CoreExt.LessThanEqual(spatialAnalyst, grid1, grid2);
 
-    public static Grid LessThanEqual(this Grid raster, int n)
-        => CoreExt.LessThanEqual(spatialAnalyst, raster, n);
+    public static Grid LessThanEqual(this Grid grid, int n)
+        => CoreExt.LessThanEqual(spatialAnalyst, grid, n);
 
-    public static Grid LessThanEqual(int n, Grid raster)
-        => CoreExt.LessThanEqual(spatialAnalyst, n, raster);
+    public static Grid LessThanEqual(int n, Grid grid)
+        => CoreExt.LessThanEqual(spatialAnalyst, n, grid);
 
-    public static Grid LessThanEqual(this Grid raster, double n)
-        => CoreExt.LessThanEqual(spatialAnalyst, raster, n);
+    public static Grid LessThanEqual(this Grid grid, double n)
+        => CoreExt.LessThanEqual(spatialAnalyst, grid, n);
 
-    public static Grid LessThanEqual(double n, Grid raster)
-        => CoreExt.LessThanEqual(spatialAnalyst, n, raster);
+    public static Grid LessThanEqual(double n, Grid grid)
+        => CoreExt.LessThanEqual(spatialAnalyst, n, grid);
 
-    public static Grid NotEqual(this Grid raster1, Grid raster2)
-        => CoreExt.NotEqual(spatialAnalyst, raster1, raster2);
+    public static Grid NotEqual(this Grid grid1, Grid grid2)
+        => CoreExt.NotEqual(spatialAnalyst, grid1, grid2);
 
-    public static Grid NotEqual(this Grid raster, int n)
-        => CoreExt.NotEqual(spatialAnalyst, raster, n);
+    public static Grid NotEqual(this Grid grid, int n)
+        => CoreExt.NotEqual(spatialAnalyst, grid, n);
 
-    public static Grid NotEqual(int n, Grid raster)
-        => CoreExt.NotEqual(spatialAnalyst, n, raster);
+    public static Grid NotEqual(int n, Grid grid)
+        => CoreExt.NotEqual(spatialAnalyst, n, grid);
 
-    public static Grid NotEqual(this Grid raster, double n)
-        => CoreExt.NotEqual(spatialAnalyst, raster, n);
+    public static Grid NotEqual(this Grid grid, double n)
+        => CoreExt.NotEqual(spatialAnalyst, grid, n);
 
-    public static Grid NotEqual(double n, Grid raster)
-        => CoreExt.NotEqual(spatialAnalyst, n, raster);
+    public static Grid NotEqual(double n, Grid grid)
+        => CoreExt.NotEqual(spatialAnalyst, n, grid);
 
-    public static Grid Over(this Grid raster1, Grid raster2)
-        => CoreExt.Over(spatialAnalyst, raster1, raster2);
+    public static Grid Over(this Grid grid1, Grid grid2)
+        => CoreExt.Over(spatialAnalyst, grid1, grid2);
 
-    public static Grid Over(this Grid raster, int n)
-        => CoreExt.Over(spatialAnalyst, raster, n);
+    public static Grid Over(this Grid grid, int n)
+        => CoreExt.Over(spatialAnalyst, grid, n);
 
-    public static Grid Over(int n, Grid raster)
-        => CoreExt.Over(spatialAnalyst, n, raster);
+    public static Grid Over(int n, Grid grid)
+        => CoreExt.Over(spatialAnalyst, n, grid);
 
-    public static Grid Over(this Grid raster, double n)
-        => CoreExt.Over(spatialAnalyst, raster, n);
+    public static Grid Over(this Grid grid, double n)
+        => CoreExt.Over(spatialAnalyst, grid, n);
 
-    public static Grid Over(double n, Grid raster)
-        => CoreExt.Over(spatialAnalyst, n, raster);
+    public static Grid Over(double n, Grid grid)
+        => CoreExt.Over(spatialAnalyst, n, grid);
 
-    public static Grid Test(this Grid raster, string whereClause)
-        => CoreExt.Test(spatialAnalyst, raster, whereClause);
+    public static Grid Test(this Grid grid, string whereClause)
+        => CoreExt.Test(spatialAnalyst, grid, whereClause);
 
     #endregion
 
     #region Trigonometric
 
-    public static Grid ACos(this Grid raster)
-        => CoreExt.ACos(spatialAnalyst, raster);
+    public static Grid ACos(this Grid grid)
+        => CoreExt.ACos(spatialAnalyst, grid);
 
-    public static Grid ACosH(this Grid raster)
-        => CoreExt.ACosH(spatialAnalyst, raster);
+    public static Grid ACosH(this Grid grid)
+        => CoreExt.ACosH(spatialAnalyst, grid);
 
-    public static Grid ASin(this Grid raster)
-        => CoreExt.ASin(spatialAnalyst, raster);
+    public static Grid ASin(this Grid grid)
+        => CoreExt.ASin(spatialAnalyst, grid);
 
-    public static Grid ASinH(this Grid raster)
-        => CoreExt.ASinH(spatialAnalyst, raster);
+    public static Grid ASinH(this Grid grid)
+        => CoreExt.ASinH(spatialAnalyst, grid);
 
-    public static Grid ATan(this Grid raster)
-        => CoreExt.ATan(spatialAnalyst, raster);
+    public static Grid ATan(this Grid grid)
+        => CoreExt.ATan(spatialAnalyst, grid);
 
-    public static Grid ATan2(this Grid raster1, Grid raster2)
-        => CoreExt.ATan2(spatialAnalyst, raster1, raster2);
+    public static Grid ATan2(this Grid grid1, Grid grid2)
+        => CoreExt.ATan2(spatialAnalyst, grid1, grid2);
 
-    public static Grid ATan2(this Grid raster, int n)
-        => CoreExt.ATan2(spatialAnalyst, raster, n);
+    public static Grid ATan2(this Grid grid, int n)
+        => CoreExt.ATan2(spatialAnalyst, grid, n);
 
-    public static Grid ATan2(this Grid raster, double n)
-        => CoreExt.ATan2(spatialAnalyst, raster, n);
+    public static Grid ATan2(this Grid grid, double n)
+        => CoreExt.ATan2(spatialAnalyst, grid, n);
 
-    public static Grid ATan2(int n, Grid raster)
-        => CoreExt.ATan2(spatialAnalyst, n, raster);
+    public static Grid ATan2(int n, Grid grid)
+        => CoreExt.ATan2(spatialAnalyst, n, grid);
 
-    public static Grid ATan2(double n, Grid raster)
-        => CoreExt.ATan2(spatialAnalyst, n, raster);
+    public static Grid ATan2(double n, Grid grid)
+        => CoreExt.ATan2(spatialAnalyst, n, grid);
 
-    public static Grid ATanH(this Grid raster)
-        => CoreExt.ATanH(spatialAnalyst, raster);
+    public static Grid ATanH(this Grid grid)
+        => CoreExt.ATanH(spatialAnalyst, grid);
 
-    public static Grid Cos(this Grid raster)
-        => CoreExt.Cos(spatialAnalyst, raster);
+    public static Grid Cos(this Grid grid)
+        => CoreExt.Cos(spatialAnalyst, grid);
 
-    public static Grid CosH(this Grid raster)
-        => CoreExt.CosH(spatialAnalyst, raster);
+    public static Grid CosH(this Grid grid)
+        => CoreExt.CosH(spatialAnalyst, grid);
 
-    public static Grid Sin(this Grid raster)
-        => CoreExt.Sin(spatialAnalyst, raster);
+    public static Grid Sin(this Grid grid)
+        => CoreExt.Sin(spatialAnalyst, grid);
 
-    public static Grid SinH(this Grid raster)
-        => CoreExt.SinH(spatialAnalyst, raster);
+    public static Grid SinH(this Grid grid)
+        => CoreExt.SinH(spatialAnalyst, grid);
 
-    public static Grid Tan(this Grid raster)
-        => CoreExt.Tan(spatialAnalyst, raster);
+    public static Grid Tan(this Grid grid)
+        => CoreExt.Tan(spatialAnalyst, grid);
 
-    public static Grid TanH(this Grid raster)
-        => CoreExt.TanH(spatialAnalyst, raster);
+    public static Grid TanH(this Grid grid)
+        => CoreExt.TanH(spatialAnalyst, grid);
 
     #endregion
 
@@ -999,9 +999,9 @@ public static class GridExt
         return File.ReadAllText(path);
     }
 
-    private static IEnumerable<string[]> ReadStringRows(this Grid raster)
+    private static IEnumerable<string[]> ReadStringRows(this Grid grid)
     {
-        var path = SaveToASCII(raster);
+        var path = SaveToASCII(grid);
 
         using StreamReader reader = new(path);
 
@@ -1010,19 +1010,19 @@ public static class GridExt
             var line = reader.ReadLine()!;
             var values = line.Split(' ');
 
-            if (values.Length < raster.Width)
+            if (values.Length < grid.Width)
                 continue;
 
             yield return values.Where(x => x != "").ToArray();
         }
     }
 
-    public static IEnumerable<T?[]> ReadRows<T>(this Grid raster)
+    public static IEnumerable<T?[]> ReadRows<T>(this Grid grid)
     {
-        var noDataValue = raster.NoDataValue?.ToString();
+        var noDataValue = grid.NoDataValue?.ToString();
         var type = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
 
-        foreach (var row in raster.ReadStringRows())
+        foreach (var row in grid.ReadStringRows())
             yield return row.Select(x => x == noDataValue ? default : (T)Convert.ChangeType(x, type)).ToArray();
     }
 
@@ -1038,11 +1038,11 @@ public static class GridExt
         return Enumerable.Range(0, grid.Height).Select(n => ymin + grid.MeanCellHeight * n).ToArray();
     }
 
-    public static IEnumerable<(double x, double y, T? value)> ReadPoints<T>(this Grid raster)
+    public static IEnumerable<(double x, double y, T? value)> ReadPoints<T>(this Grid grid)
     {
-        var rows = raster.ReadRows<T?>();
-        var xCoordinates = raster.GetXCoordinates();
-        var yCoordinates = raster.GetYCoordinates();
+        var rows = grid.ReadRows<T?>();
+        var xCoordinates = grid.GetXCoordinates();
+        var yCoordinates = grid.GetYCoordinates();
 
         return yCoordinates
             .Reverse()
@@ -1050,30 +1050,30 @@ public static class GridExt
             .SelectMany(row => xCoordinates.Zip(row.values, (x, z) => (x, row.y, z)));
     }
 
-    public static Grid Composite(params Grid[] rasters)
+    public static Grid Composite(params Grid[] grids)
     {
-        return arcpy.Run($"arcpy.ia.CompositeBand({ArcPy.Format(rasters)})");
+        return arcpy.Run($"arcpy.ia.CompositeBand({ArcPy.Format(grids)})");
     }
 
-    public static Grid[] Extract(this Grid raster, params int[] bands)
+    public static Grid[] Extract(this Grid grid, params int[] bands)
     {
-        return bands.Select(x => (Grid)arcpy.Run($"arcpy.ia.ExtractBand({raster}, [{x}])")).ToArray();
+        return bands.Select(x => (Grid)arcpy.Run($"arcpy.ia.ExtractBand({grid}, [{x}])")).ToArray();
     }
 
-    public static Grid[] Extract(this Grid raster)
+    public static Grid[] Extract(this Grid grid)
     {
-        return Extract(raster, Enumerable.Range(1, raster.BandCount).ToArray());
+        return Extract(grid, Enumerable.Range(1, grid.BandCount).ToArray());
     }
 
-    public static Grid Extract(this Grid raster, int band)
+    public static Grid Extract(this Grid grid, int band)
     {
-        return Extract(raster, new[] { band })[0];
+        return Extract(grid, new[] { band })[0];
     }
 
-    public static Grid Project(this Grid raster, int outWkid)
+    public static Grid Project(this Grid grid, int outWkid)
     {
         var path = $@"{arcpy.Workspace}\{ArcPy.GetTempName()}";
-        arcpy.management.ProjectRaster(raster, path, (Code)$"arcpy.SpatialReference({outWkid})");
+        arcpy.management.ProjectRaster(grid, path, (Code)$"arcpy.SpatialReference({outWkid})");
         return new Grid(path);
     }
 

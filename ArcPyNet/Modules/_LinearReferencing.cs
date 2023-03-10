@@ -9,6 +9,8 @@ public class _LinearReferencing
         return ArcPy.Instance.Run($"arcpy.lr.{method}", args);
     }
 
+    internal _LinearReferencing() { }
+
     public Code CalibrateRoutes(params object?[] args) => Run(args);
     public Code CreateRoutes(params object?[] args) => Run(args);
     public Code DissolveRouteEvents(params object?[] args) => Run(args);

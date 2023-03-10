@@ -9,6 +9,8 @@ public class _SpatialAnalyst
         return ArcPy.Instance.Run($"arcpy.sa.{method}", args);
     }
 
+    internal _SpatialAnalyst() { }
+
     public Code ACos(params object?[] args) => Run(args);
     public Code ACosH(params object?[] args) => Run(args);
     public Code ASin(params object?[] args) => Run(args);

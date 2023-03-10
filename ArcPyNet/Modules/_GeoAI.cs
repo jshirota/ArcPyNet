@@ -9,6 +9,8 @@ public class _GeoAI
         return ArcPy.Instance.Run($"arcpy.geoai.{method}", args);
     }
 
+    internal _GeoAI() { }
+
     public Code ClassifyTextUsingDeepLearning(params object?[] args) => Run(args);
     public Code ExtractEntitiesUsingDeepLearning(params object?[] args) => Run(args);
     public Code ExtractFeaturesUsingAIModels(params object?[] args) => Run(args);

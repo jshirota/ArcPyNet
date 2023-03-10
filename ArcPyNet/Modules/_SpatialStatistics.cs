@@ -9,6 +9,8 @@ public class _SpatialStatistics
         return ArcPy.Instance.Run($"arcpy.stats.{method}", args);
     }
 
+    internal _SpatialStatistics() { }
+
     public Code AverageNearestNeighbor(params object?[] args) => Run(args);
     public Code BuildBalancedZones(params object?[] args) => Run(args);
     public Code CalculateAreas(params object?[] args) => Run(args);

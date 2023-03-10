@@ -9,6 +9,8 @@ public class _Intelligence
         return ArcPy.Instance.Run($"arcpy.intelligence.{method}", args);
     }
 
+    internal _Intelligence() { }
+
     public Code BatchImportData(params object?[] args) => Run(args);
     public Code ClassifyMovementEvents(params object?[] args) => Run(args);
     public Code CompareAreas(params object?[] args) => Run(args);

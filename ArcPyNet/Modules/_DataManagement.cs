@@ -9,6 +9,8 @@ public class _DataManagement
         return ArcPy.Instance.Run($"arcpy.management.{method}", args);
     }
 
+    internal _DataManagement() { }
+
     public Code Add3DFormats(params object?[] args) => Run(args);
     public Code AddAttachments(params object?[] args) => Run(args);
     public Code AddAttributeRule(params object?[] args) => Run(args);
