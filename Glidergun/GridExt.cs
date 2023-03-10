@@ -979,8 +979,8 @@ public static class GridExt
         var temp2 = ArcPy.GetTempName();
 
         var result = arcpy.Run($"""
-            arcpy.MakeRasterLayer_management(arcpy.sa.Colormap({grid.Name}, {ArcPy.Format(colorRamp)}), "{temp1}")
-            arcpy.CopyRaster_management("{temp1}", "{temp2}")
+            arcpy.management.MakeRasterLayer(arcpy.sa.Colormap({grid.Name}, {ArcPy.Format(colorRamp)}), "{temp1}")
+            arcpy.management.CopyRaster("{temp1}", "{temp2}")
             """, $"""arcpy.sa.Raster("{temp2}")""");
 
         return result;
@@ -1068,6 +1068,13 @@ public static class GridExt
     public static Grid Extract(this Grid raster, int band)
     {
         return Extract(raster, new[] { band })[0];
+    }
+
+    public static Grid Project(this Grid raster, int outWkid)
+    {
+        var path = $@"{arcpy.Workspace}\{ArcPy.GetTempName()}";
+        arcpy.management.ProjectRaster(raster, path, (Code)$"arcpy.SpatialReference({outWkid})");
+        return new Grid(path);
     }
 
     #endregion

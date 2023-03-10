@@ -4,7 +4,7 @@ public class FilePath
 {
     private readonly string path;
 
-    private FilePath(string name)
+    public FilePath(string name)
     {
         path = Path.IsPathRooted(name) ? name
             : Path.Combine(Environment.CurrentDirectory, name);
