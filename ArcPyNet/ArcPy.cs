@@ -1,4 +1,6 @@
 ﻿using Python.Runtime;
+using System.Collections;
+using System.ComponentModel;
 
 namespace ArcPyNet;
 
@@ -95,11 +97,28 @@ public class ArcPy : IDisposable
         return value switch
         {
             null => "None",
-            Enum @enum => $@"r""{@enum.ToEnumString()}""",
+            Enum @enum => $@"r""{ToEnumString(@enum)}""",
             double or float => $"float({value})",
             string s => $@"r""{s}""",
+            IEnumerable values => $"[{string.Join(", ", values.Cast<object>().Select(Format))}]",
             _ => value.ToString()
         };
+    }
+
+    private static string ToEnumString<T>(T @enum) where T : Enum
+    {
+        var attribute = @enum
+            .GetType()
+            .GetMember(@enum.ToString())
+            .Single()
+            .GetCustomAttributes(false)
+            .OfType<DescriptionAttribute>()
+            .SingleOrDefault();
+
+        if (attribute is null)
+            return @enum.ToString();
+
+        return attribute.Description;
     }
 
     public void Dispose()

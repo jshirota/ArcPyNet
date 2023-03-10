@@ -4,7 +4,8 @@ namespace Glidergun;
 
 public static class GridExt
 {
-    private static readonly _SpatialAnalyst spatialAnalyst = ArcPy.Instance.sa;
+    private static readonly ArcPy arcpy = ArcPy.Instance;
+    private static readonly _SpatialAnalyst spatialAnalyst = arcpy.sa;
 
     #region Conditional
 
@@ -977,12 +978,96 @@ public static class GridExt
         var temp1 = ArcPy.GetTempName();
         var temp2 = ArcPy.GetTempName();
 
-        var result = ArcPy.Instance.Run($"""
+        var result = arcpy.Run($"""
             arcpy.MakeRasterLayer_management(arcpy.sa.Colormap({grid.Name}, {ArcPy.Format(colorRamp)}), "{temp1}")
             arcpy.CopyRaster_management("{temp1}", "{temp2}")
             """, $"""arcpy.sa.Raster("{temp2}")""");
 
         return result;
+    }
+
+    private static string SaveToASCII(this Grid grid)
+    {
+        var path = $@"{arcpy.Workspace}\{ArcPy.GetTempName()}.txt";
+        arcpy.conversion.RasterToASCII(grid, path);
+        return path;
+    }
+
+    public static string ToASCII(this Grid grid)
+    {
+        var path = grid.SaveToASCII();
+        return File.ReadAllText(path);
+    }
+
+    private static IEnumerable<string[]> ReadStringRows(this Grid raster)
+    {
+        var path = SaveToASCII(raster);
+
+        using StreamReader reader = new(path);
+
+        while (!reader.EndOfStream)
+        {
+            var line = reader.ReadLine()!;
+            var values = line.Split(' ');
+
+            if (values.Length < raster.Width)
+                continue;
+
+            yield return values.Where(x => x != "").ToArray();
+        }
+    }
+
+    public static IEnumerable<T?[]> ReadRows<T>(this Grid raster)
+    {
+        var noDataValue = raster.NoDataValue?.ToString();
+        var type = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
+
+        foreach (var row in raster.ReadStringRows())
+            yield return row.Select(x => x == noDataValue ? default : (T)Convert.ChangeType(x, type)).ToArray();
+    }
+
+    public static double[] GetXCoordinates(this Grid grid)
+    {
+        var xmin = grid.Extent.Xmin + grid.MeanCellWidth / 2;
+        return Enumerable.Range(0, grid.Width).Select(n => xmin + grid.MeanCellWidth * n).ToArray();
+    }
+
+    public static double[] GetYCoordinates(this Grid grid)
+    {
+        var ymin = grid.Extent.Ymin + grid.MeanCellHeight / 2;
+        return Enumerable.Range(0, grid.Height).Select(n => ymin + grid.MeanCellHeight * n).ToArray();
+    }
+
+    public static IEnumerable<(double x, double y, T? value)> ReadPoints<T>(this Grid raster)
+    {
+        var rows = raster.ReadRows<T?>();
+        var xCoordinates = raster.GetXCoordinates();
+        var yCoordinates = raster.GetYCoordinates();
+
+        return yCoordinates
+            .Reverse()
+            .Zip(rows, (y, values) => new { y, values })
+            .SelectMany(row => xCoordinates.Zip(row.values, (x, z) => (x, row.y, z)));
+    }
+
+    public static Grid Composite(params Grid[] rasters)
+    {
+        return arcpy.Run($"arcpy.ia.CompositeBand({ArcPy.Format(rasters)})");
+    }
+
+    public static Grid[] Extract(this Grid raster, params int[] bands)
+    {
+        return bands.Select(x => (Grid)arcpy.Run($"arcpy.ia.ExtractBand({raster}, [{x}])")).ToArray();
+    }
+
+    public static Grid[] Extract(this Grid raster)
+    {
+        return Extract(raster, Enumerable.Range(1, raster.BandCount).ToArray());
+    }
+
+    public static Grid Extract(this Grid raster, int band)
+    {
+        return Extract(raster, new[] { band })[0];
     }
 
     #endregion
