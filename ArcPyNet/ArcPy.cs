@@ -95,7 +95,6 @@ public class ArcPy : IDisposable
         return value switch
         {
             null => "None",
-            IVariable variable => variable.Variable,
             Enum @enum => $@"r""{@enum.ToEnumString()}""",
             double or float => $"float({value})",
             string s => $@"r""{s}""",

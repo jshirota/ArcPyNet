@@ -4,9 +4,14 @@ namespace ArcPyNet;
 
 public record Code
 {
-    public string Text { get; private set; } = default!;
+    private readonly string expression;
 
     private string? json;
+
+    private Code(string expression)
+    {
+        this.expression = expression;
+    }
 
     public T Evaluate<T>()
     {
@@ -17,7 +22,7 @@ public record Code
 
             ArcPy.Instance.Run($"""
                 with open(r"{jsonPath}", "w") as json_file:
-                    json_file.write(json.dumps({Text}, default=str))
+                    json_file.write(json.dumps({expression}, default=str))
                 """, "None");
 
             this.json = File.ReadAllText(jsonPath);
@@ -29,16 +34,11 @@ public record Code
         return value;
     }
 
-    public static implicit operator Code(string text) => new() { Text = text };
-    public static implicit operator string(Code variable) => variable.Text;
+    public static implicit operator Code(string expression) => new(expression);
+    public static implicit operator string(Code code) => code.expression;
 
     public override string ToString()
     {
-        return this.Text;
+        return this.expression;
     }
-}
-
-public interface IVariable
-{
-    public Code Variable { get; }
 }

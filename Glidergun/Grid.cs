@@ -2,32 +2,32 @@
 
 namespace Glidergun;
 
-public class Grid : Metadata, IVariable
+public class Grid : Metadata
 {
-    public Code Variable { get; }
+    public Code Name { get; private set; }
 
-    public Grid(Code variable)
+    public Grid(Code name)
     {
-        this.Variable = variable;
+        this.Name = name;
 
         var code = $$"""
             {
-                "bandCount": {{variable}}.bandCount,
-                "extent": json.loads({{variable}}.extent.JSON),
-                "width": {{variable}}.width,
-                "height": {{variable}}.height,
-                "pixelType": {{variable}}.pixelType,
-                "isInteger": {{variable}}.isInteger,
-                "noDataValue": {{variable}}.noDataValue,
-                "minimum": {{variable}}.minimum,
-                "maximum": {{variable}}.maximum,
-                "mean": {{variable}}.mean,
-                "standardDeviation": {{variable}}.standardDeviation,
-                "meanCellWidth": {{variable}}.meanCellWidth,
-                "meanCellHeight": {{variable}}.meanCellHeight,
-                "wkid": {{variable}}.spatialReference.factoryCode,
-                "wkt": {{variable}}.spatialReference.exportToString(),
-                "hasColormap": hasattr(arcpy.sa.Raster, "getColormap") and {{variable}}.getColormap("") is not None
+                "bandCount": {{name}}.bandCount,
+                "extent": json.loads({{name}}.extent.JSON),
+                "width": {{name}}.width,
+                "height": {{name}}.height,
+                "pixelType": {{name}}.pixelType,
+                "isInteger": {{name}}.isInteger,
+                "noDataValue": {{name}}.noDataValue,
+                "minimum": {{name}}.minimum,
+                "maximum": {{name}}.maximum,
+                "mean": {{name}}.mean,
+                "standardDeviation": {{name}}.standardDeviation,
+                "meanCellWidth": {{name}}.meanCellWidth,
+                "meanCellHeight": {{name}}.meanCellHeight,
+                "wkid": {{name}}.spatialReference.factoryCode,
+                "wkt": {{name}}.spatialReference.exportToString(),
+                "hasColormap": hasattr(arcpy.sa.Raster, "getColormap") and {{name}}.getColormap("") is not None
             }
             """;
 
@@ -67,21 +67,24 @@ public class Grid : Metadata, IVariable
 
     public void Save(string fileName)
     {
-        var code = $"""
-            {this.Variable}.save(r"{fileName}")
-            """;
+        var code = $"""{this.Name}.save(r"{fileName}")""";
 
         ArcPy.Instance.Run(code);
     }
 
     public override bool Equals(object? obj)
     {
-        return obj is Grid grid && grid.Variable == this.Variable;
+        return obj is Grid grid && grid.Name == this.Name;
     }
 
     public override int GetHashCode()
     {
         return 0;
+    }
+
+    public override string ToString()
+    {
+        return this.Name;
     }
 
     public static Grid operator +(Grid grid1, Grid grid2) => ArcPy.Instance.sa.Plus(grid1, grid2);
@@ -181,8 +184,8 @@ public class Grid : Metadata, IVariable
             {
                 var grids = obj switch
                 {
-                    Grid r => new[] { r },
-                    IEnumerable<Grid> r => r.ToArray(),
+                    Grid x => new[] { x },
+                    IEnumerable<Grid> x => x.ToArray(),
                     ValueTuple<Grid, Grid> t => new[] { t.Item1, t.Item2 },
                     ValueTuple<Grid, Grid, Grid> t => new[] { t.Item1, t.Item2, t.Item3 },
                     ValueTuple<Grid, Grid, Grid, Grid> t => new[] { t.Item1, t.Item2, t.Item3, t.Item4 },
@@ -190,7 +193,7 @@ public class Grid : Metadata, IVariable
                     _ => Array.Empty<Grid>()
                 };
 
-                writer.Write($"<table><tr>{string.Join("", grids.Select(r => $"<td align=left><p>{r}</p>{r.Thumbnail}</td>"))}</tr></table>");
+                writer.Write($"<table><tr>{string.Join("", grids.Select(x => $"<td align=left><p>{x.Description}</p>{x.Thumbnail}</td>"))}</tr></table>");
             };
 
             method.Invoke(null, new object[] { type, action, "text/html" });
@@ -227,19 +230,22 @@ public class Metadata
     public string? Wkt { get; set; }
     public bool HasColormap { get; set; }
 
-    public override string ToString()
+    public string Description
     {
-        var (min, max) = IsInteger ? ($"{Minimum}", $"{Maximum}") : ($"{Minimum:F6}", $"{Maximum:F6}");
-
-        return $@"{new
+        get
         {
-            Range = $"{min} ~ {max}",
-            Mean = $"{Mean:F6}",
-            Size = $"{Width} x {Height}",
-            PixelType,
-            CellSize = $"{MeanCellWidth:F6}",
-            Wkid
-        }}";
+            var (min, max) = IsInteger ? ($"{Minimum}", $"{Maximum}") : ($"{Minimum:F6}", $"{Maximum:F6}");
+
+            return $@"{new
+            {
+                Range = $"{min} ~ {max}",
+                Mean = $"{Mean:F6}",
+                Size = $"{Width} x {Height}",
+                PixelType,
+                CellSize = $"{MeanCellWidth:F6}",
+                Wkid
+            }}";
+        }
     }
 }
 

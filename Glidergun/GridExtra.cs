@@ -13,7 +13,7 @@ public static class GridExtra
         var temp2 = ArcPy.GetTempName();
 
         var result = ArcPy.Instance.Run($"""
-            arcpy.MakeRasterLayer_management(arcpy.sa.Colormap({grid.Variable}, {ArcPy.Format(colorRamp)}), "{temp1}")
+            arcpy.MakeRasterLayer_management(arcpy.sa.Colormap({grid.Name}, {ArcPy.Format(colorRamp)}), "{temp1}")
             arcpy.CopyRaster_management("{temp1}", "{temp2}")
             """, $"""arcpy.sa.Raster("{temp2}")""");
 
