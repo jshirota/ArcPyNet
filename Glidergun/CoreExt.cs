@@ -68,16 +68,16 @@ public static class CoreExt
     public static Grid Corridor(this _SpatialAnalyst spatialAnalyst, Grid inDistanceGrid1, Grid inDistanceGrid2)
         => spatialAnalyst.Corridor(inDistanceGrid1, inDistanceGrid2);
 
-    public static Grid CostAllocation(this _SpatialAnalyst spatialAnalyst, Grid inSourceData, Grid inCostGrid, double? maximumDistance = null, Grid? inValueGrid = null, string? sourceField = null, Grid? outDistanceGrid = null, Grid? outBacklinkGrid = null, double sourceCostMultiplier = 1, double sourceStartCost = 0, double sourceResistanceRate = 0, double? sourceCapacity = null, SourceDirection sourceDirection = SourceDirection.FromSource)
+    public static Grid CostAllocation(this _SpatialAnalyst spatialAnalyst, Grid inSourceData, Grid inCostGrid, double? maximumDistance = null, Grid? inValueGrid = null, string? sourceField = null, Grid? outDistanceGrid = null, Grid? outBacklinkGrid = null, double sourceCostMultiplier = 1, double sourceStartCost = 0, double sourceResistanceRate = 0, double? sourceCapacity = null, SourceDirection sourceDirection = SourceDirection.From_Source)
         => spatialAnalyst.CostAllocation(inSourceData, inCostGrid, maximumDistance, inValueGrid, sourceField, outDistanceGrid, outBacklinkGrid, sourceCostMultiplier, sourceStartCost, sourceResistanceRate, sourceCapacity, sourceDirection);
 
-    public static Grid CostBackLink(this _SpatialAnalyst spatialAnalyst, Grid inSourceData, Grid inCostGrid, double? maximumDistance = null, Grid? outDistanceGrid = null, double sourceCostMultiplier = 1, double sourceStartCost = 0, double sourceResistanceRate = 0, double? sourceCapacity = null, SourceDirection sourceDirection = SourceDirection.FromSource)
+    public static Grid CostBackLink(this _SpatialAnalyst spatialAnalyst, Grid inSourceData, Grid inCostGrid, double? maximumDistance = null, Grid? outDistanceGrid = null, double sourceCostMultiplier = 1, double sourceStartCost = 0, double sourceResistanceRate = 0, double? sourceCapacity = null, SourceDirection sourceDirection = SourceDirection.From_Source)
         => spatialAnalyst.CostBackLink(inSourceData, inCostGrid, maximumDistance, outDistanceGrid, sourceCostMultiplier, sourceStartCost, sourceResistanceRate, sourceCapacity, sourceDirection);
 
     public static void CostConnectivity(this _SpatialAnalyst spatialAnalyst, Grid inRegions, Grid inCostGrid, FilePath outFeatureClass, string? outNeighborPaths = null)
         => spatialAnalyst.CostConnectivity(inRegions, inCostGrid, outFeatureClass, outNeighborPaths);
 
-    public static Grid CostDistance(this _SpatialAnalyst spatialAnalyst, Grid inSourceData, Grid inCostGrid, double? maximumDistance = null, Grid? outBacklinkGrid = null, double sourceCostMultiplier = 1, double sourceStartCost = 0, double sourceResistanceRate = 0, double? sourceCapacity = null, SourceDirection sourceDirection = SourceDirection.FromSource)
+    public static Grid CostDistance(this _SpatialAnalyst spatialAnalyst, Grid inSourceData, Grid inCostGrid, double? maximumDistance = null, Grid? outBacklinkGrid = null, double sourceCostMultiplier = 1, double sourceStartCost = 0, double sourceResistanceRate = 0, double? sourceCapacity = null, SourceDirection sourceDirection = SourceDirection.From_Source)
         => spatialAnalyst.CostDistance(inSourceData, inCostGrid, maximumDistance, outBacklinkGrid, sourceCostMultiplier, sourceStartCost, sourceResistanceRate, sourceCapacity, sourceDirection);
 
     public static Grid CostPath(this _SpatialAnalyst spatialAnalyst, Grid inDestinationData, Grid inCostDistanceGrid, Grid inCostBacklinkGrid, string? pathType = null, string? destinationField = null, bool? forceFlowDirectionConvention = null)
@@ -117,10 +117,10 @@ public static class CoreExt
     public static void ExtractMultiValuesToPoints(this _SpatialAnalyst spatialAnalyst, FilePath inPointFeatures, (Grid raster, string outputFieldName)[] inGrids, Interpolation bilinearInterpolateValues = Interpolation.None)
         => spatialAnalyst.ExtractMultiValuesToPoints(inPointFeatures, inGrids, bilinearInterpolateValues);
 
-    public static void ExtractValuesToPoints(this _SpatialAnalyst spatialAnalyst, FilePath inPointFeatures, Grid inGrid, FilePath outPointFeatures, InterpolateValues interpolateValues = InterpolateValues.None, AddAttributes addAttributes = AddAttributes.ValueOnly)
+    public static void ExtractValuesToPoints(this _SpatialAnalyst spatialAnalyst, FilePath inPointFeatures, Grid inGrid, FilePath outPointFeatures, InterpolateValues interpolateValues = InterpolateValues.None, AddAttributes addAttributes = AddAttributes.Value_Only)
         => spatialAnalyst.ExtractValuesToPoints(inPointFeatures, inGrid, outPointFeatures, interpolateValues, addAttributes);
 
-    public static void Sample(this _SpatialAnalyst spatialAnalyst, Grid[] inGrids, FilePath inLocationData, FilePath outTable, Resampling resamplingType = Resampling.Nearest, string? uniqueIdField = null, Slices processAsMultidimensional = Slices.CurrentSlice)
+    public static void Sample(this _SpatialAnalyst spatialAnalyst, Grid[] inGrids, FilePath inLocationData, FilePath outTable, Resampling resamplingType = Resampling.Nearest, string? uniqueIdField = null, Slices processAsMultidimensional = Slices.Current_Slice)
         => spatialAnalyst.Sample(inGrids, inLocationData, outTable, resamplingType, uniqueIdField, processAsMultidimensional);
 
     #endregion
@@ -142,7 +142,7 @@ public static class CoreExt
     public static Grid Nibble(this _SpatialAnalyst spatialAnalyst, Grid inGrid, Grid inMaskGrid, bool? nibbleValues = null, bool? nibbleNodata = null, Grid? inZoneGrid = null)
         => spatialAnalyst.Nibble(inGrid, inMaskGrid, nibbleValues, nibbleNodata, inZoneGrid);
 
-    public static Grid RegionGroup(this _SpatialAnalyst spatialAnalyst, Grid inGrid, NumberNeighbors numberNeighbors = NumberNeighbors.Four, ZoneConnectivity zoneConnectivity = ZoneConnectivity.Within, AddLink addLink = AddLink.AddLink, int? excludedValue = null)
+    public static Grid RegionGroup(this _SpatialAnalyst spatialAnalyst, Grid inGrid, NumberNeighbors numberNeighbors = NumberNeighbors.Four, ZoneConnectivity zoneConnectivity = ZoneConnectivity.Within, AddLink addLink = AddLink.Add_Link, int? excludedValue = null)
         => spatialAnalyst.RegionGroup(inGrid, numberNeighbors, zoneConnectivity, addLink, excludedValue);
 
     public static Grid Shrink(this _SpatialAnalyst spatialAnalyst, Grid inGrid, int numberCells, params int[] zoneValues)
@@ -857,7 +857,7 @@ public static class CoreExt
     public static Grid RescaleByFunction(this _SpatialAnalyst spatialAnalyst, Grid inGrid, Tf? transformationFunction = null, double fromScale = 1, double toScale = 10)
         => spatialAnalyst.RescaleByFunction(inGrid, transformationFunction, fromScale, toScale);
 
-    public static Grid Slice(this _SpatialAnalyst spatialAnalyst, Grid inGrid, int numberZones, SliceType sliceType = SliceType.EqualInterval, int baseOutputZone = 1)
+    public static Grid Slice(this _SpatialAnalyst spatialAnalyst, Grid inGrid, int numberZones, SliceType sliceType = SliceType.Equal_Interval, int baseOutputZone = 1)
         => spatialAnalyst.Slice(inGrid, numberZones, sliceType, baseOutputZone);
 
     #endregion
