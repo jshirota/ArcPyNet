@@ -4,17 +4,23 @@ namespace Glidergun;
 
 public enum AddAttributes
 {
-    ValueOnly, All
+    ValueOnly,
+    All
 }
 
 public enum AddLink
 {
-    AddLink, NoLink
+    AddLink,
+    NoLink
 }
 
 public enum AggregationType
 {
-    Sum, Maximum, Mean, Median, Minimum
+    Sum,
+    Maximum,
+    Mean,
+    Median,
+    Minimum
 }
 
 public enum Algorithm
@@ -24,12 +30,15 @@ public enum Algorithm
 
 public enum AnalysisType
 {
-    Frequency, Observers
+    Frequency,
+    Observers
 }
 
 public enum APriori
 {
-    Equal, Sample, File
+    Equal,
+    Sample,
+    File
 }
 
 public enum ColorRamp
@@ -180,72 +189,91 @@ public enum ColorRamp
 
 public enum ComputeCovariance
 {
-    Covariance, MeanOnly
+    Covariance,
+    MeanOnly
 }
 
 public enum ContourType
 {
-    Contour, ContourPolygon, ContourShell, ContourShellUp
+    Contour,
+    ContourPolygon,
+    ContourShell,
+    ContourShellUp
 }
 
 public enum DataType
 {
-    Integer, Float
+    Integer,
+    Float
 }
 
 public enum DistanceCalculation
 {
-    Variance, MeanOnly
+    Variance,
+    MeanOnly
 }
 
 public enum ExtentHandling
 {
-    Expand, Truncate
+    Expand,
+    Truncate
 }
 
 public enum ExtractionArea
 {
-    Inside, Outside
+    Inside,
+    Outside
 }
 
 public enum FilterType
 {
-    Low, High
+    Low,
+    High
 }
 
 public enum InterpolateValues
 {
-    None, Interpolate
+    None,
+    Interpolate
 }
 
 public enum Interpolation
 {
-    None, Bilinear
+    None,
+    Bilinear
 }
 
 public enum Method
 {
-    Planar, Geodesic
+    Planar,
+    Geodesic
 }
 
 public enum MissingValues
 {
-    Data, Nodata
+    Data,
+    Nodata
 }
 
 public enum NeighborhoodUnit
 {
-    Cell, Map
+    Cell,
+    Map
 }
 
 public enum NumberNeighbors
 {
-    Four, Eight
+    Four,
+    Eight
 }
 
 public enum OrdinarySemivariogram
 {
-    Spherical, Circular, Exponential, Gaussian, Linear
+    Spherical,
+    Circular,
+    Exponential,
+    Gaussian,
+    Linear
 }
 
 public enum RasterFormat
@@ -255,55 +283,86 @@ public enum RasterFormat
 
 public enum RegressionType
 {
-    Linear, Logistic
+    Linear,
+    Logistic
 }
 
 public enum Resampling
 {
-    Nearest, Bilinear, Cubic, Majority
+    Nearest,
+    Bilinear,
+    Cubic,
+    Majority
 }
 
 public enum Slices
 {
-    AllSlices, CurrentSlice
+    AllSlices,
+    CurrentSlice
 }
 
 public enum SlopeMeasurement
 {
-    Degree, PercentRise
+    Degree,
+    PercentRise
 }
 
 public enum SourceDirection
 {
-    FromSource, ToSource
+    FromSource,
+    ToSource
 }
 
 public enum SliceType
 {
-    EqualInterval, EqualArea, NaturalBreaks
+    EqualInterval,
+    EqualArea,
+    NaturalBreaks
 }
 
 public enum SplineType
 {
-    Regularized, Tension
+    Regularized,
+    Tension
 }
 
 public enum StatisticsType
 {
-    Mean, Maximum, Median, Minimum, Percentile, Range, Std, Sum
+    Mean,
+    Maximum,
+    Median,
+    Minimum,
+    Percentile,
+    Range,
+    Std,
+    Sum
 }
 
 public enum UniversalSemivariogram
 {
-    Spherical, Circular, Exponential, Gaussian, Linear
+    Spherical,
+    Circular,
+    Exponential,
+    Gaussian,
+    Linear
 }
 
 public enum ZoneConnectivity
 {
-    Within, Cross
+    Within,
+    Cross
 }
 
 public enum ZUnit
 {
-    Inch, Foot, Yard, MileUs, NauticalMile, Millimeter, Centimeter, Meter, Kilometer, Decimeter
+    Inch,
+    Foot,
+    Yard,
+    MileUs,
+    NauticalMile,
+    Millimeter,
+    Centimeter,
+    Meter,
+    Kilometer,
+    Decimeter
 }

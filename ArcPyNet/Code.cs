@@ -5,10 +5,9 @@ namespace ArcPyNet;
 public record Code
 {
     private readonly string expression;
-
     private string? json;
 
-    private Code(string expression)
+    public Code(string expression)
     {
         this.expression = expression;
     }

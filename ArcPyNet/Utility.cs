@@ -2,9 +2,9 @@
 
 namespace ArcPyNet;
 
-internal static class Utility
+public static class Utility
 {
-    public static string ToEnumString<T>(this T @enum) where T : Enum
+    internal static string ToEnumString<T>(this T @enum) where T : Enum
     {
         var attribute = @enum
             .GetType()

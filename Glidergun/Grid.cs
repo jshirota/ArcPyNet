@@ -35,7 +35,8 @@ public class Grid : Metadata
         var metadata = result.Evaluate<Metadata>();
 
         foreach (var p in typeof(Metadata).GetProperties())
-            p.SetValue(this, p.GetValue(metadata));
+            if (p.CanWrite)
+                p.SetValue(this, p.GetValue(metadata));
     }
 
     public Grid(string name)
