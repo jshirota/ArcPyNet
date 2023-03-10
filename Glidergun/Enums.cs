@@ -4,14 +4,14 @@ namespace Glidergun;
 
 public enum AddAttributes
 {
-    ValueOnly,
+    Value_Only,
     All
 }
 
 public enum AddLink
 {
-    AddLink,
-    NoLink
+    Add_Link,
+    No_Link
 }
 
 public enum AggregationType
@@ -21,17 +21,6 @@ public enum AggregationType
     Mean,
     Median,
     Minimum
-}
-
-public enum Algorithm
-{
-    esriHSVAlgorithm, esriCIELabAlgorithm, esriLabLChAlgorithm
-}
-
-public enum AnalysisType
-{
-    Frequency,
-    Observers
 }
 
 public enum APriori
@@ -190,27 +179,21 @@ public enum ColorRamp
 public enum ComputeCovariance
 {
     Covariance,
-    MeanOnly
+    Mean_Only
 }
 
 public enum ContourType
 {
     Contour,
-    ContourPolygon,
-    ContourShell,
-    ContourShellUp
-}
-
-public enum DataType
-{
-    Integer,
-    Float
+    Contour_Polygon,
+    Contour_Shell,
+    Contour_Shell_Up
 }
 
 public enum DistanceCalculation
 {
     Variance,
-    MeanOnly
+    Mean_Only
 }
 
 public enum ExtentHandling
@@ -297,27 +280,27 @@ public enum Resampling
 
 public enum Slices
 {
-    AllSlices,
-    CurrentSlice
+    All_Slices,
+    Current_Slice
 }
 
 public enum SlopeMeasurement
 {
     Degree,
-    PercentRise
+    Percent_Rise
 }
 
 public enum SourceDirection
 {
-    FromSource,
-    ToSource
+    From_Source,
+    To_Source
 }
 
 public enum SliceType
 {
-    EqualInterval,
-    EqualArea,
-    NaturalBreaks
+    Equal_Interval,
+    Equal_Area,
+    Natural_Breaks
 }
 
 public enum SplineType
@@ -358,8 +341,8 @@ public enum ZUnit
     Inch,
     Foot,
     Yard,
-    MileUs,
-    NauticalMile,
+    Mile_Us,
+    Nautical_Mile,
     Millimeter,
     Centimeter,
     Meter,
