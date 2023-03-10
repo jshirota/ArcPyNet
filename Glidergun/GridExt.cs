@@ -1,8 +1,10 @@
-﻿namespace Glidergun;
+﻿using ArcPyNet;
 
-public static class GridCore
+namespace Glidergun;
+
+public static class GridExt
 {
-    private static readonly ArcPyNet._SpatialAnalyst spatialAnalyst = ArcPyNet.ArcPy.Instance.sa;
+    private static readonly _SpatialAnalyst spatialAnalyst = ArcPy.Instance.sa;
 
     #region Conditional
 
@@ -965,6 +967,23 @@ public static class GridCore
 
     public static void ZonalStatisticsAsTable(this Grid inZoneData, string zoneField, Grid inValueGrid, FilePath outTable, MissingValues ignoreNodata = MissingValues.Data, string? statisticsType = null)
         => CoreExt.ZonalStatisticsAsTable(spatialAnalyst, inZoneData, zoneField, inValueGrid, outTable, ignoreNodata, statisticsType);
+
+    #endregion
+
+    #region Extra
+
+    public static Grid Color(this Grid grid, ColorRamp colorRamp)
+    {
+        var temp1 = ArcPy.GetTempName();
+        var temp2 = ArcPy.GetTempName();
+
+        var result = ArcPy.Instance.Run($"""
+            arcpy.MakeRasterLayer_management(arcpy.sa.Colormap({grid.Name}, {ArcPy.Format(colorRamp)}), "{temp1}")
+            arcpy.CopyRaster_management("{temp1}", "{temp2}")
+            """, $"""arcpy.sa.Raster("{temp2}")""");
+
+        return result;
+    }
 
     #endregion
 }
