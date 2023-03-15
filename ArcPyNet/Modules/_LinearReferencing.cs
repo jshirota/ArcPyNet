@@ -4,18 +4,21 @@ namespace ArcPyNet;
 
 public class _LinearReferencing
 {
+    internal _LinearReferencing() { }
+}
+
+public static class _LinearReferencingExt
+{
     private static Code Run(object?[] args, [CallerMemberName] string method = "")
     {
         return ArcPy.Instance.Run($"arcpy.lr.{method}", args);
     }
 
-    internal _LinearReferencing() { }
-
-    public Code CalibrateRoutes(params object?[] args) => Run(args);
-    public Code CreateRoutes(params object?[] args) => Run(args);
-    public Code DissolveRouteEvents(params object?[] args) => Run(args);
-    public Code LocateFeaturesAlongRoutes(params object?[] args) => Run(args);
-    public Code MakeRouteEventLayer(params object?[] args) => Run(args);
-    public Code OverlayRouteEvents(params object?[] args) => Run(args);
-    public Code TransformRouteEvents(params object?[] args) => Run(args);
+    public static Code CalibrateRoutes(this _LinearReferencing _, params object?[] args) => Run(args);
+    public static Code CreateRoutes(this _LinearReferencing _, params object?[] args) => Run(args);
+    public static Code DissolveRouteEvents(this _LinearReferencing _, params object?[] args) => Run(args);
+    public static Code LocateFeaturesAlongRoutes(this _LinearReferencing _, params object?[] args) => Run(args);
+    public static Code MakeRouteEventLayer(this _LinearReferencing _, params object?[] args) => Run(args);
+    public static Code OverlayRouteEvents(this _LinearReferencing _, params object?[] args) => Run(args);
+    public static Code TransformRouteEvents(this _LinearReferencing _, params object?[] args) => Run(args);
 }

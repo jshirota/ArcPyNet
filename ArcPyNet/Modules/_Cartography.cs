@@ -4,55 +4,58 @@ namespace ArcPyNet;
 
 public class _Cartography
 {
+    internal _Cartography() { }
+}
+
+public static class _CartographyExt
+{
     private static Code Run(object?[] args, [CallerMemberName] string method = "")
     {
         return ArcPy.Instance.Run($"arcpy.cartography.{method}", args);
     }
 
-    internal _Cartography() { }
-
-    public Code AggregatePoints(params object?[] args) => Run(args);
-    public Code AggregatePolygons(params object?[] args) => Run(args);
-    public Code AlignMarkerToStrokeOrFill(params object?[] args) => Run(args);
-    public Code AnnotateSelectedFeatures(params object?[] args) => Run(args);
-    public Code CalculateAdjacentFields(params object?[] args) => Run(args);
-    public Code CalculateCentralMeridianAndParallels(params object?[] args) => Run(args);
-    public Code CalculateGridConvergenceAngle(params object?[] args) => Run(args);
-    public Code CalculateLineCaps(params object?[] args) => Run(args);
-    public Code CalculatePolygonMainAngle(params object?[] args) => Run(args);
-    public Code CalculateUTMZone(params object?[] args) => Run(args);
-    public Code CollapseHydroPolygon(params object?[] args) => Run(args);
-    public Code CollapseRoadDetail(params object?[] args) => Run(args);
-    public Code ContourAnnotation(params object?[] args) => Run(args);
-    public Code ConvertLabelsToAnnotation(params object?[] args) => Run(args);
-    public Code ConvertLabelsToGraphics(params object?[] args) => Run(args);
-    public Code CreateCartographicPartitions(params object?[] args) => Run(args);
-    public Code CreateOverpass(params object?[] args) => Run(args);
-    public Code CreateUnderpass(params object?[] args) => Run(args);
-    public Code CulDeSacMasks(params object?[] args) => Run(args);
-    public Code DelineateBuiltUpAreas(params object?[] args) => Run(args);
-    public Code DetectGraphicConflict(params object?[] args) => Run(args);
-    public Code DisperseMarkers(params object?[] args) => Run(args);
-    public Code FeatureOutlineMasks(params object?[] args) => Run(args);
-    public Code GenerateHachuresForDefinedSlopes(params object?[] args) => Run(args);
-    public Code GridIndexFeatures(params object?[] args) => Run(args);
-    public Code IntersectingLayersMasks(params object?[] args) => Run(args);
-    public Code MapServerCacheTilingSchemeToPolygons(params object?[] args) => Run(args);
-    public Code MergeDividedRoads(params object?[] args) => Run(args);
-    public Code PropagateDisplacement(params object?[] args) => Run(args);
-    public Code ResolveBuildingConflicts(params object?[] args) => Run(args);
-    public Code ResolveRoadConflicts(params object?[] args) => Run(args);
-    public Code SetControlPointAtIntersect(params object?[] args) => Run(args);
-    public Code SetControlPointByAngle(params object?[] args) => Run(args);
-    public Code SimplifyBuilding(params object?[] args) => Run(args);
-    public Code SimplifyLine(params object?[] args) => Run(args);
-    public Code SimplifyPolygon(params object?[] args) => Run(args);
-    public Code SimplifySharedEdges(params object?[] args) => Run(args);
-    public Code SmoothLine(params object?[] args) => Run(args);
-    public Code SmoothPolygon(params object?[] args) => Run(args);
-    public Code SmoothSharedEdges(params object?[] args) => Run(args);
-    public Code StripMapIndexFeatures(params object?[] args) => Run(args);
-    public Code ThinRoadNetwork(params object?[] args) => Run(args);
-    public Code TiledLabelsToAnnotation(params object?[] args) => Run(args);
-    public Code UpdateAnnotationReferenceScale(params object?[] args) => Run(args);
+    public static Code AggregatePoints(this _Cartography _, params object?[] args) => Run(args);
+    public static Code AggregatePolygons(this _Cartography _, params object?[] args) => Run(args);
+    public static Code AlignMarkerToStrokeOrFill(this _Cartography _, params object?[] args) => Run(args);
+    public static Code AnnotateSelectedFeatures(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CalculateAdjacentFields(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CalculateCentralMeridianAndParallels(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CalculateGridConvergenceAngle(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CalculateLineCaps(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CalculatePolygonMainAngle(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CalculateUTMZone(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CollapseHydroPolygon(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CollapseRoadDetail(this _Cartography _, params object?[] args) => Run(args);
+    public static Code ContourAnnotation(this _Cartography _, params object?[] args) => Run(args);
+    public static Code ConvertLabelsToAnnotation(this _Cartography _, params object?[] args) => Run(args);
+    public static Code ConvertLabelsToGraphics(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CreateCartographicPartitions(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CreateOverpass(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CreateUnderpass(this _Cartography _, params object?[] args) => Run(args);
+    public static Code CulDeSacMasks(this _Cartography _, params object?[] args) => Run(args);
+    public static Code DelineateBuiltUpAreas(this _Cartography _, params object?[] args) => Run(args);
+    public static Code DetectGraphicConflict(this _Cartography _, params object?[] args) => Run(args);
+    public static Code DisperseMarkers(this _Cartography _, params object?[] args) => Run(args);
+    public static Code FeatureOutlineMasks(this _Cartography _, params object?[] args) => Run(args);
+    public static Code GenerateHachuresForDefinedSlopes(this _Cartography _, params object?[] args) => Run(args);
+    public static Code GridIndexFeatures(this _Cartography _, params object?[] args) => Run(args);
+    public static Code IntersectingLayersMasks(this _Cartography _, params object?[] args) => Run(args);
+    public static Code MapServerCacheTilingSchemeToPolygons(this _Cartography _, params object?[] args) => Run(args);
+    public static Code MergeDividedRoads(this _Cartography _, params object?[] args) => Run(args);
+    public static Code PropagateDisplacement(this _Cartography _, params object?[] args) => Run(args);
+    public static Code ResolveBuildingConflicts(this _Cartography _, params object?[] args) => Run(args);
+    public static Code ResolveRoadConflicts(this _Cartography _, params object?[] args) => Run(args);
+    public static Code SetControlPointAtIntersect(this _Cartography _, params object?[] args) => Run(args);
+    public static Code SetControlPointByAngle(this _Cartography _, params object?[] args) => Run(args);
+    public static Code SimplifyBuilding(this _Cartography _, params object?[] args) => Run(args);
+    public static Code SimplifyLine(this _Cartography _, params object?[] args) => Run(args);
+    public static Code SimplifyPolygon(this _Cartography _, params object?[] args) => Run(args);
+    public static Code SimplifySharedEdges(this _Cartography _, params object?[] args) => Run(args);
+    public static Code SmoothLine(this _Cartography _, params object?[] args) => Run(args);
+    public static Code SmoothPolygon(this _Cartography _, params object?[] args) => Run(args);
+    public static Code SmoothSharedEdges(this _Cartography _, params object?[] args) => Run(args);
+    public static Code StripMapIndexFeatures(this _Cartography _, params object?[] args) => Run(args);
+    public static Code ThinRoadNetwork(this _Cartography _, params object?[] args) => Run(args);
+    public static Code TiledLabelsToAnnotation(this _Cartography _, params object?[] args) => Run(args);
+    public static Code UpdateAnnotationReferenceScale(this _Cartography _, params object?[] args) => Run(args);
 }

@@ -4,26 +4,29 @@ namespace ArcPyNet;
 
 public class _Geocoding
 {
+    internal _Geocoding() { }
+}
+
+public static class _GeocodingExt
+{
     private static Code Run(object?[] args, [CallerMemberName] string method = "")
     {
         return ArcPy.Instance.Run($"arcpy.geocoding.{method}", args);
     }
 
-    internal _Geocoding() { }
-
-    public Code AssignZonesToStreets(params object?[] args) => Run(args);
-    public Code ClipLocator(params object?[] args) => Run(args);
-    public Code ConsolidateLocator(params object?[] args) => Run(args);
-    public Code CreateCompositeAddressLocator(params object?[] args) => Run(args);
-    public Code CreateFeatureLocator(params object?[] args) => Run(args);
-    public Code CreateLocator(params object?[] args) => Run(args);
-    public Code GeocodeAddresses(params object?[] args) => Run(args);
-    public Code GeocodeFile(params object?[] args) => Run(args);
-    public Code GeocodeLocationsFromTable(params object?[] args) => Run(args);
-    public Code Locator(params object?[] args) => Run(args);
-    public Code PackageLocator(params object?[] args) => Run(args);
-    public Code RebuildAddressLocator(params object?[] args) => Run(args);
-    public Code RematchAddresses(params object?[] args) => Run(args);
-    public Code ReverseGeocode(params object?[] args) => Run(args);
-    public Code SplitAddressIntoComponents(params object?[] args) => Run(args);
+    public static Code AssignZonesToStreets(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code ClipLocator(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code ConsolidateLocator(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code CreateCompositeAddressLocator(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code CreateFeatureLocator(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code CreateLocator(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code GeocodeAddresses(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code GeocodeFile(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code GeocodeLocationsFromTable(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code Locator(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code PackageLocator(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code RebuildAddressLocator(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code RematchAddresses(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code ReverseGeocode(this _Geocoding _, params object?[] args) => Run(args);
+    public static Code SplitAddressIntoComponents(this _Geocoding _, params object?[] args) => Run(args);
 }

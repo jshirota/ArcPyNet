@@ -4,40 +4,43 @@ namespace ArcPyNet;
 
 public class _RasterAnalysis
 {
+    internal _RasterAnalysis() { }
+}
+
+public static class _RasterAnalysisExt
+{
     private static Code Run(object?[] args, [CallerMemberName] string method = "")
     {
         return ArcPy.Instance.Run($"arcpy.ra.{method}", args);
     }
 
-    internal _RasterAnalysis() { }
-
-    public Code CalculateDensity(params object?[] args) => Run(args);
-    public Code CalculateDistance(params object?[] args) => Run(args);
-    public Code CalculateTravelCost(params object?[] args) => Run(args);
-    public Code ClassifyObjectsUsingDeepLearning(params object?[] args) => Run(args);
-    public Code ClassifyPixelsUsingDeepLearning(params object?[] args) => Run(args);
-    public Code ConvertFeatureToRaster(params object?[] args) => Run(args);
-    public Code ConvertRasterToFeature(params object?[] args) => Run(args);
-    public Code CostPathAsPolyline(params object?[] args) => Run(args);
-    public Code CreateViewshed(params object?[] args) => Run(args);
-    public Code DetectObjectsUsingDeepLearning(params object?[] args) => Run(args);
-    public Code DetermineOptimumTravelCostNetwork(params object?[] args) => Run(args);
-    public Code DetermineTravelCostPathAsPolyline(params object?[] args) => Run(args);
-    public Code DetermineTravelCostPathsToDestinations(params object?[] args) => Run(args);
-    public Code DistanceAccumulation(params object?[] args) => Run(args);
-    public Code DistanceAllocation(params object?[] args) => Run(args);
-    public Code Fill(params object?[] args) => Run(args);
-    public Code FlowAccumulation(params object?[] args) => Run(args);
-    public Code FlowDirection(params object?[] args) => Run(args);
-    public Code FlowDistance(params object?[] args) => Run(args);
-    public Code InterpolatePoints(params object?[] args) => Run(args);
-    public Code Nibble(params object?[] args) => Run(args);
-    public Code OptimalPathAsLine(params object?[] args) => Run(args);
-    public Code OptimalPathAsRaster(params object?[] args) => Run(args);
-    public Code OptimalRegionConnections(params object?[] args) => Run(args);
-    public Code StreamLink(params object?[] args) => Run(args);
-    public Code SummarizeRasterWithin(params object?[] args) => Run(args);
-    public Code SurfaceParameters(params object?[] args) => Run(args);
-    public Code Watershed(params object?[] args) => Run(args);
-    public Code ZonalStatisticsAsTable(params object?[] args) => Run(args);
+    public static Code CalculateDensity(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code CalculateDistance(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code CalculateTravelCost(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code ClassifyObjectsUsingDeepLearning(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code ClassifyPixelsUsingDeepLearning(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code ConvertFeatureToRaster(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code ConvertRasterToFeature(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code CostPathAsPolyline(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code CreateViewshed(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code DetectObjectsUsingDeepLearning(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code DetermineOptimumTravelCostNetwork(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code DetermineTravelCostPathAsPolyline(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code DetermineTravelCostPathsToDestinations(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code DistanceAccumulation(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code DistanceAllocation(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code Fill(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code FlowAccumulation(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code FlowDirection(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code FlowDistance(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code InterpolatePoints(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code Nibble(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code OptimalPathAsLine(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code OptimalPathAsRaster(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code OptimalRegionConnections(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code StreamLink(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code SummarizeRasterWithin(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code SurfaceParameters(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code Watershed(this _RasterAnalysis _, params object?[] args) => Run(args);
+    public static Code ZonalStatisticsAsTable(this _RasterAnalysis _, params object?[] args) => Run(args);
 }

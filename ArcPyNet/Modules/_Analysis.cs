@@ -4,49 +4,52 @@ namespace ArcPyNet;
 
 public class _Analysis
 {
+    internal _Analysis() { }
+}
+
+public static class _AnalysisExt
+{
     private static Code Run(object?[] args, [CallerMemberName] string method = "")
     {
         return ArcPy.Instance.Run($"arcpy.analysis.{method}", args);
     }
 
-    internal _Analysis() { }
-
-    public Code ApportionPolygon(params object?[] args) => Run(args);
-    public Code Buffer(params object?[] args) => Run(args);
-    public Code Clip(params object?[] args) => Run(args);
-    public Code CountOverlappingFeatures(params object?[] args) => Run(args);
-    public Code CreateThiessenPolygons(params object?[] args) => Run(args);
-    public Code Enrich(params object?[] args) => Run(args);
-    public Code EnrichLayer(params object?[] args) => Run(args);
-    public Code Erase(params object?[] args) => Run(args);
-    public Code Frequency(params object?[] args) => Run(args);
-    public Code GenerateNearTable(params object?[] args) => Run(args);
-    public Code GenerateOriginDestinationLinks(params object?[] args) => Run(args);
-    public Code GeographicallyWeightedRegression(params object?[] args) => Run(args);
-    public Code GraphicBuffer(params object?[] args) => Run(args);
-    public Code Identity(params object?[] args) => Run(args);
-    public Code Intersect(params object?[] args) => Run(args);
-    public Code MultipleRingBuffer(params object?[] args) => Run(args);
-    public Code Near(params object?[] args) => Run(args);
-    public Code PairwiseBuffer(params object?[] args) => Run(args);
-    public Code PairwiseClip(params object?[] args) => Run(args);
-    public Code PairwiseDissolve(params object?[] args) => Run(args);
-    public Code PairwiseErase(params object?[] args) => Run(args);
-    public Code PairwiseIntegrate(params object?[] args) => Run(args);
-    public Code PairwiseIntersect(params object?[] args) => Run(args);
-    public Code PointDistance(params object?[] args) => Run(args);
-    public Code PolygonNeighbors(params object?[] args) => Run(args);
-    public Code RemoveOverlapMultiple(params object?[] args) => Run(args);
-    public Code Select(params object?[] args) => Run(args);
-    public Code SpatialJoin(params object?[] args) => Run(args);
-    public Code Split(params object?[] args) => Run(args);
-    public Code SplitByAttributes(params object?[] args) => Run(args);
-    public Code Statistics(params object?[] args) => Run(args);
-    public Code SummarizeNearby(params object?[] args) => Run(args);
-    public Code SummarizeWithin(params object?[] args) => Run(args);
-    public Code SymDiff(params object?[] args) => Run(args);
-    public Code TableSelect(params object?[] args) => Run(args);
-    public Code TabulateIntersection(params object?[] args) => Run(args);
-    public Code Union(params object?[] args) => Run(args);
-    public Code Update(params object?[] args) => Run(args);
+    public static Code ApportionPolygon(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Buffer(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Clip(this _Analysis _, params object?[] args) => Run(args);
+    public static Code CountOverlappingFeatures(this _Analysis _, params object?[] args) => Run(args);
+    public static Code CreateThiessenPolygons(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Enrich(this _Analysis _, params object?[] args) => Run(args);
+    public static Code EnrichLayer(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Erase(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Frequency(this _Analysis _, params object?[] args) => Run(args);
+    public static Code GenerateNearTable(this _Analysis _, params object?[] args) => Run(args);
+    public static Code GenerateOriginDestinationLinks(this _Analysis _, params object?[] args) => Run(args);
+    public static Code GeographicallyWeightedRegression(this _Analysis _, params object?[] args) => Run(args);
+    public static Code GraphicBuffer(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Identity(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Intersect(this _Analysis _, params object?[] args) => Run(args);
+    public static Code MultipleRingBuffer(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Near(this _Analysis _, params object?[] args) => Run(args);
+    public static Code PairwiseBuffer(this _Analysis _, params object?[] args) => Run(args);
+    public static Code PairwiseClip(this _Analysis _, params object?[] args) => Run(args);
+    public static Code PairwiseDissolve(this _Analysis _, params object?[] args) => Run(args);
+    public static Code PairwiseErase(this _Analysis _, params object?[] args) => Run(args);
+    public static Code PairwiseIntegrate(this _Analysis _, params object?[] args) => Run(args);
+    public static Code PairwiseIntersect(this _Analysis _, params object?[] args) => Run(args);
+    public static Code PointDistance(this _Analysis _, params object?[] args) => Run(args);
+    public static Code PolygonNeighbors(this _Analysis _, params object?[] args) => Run(args);
+    public static Code RemoveOverlapMultiple(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Select(this _Analysis _, params object?[] args) => Run(args);
+    public static Code SpatialJoin(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Split(this _Analysis _, params object?[] args) => Run(args);
+    public static Code SplitByAttributes(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Statistics(this _Analysis _, params object?[] args) => Run(args);
+    public static Code SummarizeNearby(this _Analysis _, params object?[] args) => Run(args);
+    public static Code SummarizeWithin(this _Analysis _, params object?[] args) => Run(args);
+    public static Code SymDiff(this _Analysis _, params object?[] args) => Run(args);
+    public static Code TableSelect(this _Analysis _, params object?[] args) => Run(args);
+    public static Code TabulateIntersection(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Union(this _Analysis _, params object?[] args) => Run(args);
+    public static Code Update(this _Analysis _, params object?[] args) => Run(args);
 }
